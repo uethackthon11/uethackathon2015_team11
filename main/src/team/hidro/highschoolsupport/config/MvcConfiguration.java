@@ -75,7 +75,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		//registry.addInterceptor(new LoginInterceptor());
+		registry.addInterceptor(new LoginInterceptor());
 		// registry.addInterceptor(new
 		// TransactionInterceptor()).addPathPatterns("/person/save/*");
 	}

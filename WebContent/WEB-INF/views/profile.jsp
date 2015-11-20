@@ -30,7 +30,7 @@
 
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                      <b>Ngày Sinh</b> <a class="pull-right"> {{user.birthdat | date : 'dd-M-yyy'}}</a>
+                      <b>Ngày Sinh</b> <a class="pull-right"> {{user.birthday | date : 'dd-M-yyyy'}}</a>
                     </li>
                     <li class="list-group-item">
                       <b>Giới Tính</b> 
@@ -53,7 +53,7 @@
             <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+                  <li class="active"><a href="#activity" data-toggle="tab">Nhận Xét Của Giáo Viên</a></li>
                   <li><a href="#timeline" data-toggle="tab">Bảng Điểm</a></li>
                 </ul>
                 <div class="tab-content">

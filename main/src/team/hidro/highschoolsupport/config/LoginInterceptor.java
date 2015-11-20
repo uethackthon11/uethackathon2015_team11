@@ -24,7 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
-		if(request.getSession().getAttribute("rule") != null || request.getRequestURL().toString().endsWith("login"))
+		if(request.getSession().getAttribute("role") != null || request.getRequestURL().toString().endsWith("login"))
 			return true;
 		else {
 			response.sendRedirect(request.getContextPath() + "/login");
