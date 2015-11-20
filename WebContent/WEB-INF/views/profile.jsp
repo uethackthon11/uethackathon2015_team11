@@ -24,7 +24,7 @@
               <!-- Profile Image -->
               <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img class="profile-user-img img-responsive img-circle" src="<spring:url value="/resources/dist/img/user4-128x128.jpg" />" alt="User profile picture">
+                  <img class="profile-user-img img-responsive img-circle" src="<spring:url value="/resources/avatar/{{user.avatar}}" />" alt="User profile picture">
                   <h3 class="profile-username text-center">{{user.name}}</h3>
                   <p class="text-muted text-center">Học Sinh</p>
 
@@ -59,43 +59,22 @@
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
                     <!-- Post -->
-                    <div class="post">
+                    <div class="post" ng-repeat="comment in comments">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/dist/img/user1-128x128.jpg" />" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{comment.user.avatar}}" />" alt="user image">
                         <span class='username'>
-                          <a href="#">Jonathan Burke Jr.</a>
+                          <a href="#">{{comment.user.name}}</a>
                           <a href='#' class='pull-right btn-box-tool'><i class='fa fa-times'></i></a>
                         </span>
-                        <span class='description'>Shared publicly - 7:30 PM today</span>
+                        <span class='description'>{{comment.time | date : 'dd-M-yyyy HH:ss'}}</span>
                       </div><!-- /.user-block -->
                       <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
+                        {{comment.message}}
                       </p>
                       
                     </div><!-- /.post -->
 
-                    <!-- Post -->
-                    <div class="post clearfix">
-                      <div class='user-block'>
-                        <img class='img-circle img-bordered-sm' src='<spring:url value="/resources/dist/img/user7-128x128.jpg" />' alt='user image'>
-                        <span class='username'>
-                          <a href="#">Sarah Ross</a>
-                          <a href='#' class='pull-right btn-box-tool'><i class='fa fa-times'></i></a>
-                        </span>
-                        <span class='description'>Sent you a message - 3 days ago</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-					 </div><!-- /.post -->
+                    
                       <form class='form-horizontal'>
                         <div class='form-group margin-bottom-none'>
                           <div class='col-sm-9'>

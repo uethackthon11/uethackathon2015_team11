@@ -39,8 +39,34 @@ app.controller("profileCtrl" , function($scope, $http){
 	.success(function(data){
 		$scope.user = data;
 	});*/
-	console.log("fdf");
-	$scope.user = {id: '1',name:'Nguyễn Văn Hợp', birthday: 1447219609527, sex: 1, address: 'Mê Linh - Hà Nội', introduce:'hehe'};
+	$scope.user = {id: '1',avatar: '4.jpg' ,name:'Nguyễn Văn Hợp', birthday: 1447219609527, sex: 1, address: 'Mê Linh - Hà Nội', introduce:'hehe'};
+	
+	$scope.comments = [
+	                   {
+	                	   message : "Học giỏi, ngoan ngoãn",
+		                   time : 1447219609527,
+		                   user : {
+		                	   name : "Vương Thị Hồng",
+		                	   avatar : "1.jpg"
+		                   }
+	                   },
+	                   {
+	                	   message : "Học giỏi, ngoan ngoãn",
+		                   time : 1447219609527,
+		                   user : {
+		                	   name : "Nguyễn Văn Kim",
+		                	   avatar : "2.jpg"
+		                   }
+	                   },
+	                   {
+	                	   message : "Học giỏi, ngoan ngoãn",
+		                   time : 1447219609527,
+		                   user : {
+		                	   name : "Đậu Mạnh Quang",
+		                	   avatar : "3.jpg"
+		                   }
+	                   }
+	                   ];
 });
 app.controller("commentCtrl" , function($scope, $http){
 	

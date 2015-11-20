@@ -64,15 +64,15 @@
     <!-- Bootstrap 3.3.5 -->
     <script src="<spring:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
     <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <%-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="<spring:url value="/resources/plugins/morris/morris.min.js" />"></script>
     <!-- Sparkline -->
     <script src="<spring:url value="/resources/plugins/sparkline/jquery.sparkline.min.js" />"></script>
     <!-- jvectormap -->
     <script src="<spring:url value="/resources/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />"></script>
     <script src="<spring:url value="/resources/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="<spring:url value="/resources/plugins/knob/jquery.knob.js" />"></script>
+    --%> <!-- jQuery Knob Chart -->
+    <%-- <script src="<spring:url value="/resources/plugins/knob/jquery.knob.js" />"></script> --%>
     <!-- daterangepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="<spring:url value="/resources/plugins/daterangepicker/daterangepicker.js" />"></script>
@@ -81,13 +81,13 @@
     <!-- Bootstrap WYSIHTML5 -->
     <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script>
     <!-- Slimscroll -->
-    <script src="<spring:url value="/resources/plugins/slimScroll/jquery.slimscroll.min.js" />"></script>
+<%--     <script src="<spring:url value="/resources/plugins/slimScroll/jquery.slimscroll.min.js" />"></script>
     <!-- FastClick -->
-    <script src="<spring:url value="/resources/plugins/fastclick/fastclick.min.js" />"></script>
+    <script src="<spring:url value="/resources/plugins/fastclick/fastclick.min.js" />"></script> --%>
     <!-- AdminLTE App -->
     <script src="<spring:url value="/resources/dist/js/app.min.js" />"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="<spring:url value="/resources/dist/js/pages/dashboard.js" />"></script>
+    <%-- <script src="<spring:url value="/resources/dist/js/pages/dashboard.js" />"></script> --%>
     <!-- AdminLTE for demo purposes -->
     <script src="<spring:url value="/resources/dist/js/demo.js" />"></script>
     <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script>
@@ -95,8 +95,8 @@
     <script type="text/javascript" src="<spring:url value="/resources/js/dirPagination.js" />"></script>
     <script type="text/javascript" src="<spring:url value="/resources/js/jsModule.js" />"></script>
     
-    <%-- <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.core.js" />"></script>
+    <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.core.js" />"></script>
     <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.buttons.js" />"></script>
-    <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.nonblock.js" />"></script> --%>
+    <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.nonblock.js" />"></script>
 </body>
 </html>
