@@ -93,4 +93,10 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 		return a.getYear();
 	}
 
+	@Override
+	public TeacherDetail getByName(String usernme) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
