@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
+import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.TeacherDao;
@@ -15,6 +16,7 @@ import team.hidro.highschoolsupport.entities.ClassDetail;
 import team.hidro.highschoolsupport.entities.ListClassDetail;
 import team.hidro.highschoolsupport.entities.TeacherDetail;
 
+@Repository
 public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao {
 
 	@Override

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import team.hidro.highschoolsupport.dao.TeacherDao;
 import team.hidro.highschoolsupport.entities.ListClassDetail;
 import team.hidro.highschoolsupport.entities.TeacherDetail;
-import team.hidro.highschoolsupport.service.TeacherSerive;
+import team.hidro.highschoolsupport.service.TeacherService;
 
 
 @Service
-public class TeacherServiceImpl implements TeacherSerive{
+public class TeacherServiceImpl implements TeacherService{
 	@Autowired
 	private TeacherDao teacherDao;
 	
