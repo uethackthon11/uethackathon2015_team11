@@ -1,5 +1,7 @@
 package team.hidro.highschoolsupport.service;
 
-public class StudentService {
+import team.hidro.highschoolsupport.entities.StudentDetail;
+
+public interface StudentService extends Service<StudentDetail, Integer>{
 
 }

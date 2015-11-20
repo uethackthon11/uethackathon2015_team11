@@ -30,7 +30,7 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 
 @Configuration
-@ComponentScan(basePackages = "team.hidro.highschoolsupport.controllers")
+@ComponentScan({"team.hidro.highschoolsupport.controllers", "team.hidro.highschoolsupport.dao.impl", "team.hidro.highschoolsupport.service.impl"})
 @EnableWebMvc
 @Import(value = { SecurityConfig.class, DbConfig.class })
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
