@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -23,9 +24,9 @@
               <!-- Profile Image -->
               <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
-                  <h3 class="profile-username text-center">Nina Mcintire</h3>
-                  <p class="text-muted text-center">Software Engineer</p>
+                  <img class="profile-user-img img-responsive img-circle" src="<spring:url value="/resources/dist/img/user4-128x128.jpg" />" alt="User profile picture">
+                  <h3 class="profile-username text-center">Nguyễn Văn Hợp</h3>
+                  <p class="text-muted text-center">Học Sinh</p>
 
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
@@ -43,39 +44,6 @@
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
-              <!-- About Me Box -->
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">About Me</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
-                  <p class="text-muted">
-                    B.S. in Computer Science from the University of Tennessee at Knoxville
-                  </p>
-
-                  <hr>
-
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-                  <p class="text-muted">Malibu, California</p>
-
-                  <hr>
-
-                  <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-                  <p>
-                    <span class="label label-danger">UI Design</span>
-                    <span class="label label-success">Coding</span>
-                    <span class="label label-info">Javascript</span>
-                    <span class="label label-warning">PHP</span>
-                    <span class="label label-primary">Node.js</span>
-                  </p>
-
-                  <hr>
-
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
             </div><!-- /.col -->
             <div class="col-md-9">
               <div class="nav-tabs-custom">
@@ -89,7 +57,7 @@
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/dist/img/user1-128x128.jpg" />" alt="user image">
                         <span class='username'>
                           <a href="#">Jonathan Burke Jr.</a>
                           <a href='#' class='pull-right btn-box-tool'><i class='fa fa-times'></i></a>
@@ -115,7 +83,7 @@
                     <!-- Post -->
                     <div class="post clearfix">
                       <div class='user-block'>
-                        <img class='img-circle img-bordered-sm' src='../../dist/img/user7-128x128.jpg' alt='user image'>
+                        <img class='img-circle img-bordered-sm' src='<spring:url value="/resources/dist/img/user7-128x128.jpg" />' alt='user image'>
                         <span class='username'>
                           <a href="#">Sarah Ross</a>
                           <a href='#' class='pull-right btn-box-tool'><i class='fa fa-times'></i></a>
@@ -142,44 +110,7 @@
                       </form>
                     </div><!-- /.post -->
 
-                    <!-- Post -->
-                    <div class="post">
-                      <div class='user-block'>
-                        <img class='img-circle img-bordered-sm' src='../../dist/img/user6-128x128.jpg' alt='user image'>
-                        <span class='username'>
-                          <a href="#">Adam Jones</a>
-                          <a href='#' class='pull-right btn-box-tool'><i class='fa fa-times'></i></a>
-                        </span>
-                        <span class='description'>Posted 5 photos - 5 days ago</span>
-                      </div><!-- /.user-block -->
-                      <div class='row margin-bottom'>
-                        <div class='col-sm-6'>
-                          <img class='img-responsive' src='../../dist/img/photo1.png' alt='Photo'>
-                        </div><!-- /.col -->
-                        <div class='col-sm-6'>
-                          <div class='row'>
-                            <div class='col-sm-6'>
-                              <img class='img-responsive' src='../../dist/img/photo2.png' alt='Photo'>
-                              <br>
-                              <img class='img-responsive' src='../../dist/img/photo3.jpg' alt='Photo'>
-                            </div><!-- /.col -->
-                            <div class='col-sm-6'>
-                              <img class='img-responsive' src='../../dist/img/photo4.jpg' alt='Photo'>
-                              <br>
-                              <img class='img-responsive' src='../../dist/img/photo1.png' alt='Photo'>
-                            </div><!-- /.col -->
-                          </div><!-- /.row -->
-                        </div><!-- /.col -->
-                      </div><!-- /.row -->
-
-                      <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-                      </ul>
-
-                      <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div><!-- /.post -->
+                    
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="timeline">
                     <!-- The timeline -->
