@@ -5,9 +5,9 @@ import java.util.List;
 public interface Dao<E, V> {
 	public List<E> getList();
 	
-	public E getById();
+	public E getById(V id);
 
-	public V save(E item);
+	public boolean save(E item);
 
 	public void remove(V id);
 

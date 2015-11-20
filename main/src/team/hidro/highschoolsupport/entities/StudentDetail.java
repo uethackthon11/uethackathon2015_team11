@@ -2,7 +2,7 @@ package team.hidro.highschoolsupport.entities;
 
 public class StudentDetail {
 
-	private String userId;
+	private int userId;
 	private String name;
 	private String birthday;
 	private String avatar;
@@ -11,7 +11,7 @@ public class StudentDetail {
 	private String introduce;
 	private int classId;
 
-	public StudentDetail(String userId, String name, String birthday, String avatar, int sex, String address,
+	public StudentDetail(int userId, String name, String birthday, String avatar, int sex, String address,
 			String introduce, int classId) {
 		super();
 		this.userId = userId;
@@ -28,11 +28,11 @@ public class StudentDetail {
 		super();
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
