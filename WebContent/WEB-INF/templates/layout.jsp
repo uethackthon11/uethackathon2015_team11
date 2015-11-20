@@ -45,7 +45,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="myApp">
     <div class="wrapper">
 			<tiles:insertAttribute name="header" ignore="true"/>
 			<tiles:insertAttribute name="menu" ignore="true"/>
@@ -56,7 +56,7 @@
 	<!-- jQuery 2.1.4 -->
     <script src="<spring:url value="/resources/plugins/jQuery/jQuery-2.1.4.min.js" />"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="<spring:url value="/resources/https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" />"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -64,7 +64,7 @@
     <!-- Bootstrap 3.3.5 -->
     <script src="<spring:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
     <!-- Morris.js charts -->
-    <script src="<spring:url value="/resources/https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js" />"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="<spring:url value="/resources/plugins/morris/morris.min.js" />"></script>
     <!-- Sparkline -->
     <script src="<spring:url value="/resources/plugins/sparkline/jquery.sparkline.min.js" />"></script>
@@ -90,6 +90,13 @@
     <script src="<spring:url value="/resources/dist/js/pages/dashboard.js" />"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<spring:url value="/resources/dist/js/demo.js" />"></script>
-     <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script>
+    <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script>
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="<spring:url value="/resources/js/dirPagination.js" />"></script>
+    <script type="text/javascript" src="<spring:url value="/resources/js/jsModule.js" />"></script>
+    
+    <%-- <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.core.js" />"></script>
+    <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.buttons.js" />"></script>
+    <script type="text/javascript" src="<spring:url value="/resources/js/notify/pnotify.nonblock.js" />"></script> --%>
 </body>
 </html>

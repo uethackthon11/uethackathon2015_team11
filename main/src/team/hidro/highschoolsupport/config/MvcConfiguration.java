@@ -94,7 +94,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		return tilesConfigurer;
 	}
 	private void addDefinition(String name, String title, String body) {
-		Map<String, Attribute> attributes = (name.equals("login")) ? new HashMap<String,Attribute>() :getDefaultAttributes();
+		Map<String, Attribute> attributes = (name.equals("login")) ? new HashMap<String,Attribute>() : getDefaultAttributes();
 		
 		attributes.put("title", new Attribute(title));
 		attributes.put("body", new Attribute(body));
