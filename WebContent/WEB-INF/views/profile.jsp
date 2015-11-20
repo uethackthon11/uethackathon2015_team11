@@ -30,13 +30,16 @@
 
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                      <b>Followers</b> <a class="pull-right">1,322</a>
+                      <b>Ngày Sinh</b> <a class="pull-right"> 16/11/1994</a>
                     </li>
                     <li class="list-group-item">
-                      <b>Following</b> <a class="pull-right">543</a>
+                      <b>Giới Tính</b> <a class="pull-right"> Nam</a>
                     </li>
                     <li class="list-group-item">
-                      <b>Friends</b> <a class="pull-right">13,287</a>
+                      <b>Địa Chỉ</b> <a class="pull-right"> Thạch Đà - Mê Linh</a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Giới Thiệu</b> <a class="pull-right"> Thích đọc sách</a>
                     </li>
                   </ul>
 
@@ -71,13 +74,7 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-                      </ul>
-
-                      <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                      
                     </div><!-- /.post -->
 
                     <!-- Post -->
@@ -97,7 +94,7 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-
+					 </div><!-- /.post -->
                       <form class='form-horizontal'>
                         <div class='form-group margin-bottom-none'>
                           <div class='col-sm-9'>
@@ -108,7 +105,7 @@
                           </div>                          
                         </div>                        
                       </form>
-                    </div><!-- /.post -->
+                   
 
                     
                   </div><!-- /.tab-pane -->

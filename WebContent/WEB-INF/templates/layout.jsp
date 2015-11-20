@@ -34,7 +34,10 @@
     <link rel="stylesheet" href="<spring:url value="/resources/plugins/daterangepicker/daterangepicker-bs3.css" />">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />">
-
+	<link rel="stylesheet" href="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="<spring:url value="/resources/dist/css/skins/_all-skins.min.css" />">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -87,5 +90,6 @@
     <script src="<spring:url value="/resources/dist/js/pages/dashboard.js" />"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<spring:url value="/resources/dist/js/demo.js" />"></script>
+     <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script>
 </body>
 </html>
