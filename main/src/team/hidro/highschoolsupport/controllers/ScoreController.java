@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import team.hidro.highschoolsupport.entities.ListClassDetail;
-import team.hidro.highschoolsupport.service.TeacherService;
+import team.hidro.highschoolsupport.entities.StudentScoreDetail;
+import team.hidro.highschoolsupport.service.ClassService;
 
 @Controller
 public class ScoreController {
 
 	@Autowired
-	private TeacherService teacherService;
+	private ClassService teacherService;
 	
 	@RequestMapping("/test/{id}")
-	public @ResponseBody List<ListClassDetail> _getClass(@PathVariable("id") int id){
-		return teacherService.getListClassByTeacherId(id);
+	public @ResponseBody List<StudentScoreDetail> _getClass(@PathVariable("id") int id){
+		return teacherService.getListStudentScoreByClassAndSubject(2, 3, 1);
 	}
 }

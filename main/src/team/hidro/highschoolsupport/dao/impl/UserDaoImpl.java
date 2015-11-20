@@ -3,12 +3,14 @@ package team.hidro.highschoolsupport.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
 import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.UserDao;
+import team.hidro.highschoolsupport.entities.StudentScoreDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
 
 @Repository
@@ -48,6 +50,5 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao{
 		}
 		return null;
 	}
-
 
 }
