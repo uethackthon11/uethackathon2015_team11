@@ -39,7 +39,12 @@ app.controller("profileCtrl" , function($scope, $http){
 	.success(function(data){
 		$scope.user = data;
 	});*/
-	$scope.user = {id: '1',avatar: '4.jpg' ,name:'Nguyễn Văn Hợp', birthday: 1447219609527, sex: 1, address: 'Mê Linh - Hà Nội', introduce:'hehe'};
+	$scope.user = {};
+	
+	$http.get($('#rootPath').val() + "/hopnv/user_detail")
+	.success(function(data){
+		$scope.user = data;
+	});
 	
 	$scope.comments = [
 	                   {

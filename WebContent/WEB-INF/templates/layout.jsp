@@ -46,6 +46,7 @@
     <![endif]-->
   </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="myApp">
+	<input class="hidden" value="${pageContext.request.contextPath}" id="rootPath" />
     <div class="wrapper">
 			<tiles:insertAttribute name="header" ignore="true"/>
 			<tiles:insertAttribute name="menu" ignore="true"/>

@@ -98,7 +98,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "Select * from student inner join user on student.id = user.id where user.username = ?";
+			String sql = "Select * from student inner join user on student.user_id = user.id where user.username = ?";
 			smt = conn.prepareStatement(sql);
 
 			smt.setString(1, usernme);
@@ -108,7 +108,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 				int id1 = rs.getInt("id");
 				String name = rs.getString("name");
 				String birthday = rs.getString("birthday");
-				String avatar = rs.getString("avatar");
+				String avatar = rs.getString("avartar");
 				String address = rs.getString("address");
 				String introduce = rs.getString("introduce");
 				int sex = rs.getInt("sex");
