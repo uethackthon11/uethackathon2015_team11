@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -51,18 +52,21 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "Select * from subject_year inner join subject on subject_year.subject_id = subject.id"
-					+ "inner join subject_year_class syc on subject_year.id = syc.subject_year_id"
+			String sql = "Select * from subject_year inner join subject on subject_year.subject_id = subject.id "
+					+ "inner join subject_year_class syc on subject_year.id = syc.subject_year_id "
 					+ "inner join class on class.id = syc.class_id"
 					+ " where subject_year.year = ? and subject_year.teacher_user_id = ?";
 			smt = conn.prepareStatement(sql);
-			int year = getCurrentYear();
+			int year = Calendar.getInstance().get(Calendar.YEAR);
 			smt.setInt(1, year);
 			smt.setInt(2, id);
 
 			rs = smt.executeQuery();
 			List<ListClassDetail> listClassDetails = new ArrayList<ListClassDetail>();
+			int i=0;
+			System.out.println(year+" "+id);
 			while (rs.next()) {
+				System.out.println(i++);
 				int subjectId = rs.getInt("subject.id");
 				String subjectName = rs.getString("subject.name");
 				int classId = rs.getInt("class.id");
@@ -73,7 +77,8 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 			}
 			return listClassDetails;
 		} catch (Exception e) {
-			logger.error("queryPost", e);
+//			logger.error("queryPost", e);
+			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);
