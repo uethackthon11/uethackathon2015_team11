@@ -55,6 +55,7 @@
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#activity" data-toggle="tab">Nhận Xét Của Giáo Viên</a></li>
                   <li><a href="#timeline" data-toggle="tab">Bảng Điểm</a></li>
+                  <li><a href="#statistic" data-toggle="tab">Thống Kê</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
@@ -235,6 +236,9 @@
         </section><!-- /.content -->
                   	
                   </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="statistic">
+                  		Thống Kê ở Đây
+                  </div>
 
                 </div><!-- /.tab-content -->
               </div><!-- /.nav-tabs-custom -->
