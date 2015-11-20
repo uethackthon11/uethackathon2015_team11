@@ -71,7 +71,7 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao{
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "Select * from score inner where user_id = ? and ky= ?";
+			String sql = "Select * from score where user_id = ? and ky= ?";
 			smt = conn.prepareStatement(sql);
 			smt.setInt(1, studentDetail.getUserId());
 			smt.setInt(2, ky);

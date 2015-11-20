@@ -19,6 +19,6 @@ public class ScoreController {
 	
 	@RequestMapping("/test/{id}")
 	public @ResponseBody List<StudentScoreDetail> _getClass(@PathVariable("id") int id){
-		return teacherService.getListStudentScoreByClassAndSubject(2, 3, 1);
+		return teacherService.getListStudentScoreByClassAndSubject(1, 4, 1);
 	}
 }
