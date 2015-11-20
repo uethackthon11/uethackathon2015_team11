@@ -6,18 +6,15 @@ import java.sql.ResultSet;
 import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
-import team.hidro.highschoolsupport.dao.PostDaoImpl;
 import team.hidro.highschoolsupport.dao.StudentDao;
 import team.hidro.highschoolsupport.entities.StudentDetail;
 
 
 @Repository
 public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao{
-	static Logger logger = Logger.getLogger(PostDaoImpl.class);
 
 	@Override
 	public List<StudentDetail> getList() {
