@@ -40,6 +40,7 @@ public class LoginController {
 		} else {
 			
 			session.setAttribute("role", user.getRole());
+			session.setAttribute("username", user.getUsername());
 			//session.setAttribute("user", user);
 			switch(user.getRole()){
 			
@@ -51,7 +52,7 @@ public class LoginController {
 					model.setViewName("redirect:home");*/
 				case 3 :
 					TeacherDetail teacher = teacherService.getById(user.getId());
-					session.setAttribute("user", teacher);
+					//session.setAttribute("user", teacher);
 					model.setViewName("redirect:home");
 				default : ;
 				
