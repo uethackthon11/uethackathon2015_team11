@@ -10,31 +10,29 @@
 			</div>
 	    	<br/>
 	    	<form action="login" method="POST">
-	    		
-	    		<div class="alert alert-danger hidden" role="alert" id="error">
-					${error}
-				</div>
-	    	
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-			            <input type="text" class="form-control has-feedback-left" name="id" placeholder="ID" required>
-			            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+	    		<section>
+						<div class="form-group">
+		    				<div class="input-group">
+			      				<div class="input-group-addon"><span class="text-primary fa fa-user"></span></div>
+								<input type="text" class="form-control has-feedback-left" name="id" placeholder="ID" required>
+							</div>
+						</div>
+						<div class="form-group">
+		    				<div class="input-group">
+			      				<div class="input-group-addon"><span class="text-primary fa fa-lock"></span></div>
+								<input type="text" class="form-control has-feedback-left" name="password" placeholder="Password" required>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<input type="checkbox" name="remember" value="1" /> Remember me
+						</div>
+						
+						<button type="submit" value="Log In" class="btn btn-block btn-success">Sign in</button>
+					</section>
+					<div>
+						<a href="#">Forgot password ?</a>
 					</div>
-				</div>
-				<br/>
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-			            <input type="text" class="form-control has-feedback-left" name="password" placeholder="Password" required>
-			            <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<br/>
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-			           <input type="submit" class="btn btn-primary pull-right" value="Log In" />
-					</div>
-				</div>
 			</form>
 
 

@@ -112,7 +112,7 @@
                   <table class="table table-bordered table-hover" style=" border: 2px solid #cccccc">
                     <tr>
                       <th rowspan="3" style="text-align: center; vertical-align: middle">STT</th>
-                      <th rowspan="3" style="text-align: center; vertical-align: middle" class="col-xs-2">Họ tên học sinh</th>
+                      <th rowspan="3" style="text-align: center; vertical-align: middle" class="col-xs-2">Môn học</th>
                       <th colspan="9" style="text-align: center"> Điểm </th>
                       <th rowspan="3" style="text-align: center; vertical-align: middle"> Cuối kỳ </th>
                       <th rowspan="3" style="text-align: center; vertical-align: middle"> TB môn </th>
@@ -150,7 +150,7 @@
 
                     <tr>
                       <td style="text-align: center">1</td>
-                      <td style="text-align: center">Nguyễn Văn Kim</td>
+                      <td style="text-align: center">Toán</td>
                       <td style="text-align: center"> 6.5</td>
                       <td style="text-align: center"> 8.5</td>
                       <td style="text-align: center"> 7</td>
@@ -166,7 +166,7 @@
                     </tr>
                     <tr>
                       <td style="text-align: center">2</td>
-                      <td style="text-align: center">Vương Thị Hồng</td>
+                      <td style="text-align: center">Vật Lý</td>
                       <td style="text-align: center"> 8</td>
                       <td style="text-align: center"> 6</td>
                       <td style="text-align: center"> 4.5</td>
@@ -183,7 +183,7 @@
 
                     <tr>
                       <td style="text-align: center">3</td>
-                      <td style="text-align: center">Nguyễn Văn Hợp</td>
+                      <td style="text-align: center">Hóa học</td>
                       <td style="text-align: center"> 8.5</td>
                       <td style="text-align: center"> 8</td>
                       <td style="text-align: center"> 7.5</td>
@@ -200,7 +200,7 @@
 
                     <tr>
                       <td style="text-align: center">4</td>
-                      <td style="text-align: center">Đậu Mạnh Quang</td>
+                      <td style="text-align: center">Tin học</td>
                       <td style="text-align: center"> 6</td>
                       <td style="text-align: center"> 7.5</td>
                       <td style="text-align: center"> 8</td>
@@ -225,6 +225,8 @@
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="statistic">
                   		Thống Kê ở Đây
+                  		<div id="container" style="min-width: 900px; height: 600px; margin: 0 auto"></div>
+                  		
                   </div>
 
                 </div><!-- /.tab-content -->
