@@ -25,7 +25,7 @@ public class GroupController {
 	@Autowired
 	private CommentService commentService;
 	
-	@RequestMapping(value = "/group/initial/{idGroup}", method = RequestMethod.GET)
+	@RequestMapping(value = "/groupdata/initial/{idGroup}", method = RequestMethod.GET)
 	public @ResponseBody InitialStatusDetail getInitialStatus(@PathVariable("idGroup") int groupId) {
 		return statusService.getListInitialStatusByGroupId(groupId);
 	}

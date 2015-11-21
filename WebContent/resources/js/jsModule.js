@@ -301,11 +301,14 @@ app.controller("notificationCtrl", function($scope,$http){
 	});
 	
 });
-/*app.controller("commentCtrl" , function($scope, $http){
+app.controller("groupCtrl" , function($scope, $http){
 	
-	$http.get("http://localhost:8080/SpringProject/" + $('#id').val() + "/comment")
+	$scope.group = [];
+	
+	$http.get($('#rootPath').val() + "/groupdata/initial/" + $('#groupId').val())
 	.success(function(data){
-		$scope.comments = data;
+		$scope.group = data;
+		console.log(data);
 	});
 	
-});*/
+});
