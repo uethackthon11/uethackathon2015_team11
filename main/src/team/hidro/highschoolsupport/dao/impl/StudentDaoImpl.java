@@ -36,17 +36,17 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "Select * from student where id = ?";
+			String sql = "Select * from student where user_id = ?";
 			smt = conn.prepareStatement(sql);
 
 			smt.setInt(1, id);
 
 			rs = smt.executeQuery();
 			if (rs.next()) {
-				int id1 = rs.getInt("id");
+				int id1 = rs.getInt("user_id");
 				String name = rs.getString("name");
 				String birthday = rs.getString("birthday");
-				String avatar = rs.getString("avatar");
+				String avatar = rs.getString("avartar");
 				String address = rs.getString("address");
 				String introduce = rs.getString("introduce");
 				int sex = rs.getInt("sex");

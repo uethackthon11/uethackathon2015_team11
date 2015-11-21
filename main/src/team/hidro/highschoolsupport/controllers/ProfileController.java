@@ -57,6 +57,8 @@ public class ProfileController {
 	@RequestMapping(value = "/{username}/profile/add_comment", method = RequestMethod.POST)
 	public @ResponseBody void addComment(@PathVariable("username") String username,@RequestParam Map<String,String> params, HttpSession session){
 		StudentDetail student = studentService.getByName(username);
+		if(student == null)
+			student = studentService.getById(Integer.parseInt(username));
 		TeacherDetail teacher = (TeacherDetail)session.getAttribute("user"); 
 		String message = params.toString();
 		message = message.split(":")[1];

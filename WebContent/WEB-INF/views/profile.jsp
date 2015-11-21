@@ -64,6 +64,17 @@
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
+                  	<div class='form-horizontal'>
+                        <div class='form-group margin-bottom-none'>
+                          <div class='col-sm-9'>
+                            <input style="height: 70px" class="form-control input-sm" placeholder="Nội dung..." id="comment">
+                          </div>                          
+                          <div class='col-sm-3'>
+                            <button class='btn btn-primary pull-right btn-block btn-sm' ng-click="addComment()">Gửi Nhận Xét</button>
+                          </div>                          
+                        </div>                        
+                      </div>
+                      <br/>
                     <!-- Post -->
                     <div class="post" dir-paginate="comment in comments | filter:search | itemsPerPage: pageSize" current-page="currentPage" id="listComment">
                       <div class="user-block">
@@ -82,19 +93,6 @@
 					<div class="text-right" style="margin-top: -10px">
 			          	<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="http://localhost:8080/SpringProject/resources/dirPagination.tpl.html"></script>"></dir-pagination-controls>
 			        </div>
-                    
-                      <div class='form-horizontal'>
-                        <div class='form-group margin-bottom-none'>
-                          <div class='col-sm-9'>
-                            <input class="form-control input-sm" placeholder="Nội dung..." id="comment">
-                          </div>                          
-                          <div class='col-sm-3'>
-                            <button class='btn btn-danger pull-right btn-block btn-sm' ng-click="addComment()">Send</button>
-                          </div>                          
-                        </div>                        
-                      </div>
-                   
-
                     
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="timeline">

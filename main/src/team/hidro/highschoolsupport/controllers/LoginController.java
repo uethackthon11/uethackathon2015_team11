@@ -52,6 +52,8 @@ public class LoginController {
 				case 3 :
 					TeacherDetail teacher = teacherService.getById(user.getId());
 					session.setAttribute("user", teacher);
+					session.setAttribute("avatar", teacher.getAvatar());
+					session.setAttribute("name", teacher.getName());
 					model.setViewName("redirect:home");
 				default : ;
 				
@@ -59,6 +61,14 @@ public class LoginController {
 			
 		}
 		return model;
+	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession sesion){
+		
+		sesion.invalidate();
+		
+		return new ModelAndView("login");
 	}
 	
 }
