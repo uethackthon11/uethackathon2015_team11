@@ -33,9 +33,9 @@ public class ProfileController {
 
 	}
 
-	@RequestMapping("/{id}/comments")
-	public @ResponseBody List<CommentProfile> getComments(@PathVariable("id") int id) {
-		return studentService.getListCommentProfile(id);
+	@RequestMapping("/{username}/comments")
+	public @ResponseBody List<CommentProfile> getComments(@PathVariable("username") String username) {
+		return studentService.getListCommentProfile(username);
 	}
 
 }

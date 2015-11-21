@@ -225,7 +225,7 @@
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="statistic">
                   		Thống Kê ở Đây
-                  		<div id="container" style="min-width: 900px; height: 600px; margin: 0 auto"></div>
+                  		<div id="container" style="width: 100%; height: 600px; margin: 0 auto"></div>
                   		
                   </div>
 
