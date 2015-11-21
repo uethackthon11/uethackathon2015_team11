@@ -2,7 +2,23 @@
     pageEncoding="UTF-8"%>
    <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
    <link rel="stylesheet" href="<spring:url value="/resources/css/style.css" />">
- <div class="content-wrapper">
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Simple Tables
+            <small>preview of simple tables</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Simple</li>
+          </ol>
+        </section>
+        
+        
+        <!-- Main content -->
+        <section class="content" ng-controller="scoreCtrl">
  <div class="row">
 				<div class="col-md-11" style="padding-left:45px;">
 					<h1 style = "padding-bottom: 20px"> Nhóm toán lớp 9 </h1>
@@ -152,4 +168,6 @@
 				<div class="col-md-1"></div>	
 						
 			</div>
- </div>
+</section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+ 
