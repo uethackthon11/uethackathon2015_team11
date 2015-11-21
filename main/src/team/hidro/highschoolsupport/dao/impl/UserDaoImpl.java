@@ -53,8 +53,64 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 		return null;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public List<StatusDetail> setWriterForListStatus(List<StatusDetail> statusDetails) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			for (StatusDetail statusDetail : statusDetails) {
+				int userId = statusDetail.getUserId();
+				
+				String sql = "Select * from user where id = ?";
+				smt = conn.prepareStatement(sql);
+				smt.setInt(1, userId);
+				rs = smt.executeQuery();
+				if (rs.next()) {
+					int role = rs.getInt("role");
+					WriterDetail writerDetail = null;
+					if (role == 1) {
+						sql = "Select * from student where user_id = ?";
+						smt = conn.prepareStatement(sql);
+						smt.setInt(1, userId);
+						rs = smt.executeQuery();
+
+						if (rs.next()) {
+							String name = rs.getString("name");
+							String avatar = rs.getString("avartar");
+							writerDetail = new WriterDetail(name, userId, avatar);
+						}
+
+					} else {
+
+						sql = "Select * from teacher where user_id = ?";
+						smt = conn.prepareStatement(sql);
+						smt.setInt(1, userId);
+						rs = smt.executeQuery();
+
+						if (rs.next()) {
+							String name = rs.getString("name");
+							String avatar = rs.getString("avartar");
+							writerDetail = new WriterDetail(name, userId, avatar);
+						}
+
+					}
+					statusDetail.setWriterDetail(writerDetail);
+				}
+				
+			}
+			return statusDetails;
+
+		} catch (Exception e) {
+			logger.error("queryPost", e);
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
 		return null;
 	}
 
@@ -74,7 +130,7 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 				smt.setInt(1, userId);
 				rs = smt.executeQuery();
 				if (rs.next()) {
-					int role = rs.getInt("type");
+					int role = rs.getInt("role");
 					WriterDetail writerDetail = null;
 					if (role == 1) {
 						sql = "Select * from student where user_id = ?";
@@ -84,7 +140,7 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 
 						if (rs.next()) {
 							String name = rs.getString("name");
-							String avatar = rs.getString("avatar");
+							String avatar = rs.getString("avartar");
 							writerDetail = new WriterDetail(name, userId, avatar);
 						}
 
@@ -97,7 +153,7 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 
 						if (rs.next()) {
 							String name = rs.getString("name");
-							String avatar = rs.getString("avatar");
+							String avatar = rs.getString("avartar");
 							writerDetail = new WriterDetail(name, userId, avatar);
 						}
 
@@ -110,6 +166,7 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 
 		} catch (Exception e) {
 			logger.error("queryPost", e);
+			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);

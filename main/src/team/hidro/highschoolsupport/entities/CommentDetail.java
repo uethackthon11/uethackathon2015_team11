@@ -4,8 +4,29 @@ public class CommentDetail {
 	private String content;
 	private Long dateTime;
 	private int userId;
+	private int statusId;
 	private WriterDetail writerDetail;
 	
+	
+	
+	
+	public CommentDetail(String content, Long dateTime, int userId, int statusId, WriterDetail writerDetail) {
+		super();
+		this.content = content;
+		this.dateTime = dateTime;
+		this.userId = userId;
+		this.statusId = statusId;
+		this.writerDetail = writerDetail;
+	}
+
+	public int getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+
 	public int getUserId() {
 		return userId;
 	}

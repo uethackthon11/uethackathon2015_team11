@@ -14,7 +14,7 @@ import team.hidro.highschoolsupport.dao.StatusDao;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 
 @Repository
-public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
+public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 
 	@Override
 	public List<StatusDetail> getList() {
@@ -30,14 +30,48 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 
 	@Override
 	public boolean save(StatusDetail item) {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "insert into stt VALUES (NULL,?,?,?,?)";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, item.getUserId());
+			ps.setInt(2, item.getGroupId());
+			ps.setString(3, item.getContent());
+			ps.setLong(4, item.getDateTime());
+			return (ps.executeUpdate() > 0) ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(ps);
+			DbUtils.closeQuietly(conn);
+		}
 		return false;
 	}
 
 	@Override
 	public void remove(Integer id) {
-		// TODO Auto-generated method stub
-		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "delete from stt where id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(ps);
+			DbUtils.closeQuietly(conn);
+		}
+
 	}
 
 	@Override
@@ -48,7 +82,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 
 	@Override
 	public List<StatusDetail> getListStatusByGroupId(int groupId) {
-		
+
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
@@ -58,7 +92,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 			smt = conn.prepareStatement(sql);
 
 			smt.setInt(1, groupId);
-			
+
 			rs = smt.executeQuery();
 			List<StatusDetail> statusDetails = new ArrayList<StatusDetail>();
 			if (rs.next()) {
@@ -66,11 +100,10 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 				int userId = rs.getInt("user_id");
 				long time = rs.getLong("time");
 				String content = rs.getString("content");
-				statusDetails.add(new StatusDetail(id1,userId,content,time));
+				statusDetails.add(new StatusDetail(id1, userId, content, time));
 			}
 			return statusDetails;
 		} catch (Exception e) {
-			logger.error("queryPost",e);
 			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);

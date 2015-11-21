@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
@@ -20,9 +19,8 @@ import team.hidro.highschoolsupport.entities.ScoreDetail;
 import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.entities.SubjectScore;
 
-
 @Repository
-public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao{
+public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao {
 
 	@Override
 	public List<StudentDetail> getList() {
@@ -32,8 +30,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 
 	@Override
 	public StudentDetail getById(Integer id) {
-		
-		
+
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
@@ -43,7 +40,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			smt = conn.prepareStatement(sql);
 
 			smt.setInt(1, id);
-			
+
 			rs = smt.executeQuery();
 			if (rs.next()) {
 				int id1 = rs.getInt("id");
@@ -54,11 +51,12 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 				String introduce = rs.getString("introduce");
 				int sex = rs.getInt("sex");
 				int classId = rs.getInt("class_id");
-				StudentDetail studentDetail = new StudentDetail(id1, name, birthday, avatar, sex, address, introduce, classId);
+				StudentDetail studentDetail = new StudentDetail(id1, name, birthday, avatar, sex, address, introduce,
+						classId);
 				return studentDetail;
 			}
 		} catch (Exception e) {
-			logger.error("queryPost",e);
+			logger.error("queryPost", e);
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);
@@ -78,7 +76,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			return (ps.executeUpdate() > 0) ? true : false;
 
 		} catch (Exception e) {
-			logger.error("addPost",e);
+			logger.error("addPost", e);
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(ps);
@@ -89,13 +87,12 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 
 	@Override
 	public void remove(Integer id) {
-		
-	}
 
+	}
 
 	@Override
 	public StudentDetail getByName(String usernme) {
-		
+
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
@@ -105,7 +102,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			smt = conn.prepareStatement(sql);
 
 			smt.setString(1, usernme);
-			
+
 			rs = smt.executeQuery();
 			if (rs.next()) {
 				int id1 = rs.getInt("id");
@@ -116,7 +113,8 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 				String introduce = rs.getString("introduce");
 				int sex = rs.getInt("sex");
 				int classId = rs.getInt("class_id");
-				StudentDetail studentDetail = new StudentDetail(id1, name, birthday, avatar, sex, address, introduce, classId);
+				StudentDetail studentDetail = new StudentDetail(id1, name, birthday, avatar, sex, address, introduce,
+						classId);
 				return studentDetail;
 			}
 		} catch (Exception e) {
@@ -127,9 +125,9 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			DbUtils.closeQuietly(conn);
 		}
 		return null;
-		
+
 	}
-	
+
 	@Override
 	public List<StudentDetail> getListStudentByClassId(int id) {
 		Connection conn = null;
@@ -177,7 +175,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 
 	@Override
 	public List<CommentProfile> getListCommentProfile(String username) {
-		
+
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
@@ -190,12 +188,12 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			rs = smt.executeQuery();
 			List<CommentProfile> commentProfiles = new ArrayList<CommentProfile>();
 			while (rs.next()) {
-				
+
 				String name = rs.getString("teacher.name");
 				String avatar = rs.getString("teacher.avatar");
 				String content = rs.getString("comment_teacher.content");
 				Long time = rs.getLong("comment_teacher.time");
-				
+
 				CommentProfile commentProfile = new CommentProfile(name, content, time, avatar);
 				commentProfiles.add(commentProfile);
 			}
@@ -209,12 +207,12 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			DbUtils.closeQuietly(conn);
 		}
 		return null;
-		
+
 	}
 
 	@Override
 	public List<SubjectScore> getListSubjectScore(String username) {
-		
+
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
@@ -227,10 +225,10 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			rs = smt.executeQuery();
 			ArrayList<SubjectScore> subjectScores = new ArrayList<SubjectScore>();
 			while (rs.next()) {
-				
+
 				int idSubject = rs.getInt("subject_year_class.subject_year_id");
 				System.out.println(idSubject);
-				
+
 				String sql2 = "select score.*,subject.name from score inner join user on score.user_id = user.id inner join subject on score.subject_year_id = subject.id where user.username = ? and score.subject_year_id = ?";
 				smt = conn.prepareStatement(sql2);
 				smt.setString(1, username);
@@ -238,7 +236,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 				ResultSet rs1 = smt.executeQuery();
 				ArrayList<ScoreDetail> listScoreDetail = new ArrayList<ScoreDetail>();
 				String name = "";
-				while(rs1.next()){
+				while (rs1.next()) {
 					int id = rs1.getInt("score.id");
 					int subject_year_id = rs1.getInt("score.subject_year_id");
 					int user_id = rs1.getInt("score.user_id");
@@ -246,11 +244,11 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 					float score = rs1.getFloat("score.score");
 					int ky = rs1.getInt("score.ky");
 					name = rs1.getString("subject.name");
-					
+
 					ScoreDetail scoreDetail = new ScoreDetail(id, score, type, user_id, subject_year_id, ky);
 					listScoreDetail.add(scoreDetail);
 				}
-				
+
 				Collections.sort(listScoreDetail, new Comparator<ScoreDetail>() {
 
 					@Override
@@ -265,12 +263,12 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 							}
 						}
 					}
-					
+
 				});
-				
+
 				SubjectScore subjectScore = new SubjectScore(name, listScoreDetail);
 				subjectScores.add(subjectScore);
-				
+
 			}
 			return subjectScores;
 		} catch (Exception e) {
@@ -282,7 +280,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			DbUtils.closeQuietly(conn);
 		}
 		return null;
-		
+
 	}
 
 }
