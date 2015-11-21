@@ -36,9 +36,9 @@ public class GroupDaoImpl extends AutoWireJdbcDaoSupport implements GroupDao{
 	}
 
 	@Override
-	public void update(GroupDetail item) {
+	public boolean update(GroupDetail item) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }

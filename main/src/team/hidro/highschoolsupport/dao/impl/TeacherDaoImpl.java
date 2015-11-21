@@ -67,10 +67,6 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 
 	}
 
-	@Override
-	public void update(TeacherDetail item) {
-
-	}
 
 	@Override
 	public List<ListClassDetail> getListClassByTeacherId(int id) {
@@ -124,6 +120,12 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 	public TeacherDetail getByName(String usernme) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean update(TeacherDetail item) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

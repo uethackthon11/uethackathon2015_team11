@@ -36,9 +36,10 @@ public class CommentDaoImpl extends AutoWireJdbcDaoSupport implements CommentDao
 	}
 
 	@Override
-	public void update(CommentDetail item) {
+	public boolean update(CommentDetail item) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
+
 
 }

@@ -85,11 +85,6 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 		
 	}
 
-	@Override
-	public void update(StudentDetail item) {
-		
-		
-	}
 
 	@Override
 	public StudentDetail getByName(String usernme) {
@@ -165,6 +160,12 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			DbUtils.closeQuietly(conn);
 		}
 		return null;
+	}
+
+	@Override
+	public boolean update(StudentDetail item) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -11,6 +11,6 @@ public interface Dao<E, V> {
 
 	public void remove(V id);
 
-	public void update(E item);
+	public boolean update(E item);
 
 }

@@ -8,9 +8,6 @@ public class ScoreDetail {
 	private int subjectYearId;
 	private int ky;
 	
-	
-	
-	
 	public ScoreDetail(int type) {
 		super();
 		this.type = type;

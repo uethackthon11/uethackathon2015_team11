@@ -33,7 +33,29 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 	@Override
 	public boolean save(ScoreDetail item) {
 		
-		
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "insert into score value(`id`, `subject_year_id`, `user_id`, `type`, `score`, `ky`)";
+			smt = conn.prepareStatement(sql);
+			
+			smt.setInt(2, item.getSubjectYearId());
+			smt.setInt(3, item.getUserId());
+			smt.setInt(4, item.getType());
+			smt.setInt(5, item.getScore());
+			smt.setInt(6, item.getKy());
+			
+			return (smt.executeUpdate(sql) > 0) ? true : false;
+
+		} catch (Exception e) {
+			logger.error("addPost",e);
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
 		return false;
 	}
 
@@ -44,9 +66,31 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 	}
 
 	@Override
-	public void update(ScoreDetail item) {
-		// TODO Auto-generated method stub
+	public boolean update(ScoreDetail item) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "update score set subject_year_id= ? value user_id = ?  type = ? score = ? ky= ? where id?";
+			smt = conn.prepareStatement(sql);
+			
+			smt.setInt(2, item.getSubjectYearId());
+			smt.setInt(3, item.getUserId());
+			smt.setInt(4, item.getType());
+			smt.setInt(5, item.getScore());
+			smt.setInt(6, item.getKy());
+			
+			return (smt.executeUpdate(sql) > 0) ? true : false;
 
+		} catch (Exception e) {
+			logger.error("addPost",e);
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return false;
 	}
 
 	@Override
@@ -104,10 +148,9 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 				scoreDetails2.add(scoreDetail);
 				i++;
 			}
-				
 		}
 		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(1));
+			scoreDetails2.add(new ScoreDetail(-1,1));
 		i=0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
 			if(scoreDetail.getType()==2) {
@@ -116,7 +159,7 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 			}
 		}
 		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(2));
+			scoreDetails2.add(new ScoreDetail(-1,2));
 		i=0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
 			if(scoreDetail.getType()==3) {
@@ -125,7 +168,7 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 			}
 		}
 		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(3));
+			scoreDetails2.add(new ScoreDetail(-1,3));
 		i=0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
 			if(scoreDetail.getType()==4) {
@@ -133,7 +176,7 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 				i++;
 			}
 		}
-		if(i!=1) scoreDetails2.add(new ScoreDetail(4));
+		if(i!=1) scoreDetails2.add(new ScoreDetail(-1,4));
 		return scoreDetails2;
 	}
 

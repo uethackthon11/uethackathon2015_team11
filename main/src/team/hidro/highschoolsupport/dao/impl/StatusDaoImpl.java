@@ -36,9 +36,9 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 	}
 
 	@Override
-	public void update(StatusDetail item) {
+	public boolean update(StatusDetail item) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }
