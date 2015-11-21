@@ -14,12 +14,14 @@ app.controller('scoreCtrl', function($scope, $http) {
 	$http.get($('#rootPath').val() + "/class")
 	.success(function(data){
 		$scope.classes = data;
+		console.log(data);
 	});
 	
 	$scope.editable = [];
 	$scope.class_selected = function($class){
 		$http.get($('#rootPath').val() + "/class/" + $class.classDetail.id + "/student/" + $class.subjectId)
 		.success(function(data){
+			console.log(data);
 			$scope.students = data;
 			$scope.copyData = angular.copy(data);
 			for(var i = 0 ; i < data.length ; i++)
@@ -28,7 +30,6 @@ app.controller('scoreCtrl', function($scope, $http) {
 	};
 	
 	$scope.update = function($student){
-		
 		console.log($student);
 		$scope.copyData = angular.copy($scope.students);
 	};
