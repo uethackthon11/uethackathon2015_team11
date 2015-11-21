@@ -9,19 +9,33 @@ app.controller('scoreCtrl', function($scope, $http) {
 	
 	$scope.classes = [];
 	$scope.students = [];
+	$scope.copyData = [];
 	
 	$http.get($('#rootPath').val() + "/class")
 	.success(function(data){
 		$scope.classes = data;
-		console.log($scope.classes);
 	});
+	
+	$scope.editable = [];
 	$scope.class_selected = function($class){
 		$http.get($('#rootPath').val() + "/class/" + $class.classDetail.id + "/student/" + $class.subjectId)
 		.success(function(data){
 			$scope.students = data;
-			console.log($scope.students);
+			$scope.copyData = angular.copy(data);
+			for(var i = 0 ; i < data.length ; i++)
+				$scope.editable[data[i].studentDetail.userId] = 0;
 		});
 	};
+	
+	$scope.update = function($student){
+		
+		console.log($student);
+		$scope.copyData = angular.copy($scope.students);
+	};
+	$scope.cancel = function($student){
+		$scope.editable[$student.studentDetail.userId] = 0;
+		$scope.students = angular.copy($scope.copyData);
+	}
 	
     /*var data = [{id: '1',name:'Jani',birthday:'16/11/1994',mouth_score: '9',middle_score:'9',final_score:'10'},
 				{id: '2',name:'Mark',birthday:'17/11/1994',mouth_score: '5',middle_score:'3',final_score:'6'},
