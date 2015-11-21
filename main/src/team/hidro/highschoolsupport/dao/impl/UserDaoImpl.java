@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.UserDao;
-import team.hidro.highschoolsupport.entities.StudentScoreDetail;
+import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
 
 @Repository
@@ -48,6 +48,11 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao{
 			DbUtils.closeQuietly(smt);
 			DbUtils.closeQuietly(conn);
 		}
+		return null;
+	}
+
+	@Override
+	public List<StatusDetail> setWriterForListStatus(List<StatusDetail> statusDetails) {
 		return null;
 	}
 

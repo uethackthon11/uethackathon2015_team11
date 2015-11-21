@@ -62,9 +62,11 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 			rs = smt.executeQuery();
 			List<StatusDetail> statusDetails = new ArrayList<StatusDetail>();
 			if (rs.next()) {
-				String id1 = rs.getString("post.id");
-				String pageid = rs.getString("page_id");
-				
+				int id1 = rs.getInt("id");
+				int userId = rs.getInt("user_id");
+				long time = rs.getLong("time");
+				String content = rs.getString("content");
+				statusDetails.add(new StatusDetail(id1,userId,content,time));
 			}
 			return statusDetails;
 		} catch (Exception e) {

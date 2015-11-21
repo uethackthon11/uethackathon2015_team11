@@ -1,7 +1,6 @@
 package team.hidro.highschoolsupport.entities;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SubjectScore {
 

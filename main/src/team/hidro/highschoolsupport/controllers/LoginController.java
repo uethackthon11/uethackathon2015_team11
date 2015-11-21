@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.entities.TeacherDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
 import team.hidro.highschoolsupport.service.TeacherService;

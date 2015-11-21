@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
@@ -108,12 +107,6 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 			DbUtils.closeQuietly(conn);
 		}
 		return null;
-	}
-
-	@SuppressWarnings("deprecation")
-	private int getCurrentYear() {
-		Date a = new Date();
-		return a.getYear();
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package team.hidro.highschoolsupport.service.impl;
 import java.util.List;
 
 import team.hidro.highschoolsupport.entities.CommentDetail;
+import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.service.CommentService;
 
 public class CommentServiceImpl implements CommentService{
@@ -30,6 +31,12 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public void remove(Integer id) {
 		
+	}
+
+	@Override
+	public List<StatusDetail> setListCommentForStatus(List<StatusDetail> statusDetails) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

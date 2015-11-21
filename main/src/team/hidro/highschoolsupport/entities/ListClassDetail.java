@@ -1,7 +1,5 @@
 package team.hidro.highschoolsupport.entities;
 
-import java.util.List;
-
 public class ListClassDetail {
 	private String subjectName;
 	private ClassDetail classDetail;
