@@ -30,20 +30,19 @@
                 <div class="tab-content" style="border: 1px solid #ff00ff">
                   <div class="active tab-pane" id="activity">
                     <!-- Post -->
-                    <div class="post" ng-repeat="comment in status.commentDetails">
+                    <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{comment.writerDetail.avatar}}" />" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{status.writerDetail.avatar}}" />" alt="user image">
                         <span class='username'>
-                          <a href="#">{{comment.writerDetail.name}}</a>
+                          <a href="#">{{status.writerDetail.name}}</a>
                           <a href='#' class='pull-right btn-box-tool'><i class='fa fa-times'></i></a>
                         </span>
                         <span class='description'>{{comment.dateTime | date : 'dd-M-yyyy HH:ss'}}</span>
                       </div><!-- /.user-block -->
                       <p>
-                        {{comment.content}}
+                        {{status.content}}
                       </p>
                       <ul class="list-inline">
-                        <li><a ng-click="likePost()" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
                         <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
                       </ul>
 						
