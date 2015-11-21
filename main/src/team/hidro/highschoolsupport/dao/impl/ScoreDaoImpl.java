@@ -16,7 +16,7 @@ import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.entities.StudentScoreDetail;
 
 @Repository
-public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao{
+public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 
 	@Override
 	public List<ScoreDetail> getList() {
@@ -39,33 +39,30 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao{
 	@Override
 	public void remove(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(ScoreDetail item) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
-	public List<StudentScoreDetail> getListStudentScoreByListStudent(List<StudentDetail> students,int ky) {
+	public List<StudentScoreDetail> getListStudentScoreByListStudent(List<StudentDetail> students, int ky) {
 		List<StudentScoreDetail> studentScoreDetails = new ArrayList<StudentScoreDetail>();
 		for (StudentDetail studentDetail : students) {
-			StudentScoreDetail studentScoreDetail = getStudentStoreDetailByStudent(studentDetail,ky);
-			if(studentScoreDetail!=null) {
+			StudentScoreDetail studentScoreDetail = getStudentStoreDetailByStudent(studentDetail, ky);
+			if (studentScoreDetail != null) {
 				studentScoreDetails.add(studentScoreDetail);
 			}
 
 		}
 		return studentScoreDetails;
-		
-		
-		
-		
+
 	}
 
-	private StudentScoreDetail getStudentStoreDetailByStudent(StudentDetail studentDetail,int ky) {
+	private StudentScoreDetail getStudentStoreDetailByStudent(StudentDetail studentDetail, int ky) {
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
@@ -84,7 +81,8 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao{
 				ScoreDetail scoreDetail = new ScoreDetail(score, type);
 				scoreDetails.add(scoreDetail);
 			}
-			return new StudentScoreDetail(scoreDetails,studentDetail);
+			scoreDetails = fixScore(scoreDetails);
+			return new StudentScoreDetail(scoreDetails, studentDetail);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -93,6 +91,49 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao{
 			DbUtils.closeQuietly(conn);
 		}
 		return null;
+	}
+
+	private List<ScoreDetail> fixScore(List<ScoreDetail> scoreDetails) {
+
+		List<ScoreDetail> scoreDetails2 = new ArrayList<ScoreDetail>();
+		int i=0;
+		for (ScoreDetail scoreDetail : scoreDetails) {
+			if(scoreDetail.getType()==1) {
+				scoreDetails2.add(scoreDetail);
+				i++;
+			}
+				
+		}
+		while(i++!=3)
+			scoreDetails2.add(new ScoreDetail(-1, 1));
+		i=0;
+		for (ScoreDetail scoreDetail : scoreDetails) {
+			if(scoreDetail.getType()==2) {
+				scoreDetails2.add(scoreDetail);
+				i++;
+			}
+				
+		}
+		while(i++!=3)
+			scoreDetails2.add(new ScoreDetail(-1, 2));
+		i=0;
+		for (ScoreDetail scoreDetail : scoreDetails) {
+			if(scoreDetail.getType()==3) {
+				scoreDetails2.add(scoreDetail);
+				i++;
+			}
+		}
+		while(i++!=3)
+			scoreDetails2.add(new ScoreDetail(-1, 3));
+		i=0;
+		for (ScoreDetail scoreDetail : scoreDetails) {
+			if(scoreDetail.getType()==4) {
+				scoreDetails2.add(scoreDetail);
+				i++;
+			}
+		}
+		if(i!=1) scoreDetails2.add(new ScoreDetail(-1, 4));
+		return scoreDetails2;
 	}
 
 }
