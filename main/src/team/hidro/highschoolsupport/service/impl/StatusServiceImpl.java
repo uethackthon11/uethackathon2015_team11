@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.hidro.highschoolsupport.dao.StatusDao;
+import team.hidro.highschoolsupport.entities.InitialStatusDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.service.CommentService;
 import team.hidro.highschoolsupport.service.StatusService;
@@ -54,6 +55,15 @@ public class StatusServiceImpl implements StatusService {
 		List<StatusDetail> statusDetails = statusDao.getListStatusByGroupId(groupId);
 		statusDetails = userService.setWriterForListStatus(statusDetails);
 		return statusDetails;
+	}
+
+	@Override
+	public InitialStatusDetail getListInitialStatusByGroupId(int groupId) {
+		InitialStatusDetail initialStatusDetail = statusDao.getListInitialStatusByGroupId(groupId);
+		initialStatusDetail.setHoiDaps(userService.setWriterForListStatus(initialStatusDetail.getHoiDaps()));
+		initialStatusDetail.setThongBaos(userService.setWriterForListStatus(initialStatusDetail.getThongBaos()));
+		initialStatusDetail.setTaiLieus(userService.setWriterForListStatus(initialStatusDetail.getTaiLieus()));
+		return initialStatusDetail;
 	}
 
 }

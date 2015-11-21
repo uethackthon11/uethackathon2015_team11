@@ -3,6 +3,7 @@ package team.hidro.highschoolsupport.dao;
 import java.util.List;
 
 import team.hidro.highschoolsupport.entities.CommentDetail;
+import team.hidro.highschoolsupport.entities.GroupDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
 
@@ -15,5 +16,7 @@ public interface UserDao {
 	public List<CommentDetail> setWriterForListComment(List<CommentDetail> listCommentDetails);
 
 	public StatusDetail setWriterForStatus(StatusDetail statusDetail);
+
+	public List<GroupDetail> getListGroupByUserId(int id);
 	
 }

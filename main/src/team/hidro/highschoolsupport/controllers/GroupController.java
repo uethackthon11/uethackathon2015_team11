@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import team.hidro.highschoolsupport.entities.CommentDetail;
+import team.hidro.highschoolsupport.entities.InitialStatusDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.service.CommentService;
 import team.hidro.highschoolsupport.service.StatusService;
@@ -22,6 +23,11 @@ public class GroupController {
 	private StatusService statusService;
 	@Autowired
 	private CommentService commentService;
+	
+	@RequestMapping(value = "/group/initial/{idGroup}", method = RequestMethod.GET)
+	public @ResponseBody InitialStatusDetail getInitialStatus(@PathVariable("idGroup") int groupId) {
+		return statusService.getListInitialStatusByGroupId(groupId);
+	}
 
 	@RequestMapping(value = "/group/{idGroup}", method = RequestMethod.GET)
 	public @ResponseBody List<StatusDetail> getStatus(@PathVariable("idGroup") int groupId) {
@@ -30,9 +36,9 @@ public class GroupController {
 
 	@RequestMapping(value = "/group/{idGroup}/{userId}/newStatus", method = RequestMethod.POST)
 	public @ResponseBody boolean createStatus(@PathVariable("idGroup") int groupId, @PathVariable("userId") int userId,
-			@RequestParam("content") String content) {
+			@RequestParam("content") String content, @RequestParam("title") String title,@RequestParam("type") int type) {
 		long dateTime = System.currentTimeMillis();
-		StatusDetail statusDetail = new StatusDetail(0, groupId, userId, content, dateTime, null, null);
+		StatusDetail statusDetail = new StatusDetail(0, groupId, userId, content, dateTime, null, null, 1, type, title);
 		return statusService.save(statusDetail);
 	}
 	
@@ -48,5 +54,7 @@ public class GroupController {
 	public @ResponseBody StatusDetail getStatus2(@PathVariable("statusId") int statusId) {
 		return statusService.getById(statusId);
 	}
+	
+	
 	
 }

@@ -3,6 +3,7 @@ package team.hidro.highschoolsupport.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.UserDao;
 import team.hidro.highschoolsupport.entities.CommentDetail;
+import team.hidro.highschoolsupport.entities.GroupDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
 import team.hidro.highschoolsupport.entities.WriterDetail;
@@ -221,6 +223,33 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 
 			return statusDetail;
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+	}
+
+	@Override
+	public List<GroupDetail> getListGroupByUserId(int id) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "Select * from group_user inner join group on group_user.group_id=group.id where user_id = ?";
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, id);
+			rs = smt.executeQuery();
+			List<GroupDetail> groupDetails = new ArrayList<GroupDetail>();
+			if (rs.next()) {
+				String name = rs.getString("group.name");
+				groupDetails.add(new GroupDetail(id, name));
+			}
+			return groupDetails;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
