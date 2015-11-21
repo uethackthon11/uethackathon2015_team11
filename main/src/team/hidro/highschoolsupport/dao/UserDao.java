@@ -13,5 +13,7 @@ public interface UserDao {
 	public List<StatusDetail> setWriterForListStatus(List<StatusDetail> statusDetails);
 
 	public List<CommentDetail> setWriterForListComment(List<CommentDetail> listCommentDetails);
+
+	public StatusDetail setWriterForStatus(StatusDetail statusDetail);
 	
 }

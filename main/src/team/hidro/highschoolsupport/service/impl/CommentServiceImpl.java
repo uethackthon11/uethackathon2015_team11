@@ -44,4 +44,9 @@ public class CommentServiceImpl implements CommentService{
 		return commentDao.setListCommentForStatus(statusDetails);
 	}
 
+	@Override
+	public StatusDetail setCommentForStatus(StatusDetail statusDetail) {
+		return commentDao.setCommentForStatus(statusDetail);
+	}
+
 }

@@ -125,4 +125,11 @@ public class CommentDaoImpl extends AutoWireJdbcDaoSupport implements CommentDao
 		return null;
 	}
 
+	@Override
+	public StatusDetail setCommentForStatus(StatusDetail statusDetail) {
+		statusDetail.setCommentDetails(
+				userService.setWriterForListComment(getListCommentByStatusId(statusDetail.getId())));
+		return statusDetail;
+	}
+
 }

@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService{
 		return userDao.setWriterForListComment(listCommentDetails);
 	}
 
+	@Override
+	public StatusDetail setWriterForStatus(StatusDetail statusDetail) {
+		return userDao.setWriterForStatus(statusDetail);
+	}
+
 }

@@ -63,7 +63,7 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 			conn = dataSource.getConnection();
 			for (StatusDetail statusDetail : statusDetails) {
 				int userId = statusDetail.getUserId();
-				
+
 				String sql = "Select * from user where id = ?";
 				smt = conn.prepareStatement(sql);
 				smt.setInt(1, userId);
@@ -99,12 +99,11 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 					}
 					statusDetail.setWriterDetail(writerDetail);
 				}
-				
+
 			}
 			return statusDetails;
 
 		} catch (Exception e) {
-			logger.error("queryPost", e);
 			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);
@@ -161,11 +160,68 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 					commentDetail.setWriterDetail(writerDetail);
 				}
 			}
-			
+
 			return commentDetails;
 
 		} catch (Exception e) {
-			logger.error("queryPost", e);
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+	}
+
+	@SuppressWarnings("resource")
+	@Override
+	public StatusDetail setWriterForStatus(StatusDetail statusDetail) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			int userId = statusDetail.getUserId();
+
+			String sql = "Select * from user where id = ?";
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, userId);
+			rs = smt.executeQuery();
+			if (rs.next()) {
+				int role = rs.getInt("role");
+				WriterDetail writerDetail = null;
+				if (role == 1) {
+					sql = "Select * from student where user_id = ?";
+					smt = conn.prepareStatement(sql);
+					smt.setInt(1, userId);
+					rs = smt.executeQuery();
+
+					if (rs.next()) {
+						String name = rs.getString("name");
+						String avatar = rs.getString("avartar");
+						writerDetail = new WriterDetail(name, userId, avatar);
+					}
+
+				} else {
+
+					sql = "Select * from teacher where user_id = ?";
+					smt = conn.prepareStatement(sql);
+					smt.setInt(1, userId);
+					rs = smt.executeQuery();
+
+					if (rs.next()) {
+						String name = rs.getString("name");
+						String avatar = rs.getString("avartar");
+						writerDetail = new WriterDetail(name, userId, avatar);
+					}
+
+				}
+				statusDetail.setWriterDetail(writerDetail);
+			}
+
+			return statusDetail;
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);

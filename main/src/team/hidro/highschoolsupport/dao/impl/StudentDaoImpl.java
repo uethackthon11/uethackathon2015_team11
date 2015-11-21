@@ -56,7 +56,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 				return studentDetail;
 			}
 		} catch (Exception e) {
-			logger.error("queryPost", e);
+			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);
@@ -76,7 +76,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			return (ps.executeUpdate() > 0) ? true : false;
 
 		} catch (Exception e) {
-			logger.error("addPost", e);
+			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(ps);

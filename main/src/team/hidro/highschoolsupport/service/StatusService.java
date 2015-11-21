@@ -6,5 +6,5 @@ import team.hidro.highschoolsupport.entities.StatusDetail;
 
 public interface StatusService extends Service<StatusDetail,Integer>{
 
-	List<StatusDetail> getListStatusByGroupId(int groupId);
+	public List<StatusDetail> getListStatusByGroupId(int groupId);
 }

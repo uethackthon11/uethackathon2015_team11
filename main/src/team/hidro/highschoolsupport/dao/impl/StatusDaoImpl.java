@@ -24,7 +24,32 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 
 	@Override
 	public StatusDetail getById(Integer id) {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "Select * from stt where id = ?";
+			smt = conn.prepareStatement(sql);
+
+			smt.setInt(1, id);
+			rs = smt.executeQuery();
+			if (rs.next()) {
+				int id1 = rs.getInt("id");
+				int groupId = rs.getInt("group_id");
+				int userId = rs.getInt("user_id");
+				String content = rs.getString("content");
+				long dateTime = rs.getLong("time");
+				StatusDetail statusDetail = new StatusDetail(id1, groupId, userId, content, dateTime, null, null);
+				return statusDetail;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
 		return null;
 	}
 

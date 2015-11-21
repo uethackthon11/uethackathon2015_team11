@@ -8,5 +8,6 @@ import team.hidro.highschoolsupport.entities.StatusDetail;
 public interface CommentService extends Service<CommentDetail,Integer>{
 	
 	public List<StatusDetail> setListCommentForStatus(List<StatusDetail> statusDetails);
+	public StatusDetail setCommentForStatus(StatusDetail statusDetail);
 
 }

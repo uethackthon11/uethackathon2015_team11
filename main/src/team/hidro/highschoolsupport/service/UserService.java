@@ -11,7 +11,10 @@ public interface UserService {
 	public UserDetail checkUser(String username, String password);
 	
 	public List<StatusDetail> setWriterForListStatus(List<StatusDetail> statusDetails);
+	
+	public StatusDetail setWriterForStatus(StatusDetail statusDetail);
 
 	public List<CommentDetail> setWriterForListComment(List<CommentDetail> listCommentByStatusId);
+	
 	
 }

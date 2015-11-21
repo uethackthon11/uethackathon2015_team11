@@ -50,7 +50,6 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("addPost", e);
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);

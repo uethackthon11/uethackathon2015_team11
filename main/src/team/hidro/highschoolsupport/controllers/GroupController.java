@@ -44,4 +44,9 @@ public class GroupController {
 		return commentService.save(commentDetail);
 	}
 	
+	@RequestMapping(value = "/status/{statusId}", method = RequestMethod.GET)
+	public @ResponseBody StatusDetail getStatus2(@PathVariable("statusId") int statusId) {
+		return statusService.getById(statusId);
+	}
+	
 }

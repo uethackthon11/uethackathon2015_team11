@@ -29,7 +29,10 @@ public class StatusServiceImpl implements StatusService {
 
 	@Override
 	public StatusDetail getById(Integer id) {
-		return null;
+		StatusDetail statusDetail = statusDao.getById(id);
+		statusDetail = commentService.setCommentForStatus(statusDetail);
+		statusDetail = userService.setWriterForStatus(statusDetail);
+		return statusDetail;
 	}
 
 	@Override
@@ -49,7 +52,6 @@ public class StatusServiceImpl implements StatusService {
 	@Override
 	public List<StatusDetail> getListStatusByGroupId(int groupId) {
 		List<StatusDetail> statusDetails = statusDao.getListStatusByGroupId(groupId);
-		statusDetails = commentService.setListCommentForStatus(statusDetails);
 		statusDetails = userService.setWriterForListStatus(statusDetails);
 		return statusDetails;
 	}
