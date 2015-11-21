@@ -209,4 +209,111 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 		return null;
 	}
 
+	@Override
+	public List<StatusDetail> getListStatusByGroupIdType1(int groupId) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+
+			conn = dataSource.getConnection();
+			String sql = "Select * from stt  where group_id = ? and type= ? ORDER BY time DESC";
+
+			List<StatusDetail> thongBaos = new ArrayList<StatusDetail>();
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, groupId);
+			smt.setInt(2, 1);
+			rs = smt.executeQuery();
+			while (rs.next()) {
+				int id1 = rs.getInt("id");
+				int userId = rs.getInt("user_id");
+				long time = rs.getLong("time");
+				String content = rs.getString("content");
+				String title = rs.getString("title");
+				thongBaos.add(new StatusDetail(id1, userId, content, title, time));
+			}
+
+			return thongBaos;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+	}
+
+	@Override
+	public List<StatusDetail> getListStatusByGroupIdType2(int groupId) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+
+			conn = dataSource.getConnection();
+			String sql = "Select * from stt  where group_id = ? and type= ? ORDER BY time DESC";
+
+			List<StatusDetail> hoiDaps = new ArrayList<StatusDetail>();
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, groupId);
+			smt.setInt(2, 2);
+			rs = smt.executeQuery();
+			while (rs.next()) {
+				int id1 = rs.getInt("id");
+				int userId = rs.getInt("user_id");
+				long time = rs.getLong("time");
+				String content = rs.getString("content");
+				String title = rs.getString("title");
+				hoiDaps.add(new StatusDetail(id1, userId, content, title, time));
+			}
+
+			return hoiDaps;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+	}
+
+	@Override
+	public List<StatusDetail> getListStatusByGroupIdType3(int groupId) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+
+			conn = dataSource.getConnection();
+			String sql = "Select * from stt  where group_id = ? and type= ? ORDER BY time DESC";
+
+			List<StatusDetail> taiLieus = new ArrayList<StatusDetail>();
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, groupId);
+			smt.setInt(2, 3);
+			rs = smt.executeQuery();
+			while (rs.next()) {
+				int id1 = rs.getInt("id");
+				int userId = rs.getInt("user_id");
+				long time = rs.getLong("time");
+				String content = rs.getString("content");
+				String title = rs.getString("title");
+				taiLieus.add(new StatusDetail(id1, userId, content, title, time));
+			}
+
+			return taiLieus;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+	}
+	
+	
+
 }
