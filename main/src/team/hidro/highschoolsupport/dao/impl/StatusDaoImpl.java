@@ -162,7 +162,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 			smt.setInt(1, groupId);
 			smt.setInt(2, 1);
 			rs = smt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				int id1 = rs.getInt("id");
 				int userId = rs.getInt("user_id");
 				long time = rs.getLong("time");
@@ -176,7 +176,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 			smt.setInt(1, groupId);
 			smt.setInt(2, 2);
 			rs = smt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				int id1 = rs.getInt("id");
 				int userId = rs.getInt("user_id");
 				long time = rs.getLong("time");
@@ -190,7 +190,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 			smt.setInt(1, groupId);
 			smt.setInt(2, 3);
 			rs = smt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				int id1 = rs.getInt("id");
 				int userId = rs.getInt("user_id");
 				long time = rs.getLong("time");

@@ -33,6 +33,11 @@ public class GroupController {
 	public @ResponseBody List<StatusDetail> getStatus(@PathVariable("idGroup") int groupId) {
 		return statusService.getListStatusByGroupId(groupId);
 	}
+	
+	@RequestMapping(value = "/group/{idGroup}/status/{statusId}", method = RequestMethod.GET)
+	public @ResponseBody StatusDetail getComments(@PathVariable("idGroup") int groupId) {
+		return statusService.getById(groupId);
+	}
 
 	@RequestMapping(value = "/group/{idGroup}/{userId}/newStatus", method = RequestMethod.POST)
 	public @ResponseBody boolean createStatus(@PathVariable("idGroup") int groupId, @PathVariable("userId") int userId,
