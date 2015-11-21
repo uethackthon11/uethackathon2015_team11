@@ -312,3 +312,27 @@ app.controller("groupCtrl" , function($scope, $http){
 	});
 	
 });
+
+app.controller("statusCtrl" , function($scope, $http){
+	
+	$scope.status = [];
+	
+	$scope.likePost = function(){
+		console.log("like");
+	};
+	
+	$scope.likeComment = function($comment){
+		console.log($comment);
+	};
+	
+	$scope.addComment = function(){
+		console.log("addComment");
+	}
+	
+	$http.get($('#rootPath').val() + "/groupdata/" + $('#groupId').val() + "/status/" + $('#statusId').val())
+	.success(function(data){
+		$scope.status = data;
+		console.log(data);
+	});
+	
+});
