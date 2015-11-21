@@ -28,11 +28,6 @@ public class StudentServiceImpl implements StudentService{
 		return null;
 	}
 
-	@Override
-	public void update(StudentDetail item) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void remove(Integer id) {
@@ -58,6 +53,12 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public boolean save(StudentDetail item) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(StudentDetail item) {
 		// TODO Auto-generated method stub
 		return false;
 	}

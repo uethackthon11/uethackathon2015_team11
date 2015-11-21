@@ -33,11 +33,6 @@ public class ClassServiceImpl implements ClassService {
 		return null;
 	}
 
-	@Override
-	public void update(ClassDetail item) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void remove(Integer id) {
@@ -54,6 +49,12 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public boolean save(ClassDetail item) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(ClassDetail item) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -29,12 +29,6 @@ public class TeacherServiceImpl implements TeacherService{
 	}
 
 	@Override
-	public void update(TeacherDetail item) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void remove(Integer id) {
 		// TODO Auto-generated method stub
 		
@@ -55,6 +49,12 @@ public class TeacherServiceImpl implements TeacherService{
 
 	@Override
 	public boolean save(TeacherDetail item) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(TeacherDetail item) {
 		// TODO Auto-generated method stub
 		return false;
 	}

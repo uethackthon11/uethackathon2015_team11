@@ -29,11 +29,7 @@ public class ScoreSeviceImpl implements ScoreService {
 		return null;
 	}
 
-	@Override
-	public void update(ScoreDetail item) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	@Override
 	public void remove(Integer id) {
@@ -54,5 +50,10 @@ public class ScoreSeviceImpl implements ScoreService {
 	@Override
 	public boolean addOrUpdate(ScoreDetail scoreDetail) {
 		return scoreDao.addOrUpdate(scoreDetail);
+	}
+
+	@Override
+	public boolean update(ScoreDetail item) {
+		return scoreDao.update(item);
 	}
 }
