@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.StudentDao;
+import team.hidro.highschoolsupport.entities.CommentProfile;
 import team.hidro.highschoolsupport.entities.StudentDetail;
 
 
@@ -166,6 +167,43 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 	public boolean update(StudentDetail item) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<CommentProfile> getListCommentProfile(String username) {
+		
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "select comment_teacher.*, teacher.name, teacher.avatar from comment_teacher inner join teacher on comment_teacher.teacher_user_id = teacher.user_id inner join user on comment_teacher.student_user_id = user.id  where user.username = ?";
+			smt = conn.prepareStatement(sql);
+			smt.setString(1, username);
+
+			rs = smt.executeQuery();
+			List<CommentProfile> commentProfiles = new ArrayList<CommentProfile>();
+			while (rs.next()) {
+				
+				String name = rs.getString("teacher.name");
+				String avatar = rs.getString("teacher.avatar");
+				String content = rs.getString("comment_teacher.content");
+				Long time = rs.getLong("comment_teacher.time");
+				
+				CommentProfile commentProfile = new CommentProfile(name, content, time, avatar);
+				commentProfiles.add(commentProfile);
+			}
+			return commentProfiles;
+		} catch (Exception e) {
+			// logger.error("queryPost", e);
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+		
 	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.hidro.highschoolsupport.dao.StudentDao;
+import team.hidro.highschoolsupport.entities.CommentProfile;
 import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.service.StudentService;
 @Service
@@ -61,6 +62,11 @@ public class StudentServiceImpl implements StudentService{
 	public boolean update(StudentDetail item) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<CommentProfile> getListCommentProfile(String id) {
+		return studentDao.getListCommentProfile(id);
 	}
 
 }
