@@ -94,7 +94,7 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 			System.out.println(year+" "+id);
 			while (rs.next()) {
 				System.out.println(i++);
-				int subjectId = rs.getInt("subject.id");
+				int subjectId = rs.getInt("subject_year.id");
 				String subjectName = rs.getString("subject.name");
 				int classId = rs.getInt("class.id");
 				String className = rs.getString("class.name");

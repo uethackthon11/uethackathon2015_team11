@@ -21,11 +21,6 @@ public class StudentServiceImpl implements StudentService{
 		this.studentDao = studentDao;
 	}
 
-	@Override
-	public Integer save(StudentDetail item) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<StudentDetail> getList() {
@@ -59,6 +54,12 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public List<StudentDetail> getListStudentByClassId(int id) {
 		return studentDao.getListStudentByClassId(id);
+	}
+
+	@Override
+	public boolean save(StudentDetail item) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

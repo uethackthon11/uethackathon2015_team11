@@ -32,7 +32,8 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 
 	@Override
 	public boolean save(ScoreDetail item) {
-		// TODO Auto-generated method stub
+		
+		
 		return false;
 	}
 
@@ -76,9 +77,10 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 			rs = smt.executeQuery();
 			List<ScoreDetail> scoreDetails = new ArrayList<ScoreDetail>();
 			while (rs.next()) {
+				int id1 = rs.getInt("id");
 				int score = rs.getInt("score");
 				int type = rs.getInt("type");
-				ScoreDetail scoreDetail = new ScoreDetail(score, type);
+				ScoreDetail scoreDetail = new ScoreDetail(id1,score, type);
 				scoreDetails.add(scoreDetail);
 			}
 			scoreDetails = fixScore(scoreDetails);
@@ -105,17 +107,16 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 				
 		}
 		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(-1, 1));
+			scoreDetails2.add(new ScoreDetail(1));
 		i=0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
 			if(scoreDetail.getType()==2) {
 				scoreDetails2.add(scoreDetail);
 				i++;
 			}
-				
 		}
 		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(-1, 2));
+			scoreDetails2.add(new ScoreDetail(2));
 		i=0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
 			if(scoreDetail.getType()==3) {
@@ -124,7 +125,7 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 			}
 		}
 		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(-1, 3));
+			scoreDetails2.add(new ScoreDetail(3));
 		i=0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
 			if(scoreDetail.getType()==4) {
@@ -132,8 +133,13 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 				i++;
 			}
 		}
-		if(i!=1) scoreDetails2.add(new ScoreDetail(-1, 4));
+		if(i!=1) scoreDetails2.add(new ScoreDetail(4));
 		return scoreDetails2;
+	}
+
+	@Override
+	public boolean addOrUpdate(ScoreDetail scoreDetail) {
+		return false;
 	}
 
 }

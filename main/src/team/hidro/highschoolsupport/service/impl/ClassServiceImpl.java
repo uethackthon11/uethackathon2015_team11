@@ -20,11 +20,6 @@ public class ClassServiceImpl implements ClassService {
 	@Autowired
 	private ScoreService scoreService;
 
-	@Override
-	public Integer save(ClassDetail item) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ClassDetail getById(Integer id) {
@@ -55,6 +50,12 @@ public class ClassServiceImpl implements ClassService {
 		
 		List<StudentDetail> students = studentService.getListStudentByClassId(classId);
 		return scoreService.getListStudentScoreByListStudent(students, ky);
+	}
+
+	@Override
+	public boolean save(ClassDetail item) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

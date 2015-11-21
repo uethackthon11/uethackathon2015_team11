@@ -16,11 +16,6 @@ public class ScoreSeviceImpl implements ScoreService {
 	private ScoreDao scoreDao; 
 	
 
-	@Override
-	public Integer save(ScoreDetail item) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ScoreDetail getById(Integer id) {
@@ -49,5 +44,15 @@ public class ScoreSeviceImpl implements ScoreService {
 	@Override
 	public List<StudentScoreDetail> getListStudentScoreByListStudent(List<StudentDetail> students,int ky) {
 		return scoreDao.getListStudentScoreByListStudent(students, ky);
+	}
+
+	@Override
+	public boolean save(ScoreDetail item) {
+		return scoreDao.save(item);
+	}
+
+	@Override
+	public boolean addOrUpdate(ScoreDetail scoreDetail) {
+		return scoreDao.addOrUpdate(scoreDetail);
 	}
 }

@@ -16,10 +16,6 @@ public class TeacherServiceImpl implements TeacherService{
 	@Autowired
 	private TeacherDao teacherDao;
 	
-	@Override
-	public Integer save(TeacherDetail item) {
-		return null;
-	}
 
 	@Override
 	public TeacherDetail getById(Integer id) {
@@ -55,6 +51,12 @@ public class TeacherServiceImpl implements TeacherService{
 
 	public void setTeacherDao(TeacherDao teacherDao) {
 		this.teacherDao = teacherDao;
+	}
+
+	@Override
+	public boolean save(TeacherDetail item) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

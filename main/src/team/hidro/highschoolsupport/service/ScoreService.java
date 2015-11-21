@@ -8,4 +8,5 @@ import team.hidro.highschoolsupport.entities.StudentScoreDetail;
 
 public interface ScoreService extends Service<ScoreDetail,Integer> {
 	public List<StudentScoreDetail> getListStudentScoreByListStudent(List<StudentDetail> students,int ky);
+	public boolean addOrUpdate(ScoreDetail scoreDetail);
 }
