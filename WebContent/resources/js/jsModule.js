@@ -23,6 +23,15 @@ app.controller('scoreCtrl', function($scope, $http) {
 		.success(function(data){
 			console.log(data);
 			$scope.students = data;
+			
+			for(var i = 0 ; i < data.length ; i++){
+				for(var j = 0 ; j < data[i].scores.length ; j++){
+					if(data[i].scores[j].score == -1){
+						data[i].scores[j].score = '';
+					}
+				}
+			}
+			console.log(data);
 			$scope.copyData = angular.copy(data);
 			for(var i = 0 ; i < data.length ; i++)
 				$scope.editable[data[i].studentDetail.userId] = 0;
@@ -30,8 +39,17 @@ app.controller('scoreCtrl', function($scope, $http) {
 	};
 	
 	$scope.update = function($student){
-		console.log($student);
+		$scope.editable[$student.studentDetail.userId] = 0;
 		$scope.copyData = angular.copy($scope.students);
+		
+		$http({
+				url : $('#rootPath').val() + "/class/update_score",
+				data : $student,
+				method  : 'POST',
+		       contentType: "application/json",
+		       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+		})
+		
 	};
 	$scope.cancel = function($student){
 		$scope.editable[$student.studentDetail.userId] = 0;
