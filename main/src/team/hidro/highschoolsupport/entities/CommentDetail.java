@@ -5,11 +5,25 @@ public class CommentDetail {
 	private Long dateTime;
 	private int userId;
 	private int statusId;
+	private String vote;
+	private String unVote;
+	private int voteScore;
 	private WriterDetail writerDetail;
 	
 	
-	
-	
+	public CommentDetail(String content, Long dateTime, int userId, int statusId, String vote, String unVote,
+			int voteScore, WriterDetail writerDetail) {
+		super();
+		this.content = content;
+		this.dateTime = dateTime;
+		this.userId = userId;
+		this.statusId = statusId;
+		this.vote = vote;
+		this.unVote = unVote;
+		this.voteScore = voteScore;
+		this.writerDetail = writerDetail;
+	}
+
 	public CommentDetail(String content, Long dateTime, int userId, int statusId, WriterDetail writerDetail) {
 		super();
 		this.content = content;
@@ -17,6 +31,30 @@ public class CommentDetail {
 		this.userId = userId;
 		this.statusId = statusId;
 		this.writerDetail = writerDetail;
+	}
+	
+	public int getVoteScore() {
+		return voteScore;
+	}
+
+	public void setVoteScore(int voteScore) {
+		this.voteScore = voteScore;
+	}
+
+	public String getVote() {
+		return vote;
+	}
+
+	public void setVote(String vote) {
+		this.vote = vote;
+	}
+
+	public String getUnVote() {
+		return unVote;
+	}
+
+	public void setUnVote(String unVote) {
+		this.unVote = unVote;
 	}
 
 	public int getStatusId() {

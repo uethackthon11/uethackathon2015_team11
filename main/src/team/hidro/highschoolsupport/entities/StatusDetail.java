@@ -10,7 +10,27 @@ public class StatusDetail {
 	private Long dateTime;
 	private List<CommentDetail> commentDetails;
 	private WriterDetail writerDetail;
+	private int enable;
+	private int type;
 	
+	
+	
+	public StatusDetail(int id, int groupId, int userId, String content, Long dateTime,
+			List<CommentDetail> commentDetails, WriterDetail writerDetail, int enable, int type) {
+		super();
+		this.id = id;
+		this.groupId = groupId;
+		this.userId = userId;
+		this.content = content;
+		this.dateTime = dateTime;
+		this.commentDetails = commentDetails;
+		this.writerDetail = writerDetail;
+		this.enable = enable;
+		this.type = type;
+	}
+
+
+
 	public StatusDetail(int id, int groupId, int userId, String content, Long dateTime,
 			List<CommentDetail> commentDetails, WriterDetail writerDetail) {
 		super();
@@ -22,6 +42,32 @@ public class StatusDetail {
 		this.commentDetails = commentDetails;
 		this.writerDetail = writerDetail;
 	}
+	
+	
+
+	public int getEnable() {
+		return enable;
+	}
+
+
+
+	public void setEnable(int enable) {
+		this.enable = enable;
+	}
+
+
+
+	public int getType() {
+		return type;
+	}
+
+
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+
 
 	public int getGroupId() {
 		return groupId;

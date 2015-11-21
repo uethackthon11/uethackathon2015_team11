@@ -40,7 +40,10 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 				int userId = rs.getInt("user_id");
 				String content = rs.getString("content");
 				long dateTime = rs.getLong("time");
-				StatusDetail statusDetail = new StatusDetail(id1, groupId, userId, content, dateTime, null, null);
+				int enable = rs.getInt("enable");
+				int type = rs.getInt("type");
+				StatusDetail statusDetail = new StatusDetail(id1, groupId, userId, content, dateTime, null, null,
+						enable, type);
 				return statusDetail;
 			}
 		} catch (Exception e) {
@@ -60,12 +63,14 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "insert into stt VALUES (NULL,?,?,?,?,?)";
+			String sql = "insert into stt VALUES (NULL,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, item.getUserId());
 			ps.setInt(2, item.getGroupId());
 			ps.setString(3, item.getContent());
-			ps.setLong(4, item.getDateTime());
+			ps.setInt(4, item.getEnable());
+			ps.setLong(5, item.getDateTime());
+			ps.setInt(4, item.getType());
 			return (ps.executeUpdate() > 0) ? true : false;
 		} catch (Exception e) {
 			e.printStackTrace();

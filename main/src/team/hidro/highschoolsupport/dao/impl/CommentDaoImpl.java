@@ -40,12 +40,15 @@ public class CommentDaoImpl extends AutoWireJdbcDaoSupport implements CommentDao
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "insert into comment_stt VALUES (NULL,?,?,?,?)";
+			String sql = "insert into comment_stt VALUES (NULL,?,?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, item.getStatusId());
 			ps.setInt(2, item.getUserId());
 			ps.setString(3, item.getContent());
-			ps.setLong(4, item.getDateTime());
+			ps.setString(4, item.getVote());
+			ps.setString(5, item.getUnVote());
+			ps.setInt(6, item.getVoteScore());
+			ps.setLong(7, item.getDateTime());
 			return (ps.executeUpdate() > 0) ? true : false;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,13 +113,16 @@ public class CommentDaoImpl extends AutoWireJdbcDaoSupport implements CommentDao
 				String content = rs.getString("content");
 				int userId = rs.getInt("user_id");
 				long dateTime = rs.getLong("time");
-				CommentDetail commentDetail = new CommentDetail(content, dateTime, userId);
+				String vote = rs.getString("vote");
+				String unVote = rs.getString("unVote");
+				int voteScore = rs.getInt("vote_score");
+				CommentDetail commentDetail = new CommentDetail(content, dateTime, userId, statusId, vote, unVote, voteScore, null);
 				commentDetails.add(commentDetail);
 			}
 
 			return commentDetails;
 		} catch (Exception e) {
-			logger.error("queryPost", e);
+			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);
