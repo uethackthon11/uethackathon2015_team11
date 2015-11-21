@@ -2,10 +2,12 @@ package team.hidro.highschoolsupport.service.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import team.hidro.highschoolsupport.entities.CommentDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.service.CommentService;
-
+@Service
 public class CommentServiceImpl implements CommentService{
 
 	@Override
