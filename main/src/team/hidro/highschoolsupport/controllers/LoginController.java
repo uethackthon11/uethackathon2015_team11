@@ -52,7 +52,7 @@ public class LoginController {
 					model.setViewName("redirect:home");*/
 				case 3 :
 					TeacherDetail teacher = teacherService.getById(user.getId());
-					//session.setAttribute("user", teacher);
+					session.setAttribute("user", teacher);
 					model.setViewName("redirect:home");
 				default : ;
 				
