@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import team.hidro.highschoolsupport.entities.CommentDetail;
 import team.hidro.highschoolsupport.entities.InitialStatusDetail;
@@ -30,6 +31,13 @@ public class GroupController {
 	}
 
 	@RequestMapping(value = "/group/{idGroup}", method = RequestMethod.GET)
+	public ModelAndView getGroupView(@PathVariable("idGroup") int groupId) {
+		ModelAndView model = new ModelAndView("group");
+		model.addObject("groupId", groupId);
+		return model;
+	}
+	
+	@RequestMapping(value = "/groupdata/{idGroup}", method = RequestMethod.GET)
 	public @ResponseBody List<StatusDetail> getStatus(@PathVariable("idGroup") int groupId) {
 		return statusService.getListStatusByGroupId(groupId);
 	}
