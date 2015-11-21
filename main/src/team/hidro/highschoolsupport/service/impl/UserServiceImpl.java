@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import team.hidro.highschoolsupport.dao.UserDao;
 import team.hidro.highschoolsupport.entities.CommentDetail;
+import team.hidro.highschoolsupport.entities.GroupDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
 import team.hidro.highschoolsupport.service.UserService;
@@ -36,6 +37,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public StatusDetail setWriterForStatus(StatusDetail statusDetail) {
 		return userDao.setWriterForStatus(statusDetail);
+	}
+
+	@Override
+	public List<GroupDetail> getListGroupByUserId(int id) {
+		return userDao.getListGroupByUserId(id);
 	}
 
 }

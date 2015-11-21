@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="<spring:url value="/resources/plugins/jvectormap/jquery-jvectormap-1.2.2.css" />">
     <!-- Date Picker -->
     <link rel="stylesheet" href="<spring:url value="/resources/plugins/datepicker/datepicker3.css" />">
+    
     <!-- Daterange picker -->
     <link rel="stylesheet" href="<spring:url value="/resources/plugins/daterangepicker/daterangepicker-bs3.css" />">
     <!-- bootstrap wysihtml5 - text editor -->
