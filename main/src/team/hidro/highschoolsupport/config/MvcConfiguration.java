@@ -90,6 +90,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		addDefinition("group", "Group", "/WEB-INF/views/group1.jsp");
 		addDefinition("login", "Login", "/WEB-INF/views/login.jsp");
 		addDefinition("profile", "Profile", "/WEB-INF/views/profile.jsp");
+		addDefinition("status", "Status", "/WEB-INF/views/status.jsp");
 		//addDefinition("signin/facebook", "Sign in", "/WEB-INF/views/signin.jsp");
 		
 		return tilesConfigurer;

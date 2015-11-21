@@ -42,12 +42,12 @@ public class GroupController {
 		return statusService.getListStatusByGroupId(groupId);
 	}
 	
-	@RequestMapping(value = "/group/{idGroup}/status/{statusId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/groupdata/{idGroup}/status/{statusId}", method = RequestMethod.GET)
 	public @ResponseBody StatusDetail getComments(@PathVariable("idGroup") int groupId) {
 		return statusService.getById(groupId);
 	}
 
-	@RequestMapping(value = "/group/{idGroup}/{userId}/newStatus", method = RequestMethod.POST)
+	@RequestMapping(value = "/groupdata/{idGroup}/{userId}/newStatus", method = RequestMethod.POST)
 	public @ResponseBody boolean createStatus(@PathVariable("idGroup") int groupId, @PathVariable("userId") int userId,
 			@RequestParam("content") String content, @RequestParam("title") String title,@RequestParam("type") int type) {
 		long dateTime = System.currentTimeMillis();
@@ -55,7 +55,7 @@ public class GroupController {
 		return statusService.save(statusDetail);
 	}
 	
-	@RequestMapping(value = "/group/{idGroup}/{userId}/{idStatus}/newComment", method = RequestMethod.POST)
+	@RequestMapping(value = "/groupdata/{idGroup}/{userId}/{idStatus}/newComment", method = RequestMethod.POST)
 	public @ResponseBody boolean createComment(@PathVariable("idGroup") int groupId, @PathVariable("userId") int userId,
 			@PathVariable("idStatus") int statusId, @RequestParam("content") String content) {
 		long dateTime = System.currentTimeMillis();
@@ -63,7 +63,7 @@ public class GroupController {
 		return commentService.save(commentDetail);
 	}
 	
-	@RequestMapping(value = "/status/{statusId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/statusdata/{statusId}", method = RequestMethod.GET)
 	public @ResponseBody StatusDetail getStatus2(@PathVariable("statusId") int statusId) {
 		return statusService.getById(statusId);
 	}
