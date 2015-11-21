@@ -30,11 +30,12 @@ public class ProfileController {
 	private CommentProfileService commentProfile;
 
 	@RequestMapping("/{username}/profile")
-	public ModelAndView profileView(@PathVariable("username") String username) {
+	public ModelAndView profileView(@PathVariable("username") String username, HttpSession session) {
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("student_name", username);
 		StudentDetail student = studentService.getByName(username);
 		model.addObject("studentId", student.getUserId());
+		model.addObject("viewerId", Integer.parseInt(session.getAttribute("id").toString()));
 		return model;
 
 	}

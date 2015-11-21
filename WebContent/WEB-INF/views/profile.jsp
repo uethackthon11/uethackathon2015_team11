@@ -3,6 +3,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <input class="hidden" value="${student_name}" id="student" />
 <input class="hidden" value="${studentId}" id="studentId" />
+<input class="hidden" value="${viewerId}" id="viewerId" />
 <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -110,7 +111,7 @@
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
-                  	<div class='form-horizontal'>
+                  	<div class='form-horizontal' ng-if="studentId != viewerId">
                         <div class='form-group margin-bottom-none'>
                           <div class='col-sm-9'>
                             <input style="height: 70px" class="form-control input-sm" placeholder="Nội dung..." id="comment">
@@ -123,7 +124,7 @@
                       <br/>
                     <!-- Post -->
                     <div class="post" dir-paginate="comment in comments | filter:search | itemsPerPage: pageSize" current-page="currentPage" id="listComment">
-                      <div class="user-block">
+                      <div class="user-block" style="padding-left: 20px">
                         <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{comment.avatar}}" />" alt="user image">
                         <span class='username'>
                           <a href="#">{{comment.writer}}</a>
@@ -131,7 +132,7 @@
                         </span>
                         <span class='description'>{{comment.time | date : 'dd-M-yyyy HH:ss'}}</span>
                       </div><!-- /.user-block -->
-                      <p>
+                      <p style="padding-left: 20px">
                         {{comment.content}}
                       </p>
                       
@@ -151,12 +152,6 @@
                 <div class="box-header" style="padding: 5px;margin: 5px">
                   <h3 class="box-title">Bảng điểm</h3>
                   <div class="box-tools">
-                    <div class="input-group" style="width: 250px">
-                      <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-                      <div class="input-group-btn">
-                        <button class="btn btn-sm btn-default">Tìm kiếm</button>
-                      </div>
-                    </div>
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
@@ -167,7 +162,7 @@
                       <th colspan="9" style="text-align: center"> Điểm </th>
                       <th rowspan="3" style="text-align: center; vertical-align: middle"> Cuối kỳ </th>
                       <th rowspan="3" style="text-align: center; vertical-align: middle"> TB môn </th>
-                      <th rowspan="3" style="text-align: center; vertical-align: middle" class="col-xs-2"> Report </th>
+                      <th  ng-if="viewerId == studentId" rowspan="3" style="text-align: center; vertical-align: middle" class="col-xs-2"> Report </th>
                     </tr>
 
                     <tr>
@@ -213,7 +208,7 @@
                       <td style="text-align: center">{{subject.scores[8].score}}</td>
                       <td style="text-align: center">{{subject.scores[9].score}}</td>
                       <td style="text-align: center"> 7.5</td>
-                      <td style="text-align: center"><button data-toggle="modal" data-target=".bs-example-modal-sm" ng-click="reportScore.teacherId = subject.teacherId" class="btn btn-warning"><i class="fa fa-mail-forward"></i></button></td>
+                      <td  ng-if="viewerId == studentId" style="text-align: center"><button data-toggle="modal" data-target=".bs-example-modal-sm" ng-click="reportScore.teacherId = subject.teacherId" class="btn btn-warning"><i class="fa fa-mail-forward"></i></button></td>
                     </tr>
 
                   </table>

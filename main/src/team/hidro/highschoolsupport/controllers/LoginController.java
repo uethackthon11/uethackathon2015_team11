@@ -46,13 +46,12 @@ public class LoginController {
 			session.setAttribute("id", user.getId());
 			//session.setAttribute("user", user);
 			switch(user.getRole()){
-			
 				case 0 :
 				case 1 :
 					StudentDetail student = studentService.getById(user.getId());
-					model.addObject("user", student);
-					model.setViewName("redirect:home");
-					
+					session.setAttribute("user", student);
+					model.setViewName("redirect:" + user.getUsername() +"/profile");
+					break;
 				case 2 :
 					
 				case 3 :
@@ -61,6 +60,7 @@ public class LoginController {
 					session.setAttribute("avatar", teacher.getAvatar());
 					session.setAttribute("name", teacher.getName());
 					model.setViewName("redirect:home");
+					break;
 				default : ;
 				
 			}

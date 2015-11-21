@@ -162,6 +162,9 @@ app.controller('scoreCtrl', function($scope, $http) {
 });
 app.controller("profileCtrl" , function($scope, $http){
 	
+	
+	$scope.viewerId = $('#viewerId').val();
+	$scope.studentId = $('#studentId').val();
 	/*$http.get("http://localhost:8080/SpringProject/" + $('#id').val() + "/profile/query")
 	.success(function(data){
 		$scope.user = data;
