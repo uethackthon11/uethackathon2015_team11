@@ -55,14 +55,6 @@ public class GroupController {
 		return statusService.save(statusDetail);
 	}
 	
-	@RequestMapping(value = "/groupdata/{idGroup}/{userId}/{idStatus}/newComment", method = RequestMethod.POST)
-	public @ResponseBody boolean createComment(@PathVariable("idGroup") int groupId, @PathVariable("userId") int userId,
-			@PathVariable("idStatus") int statusId, @RequestParam("content") String content) {
-		long dateTime = System.currentTimeMillis();
-		CommentDetail commentDetail = new CommentDetail(content, dateTime, userId, statusId, null);
-		return commentService.save(commentDetail);
-	}
-	
 	@RequestMapping(value = "/statusdata/{statusId}", method = RequestMethod.GET)
 	public @ResponseBody StatusDetail getStatus2(@PathVariable("statusId") int statusId) {
 		return statusService.getById(statusId);
