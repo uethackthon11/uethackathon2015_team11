@@ -7,14 +7,16 @@ app.controller('scoreCtrl', function($scope, $http) {
 		$scope.selectState[data[i].fb_id] = 0;
 	}*/
 	
-	$scope.classes = [
-	                 {id: '12a3',name:'12A3'},
-	                 {id: '12a2',name:'12A2'},
-	                 {id: '12a1',name:'12A1'},
-	               ];
+	$scope.classes = [];
 	$scope.students = [];
+	
+	$http.get($('#rootPath').val() + "/class")
+	.success(function(data){
+		$scope.classes = data;
+		console.log($scope.classes);
+	});
 	$scope.class_selected = function($class){
-		$http.get("thuylt/class/" + $class.id)
+		$http.get($('#rootPath').val() + "/class/" + $class.classDetail.id + "/student/" + $class.subjectId)
 		.success(function(data){
 			$scope.students = data;
 			console.log($scope.students);

@@ -27,6 +27,33 @@ public class TeacherDaoImpl extends AutoWireJdbcDaoSupport implements TeacherDao
 
 	@Override
 	public TeacherDetail getById(Integer id) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "select * from teacher where user_id = ?";
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, id);
+
+			rs = smt.executeQuery();
+			if (rs.next()) {
+				int _id = rs.getInt("user_id");
+				String name = rs.getString("name");
+				String detail = rs.getString("details");
+				String avatar = rs.getString("avatar");
+				
+				return new TeacherDetail(_id, name, detail, avatar);
+			}
+			return null;
+		} catch (Exception e) {
+//			logger.error("queryPost", e);
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
 		return null;
 	}
 

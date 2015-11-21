@@ -21,11 +21,13 @@ public class ScoreController {
 
 	@Autowired
 	private TeacherService teacherService;
+	@Autowired
+	private ClassService classService;
 	
-	/*@RequestMapping("/test/{id}")
-	public @ResponseBody List<StudentScoreDetail> _getClass(@PathVariable("id") int id){
-		return teacherService.getListStudentScoreByClassAndSubject(1, 4, 1);
-	}*/
+	@RequestMapping("/class/{idClass}/student/{subjectId}")
+	public @ResponseBody List<StudentScoreDetail> _getClass(@PathVariable("idClass") int idClass, @PathVariable("subjectId") int idSubject){
+		return classService.getListStudentScoreByClassAndSubject(idClass, idSubject, 1);
+	}
 	
 	@RequestMapping("/class")
 	public @ResponseBody List<ListClassDetail> classTeacher(HttpSession session){

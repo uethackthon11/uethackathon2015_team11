@@ -23,7 +23,7 @@ public class TeacherServiceImpl implements TeacherService{
 
 	@Override
 	public TeacherDetail getById(Integer id) {
-		return null;
+		return teacherDao.getById(id);
 	}
 
 	@Override
