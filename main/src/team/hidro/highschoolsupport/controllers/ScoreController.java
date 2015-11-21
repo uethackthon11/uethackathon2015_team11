@@ -1,5 +1,6 @@
 package team.hidro.highschoolsupport.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.restfb.json.JsonArray;
+import com.restfb.json.JsonObject;
 
 import team.hidro.highschoolsupport.entities.ListClassDetail;
 import team.hidro.highschoolsupport.entities.ScoreDetail;
@@ -53,9 +57,25 @@ public class ScoreController {
 	}
 	
 	@RequestMapping(value = "class/update_score", method = RequestMethod.POST)
-	public void updateScore(@RequestParam Map<String,String> params){
+	public  @ResponseBody void updateScore(@RequestParam Map<String,String> params){
+		JsonObject obj = new JsonObject(params.toString());
 		
-		System.out.println(params.toString());
+		List<ScoreDetail> scoreDetails = new ArrayList<ScoreDetail>();
+		JsonArray array = obj.getJsonArray("scores");
+		for(int i = 0 ; i < array.length() ; i++){
+		    int id =array.getJsonObject(i).getInt("id");
+		    int score =array.getJsonObject(i).getInt("score");
+		    int type =array.getJsonObject(i).getInt("type");
+		    int userId =array.getJsonObject(i).getInt("userId");
+		    int subjectYearId =array.getJsonObject(i).getInt("subjectYearId");
+		    int ky =array.getJsonObject(i).getInt("ky");
+		    ScoreDetail scoreDetail = new ScoreDetail(id,score, type, userId, subjectYearId, ky);
+		    scoreDetails.add(scoreDetail);
+		}
+		
+		for (ScoreDetail scoreDetail : scoreDetails) {
+			System.out.println(scoreDetail.toString());
+		}
 		
 	}
 }
