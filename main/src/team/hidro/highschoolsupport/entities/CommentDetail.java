@@ -3,7 +3,23 @@ package team.hidro.highschoolsupport.entities;
 public class CommentDetail {
 	private String content;
 	private Long dateTime;
+	private int userId;
 	private WriterDetail writerDetail;
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public CommentDetail(String content, Long dateTime, int userId) {
+		super();
+		this.content = content;
+		this.dateTime = dateTime;
+		this.userId = userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	public CommentDetail(String content, Long dateTime, WriterDetail writerDetail) {
 		super();

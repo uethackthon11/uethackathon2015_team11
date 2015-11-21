@@ -2,13 +2,17 @@ package team.hidro.highschoolsupport.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import team.hidro.highschoolsupport.dao.CommentDao;
 import team.hidro.highschoolsupport.entities.CommentDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.service.CommentService;
 @Service
 public class CommentServiceImpl implements CommentService{
+	@Autowired
+	private CommentDao commentDao;
 
 	@Override
 	public boolean save(CommentDetail item) {
@@ -37,8 +41,7 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public List<StatusDetail> setListCommentForStatus(List<StatusDetail> statusDetails) {
-		// TODO Auto-generated method stub
-		return null;
+		return commentDao.setListCommentForStatus(statusDetails);
 	}
 
 }

@@ -54,7 +54,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "Select * from status  where group_id = ?";
+			String sql = "Select * from stt  where group_id = ?";
 			smt = conn.prepareStatement(sql);
 
 			smt.setInt(1, groupId);
@@ -71,6 +71,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao{
 			return statusDetails;
 		} catch (Exception e) {
 			logger.error("queryPost",e);
+			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);

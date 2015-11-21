@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.hidro.highschoolsupport.dao.UserDao;
+import team.hidro.highschoolsupport.entities.CommentDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
 import team.hidro.highschoolsupport.service.UserService;
@@ -25,6 +26,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<StatusDetail> setWriterForListStatus(List<StatusDetail> statusDetails) {
 		return userDao.setWriterForListStatus(statusDetails);
+	}
+
+	@Override
+	public List<CommentDetail> setWriterForListComment(List<CommentDetail> listCommentDetails) {
+		return userDao.setWriterForListComment(listCommentDetails);
 	}
 
 }

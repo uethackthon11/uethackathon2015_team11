@@ -10,15 +10,17 @@ import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.UserDao;
+import team.hidro.highschoolsupport.entities.CommentDetail;
 import team.hidro.highschoolsupport.entities.StatusDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
+import team.hidro.highschoolsupport.entities.WriterDetail;
 
 @Repository
-public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao{
+public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 
 	@Override
 	public UserDetail checkUser(String username, String password) {
-		
+
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
@@ -31,14 +33,14 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao{
 
 			rs = smt.executeQuery();
 			if (rs.next()) {
-				
+
 				int _id = rs.getInt("id");
 				String _username = rs.getString("username");
 				String _password = rs.getString("password");
 				int _role = rs.getInt("role");
-				
+
 				return new UserDetail(_id, _username, _password, _role);
-				
+
 			}
 			return null;
 		} catch (Exception e) {
@@ -53,6 +55,66 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao{
 
 	@Override
 	public List<StatusDetail> setWriterForListStatus(List<StatusDetail> statusDetails) {
+		return null;
+	}
+
+	@SuppressWarnings("resource")
+	@Override
+	public List<CommentDetail> setWriterForListComment(List<CommentDetail> commentDetails) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			for (CommentDetail commentDetail : commentDetails) {
+				int userId = commentDetail.getUserId();
+
+				String sql = "Select * from user where id = ?";
+				smt = conn.prepareStatement(sql);
+				smt.setInt(1, userId);
+				rs = smt.executeQuery();
+				if (rs.next()) {
+					int role = rs.getInt("type");
+					WriterDetail writerDetail = null;
+					if (role == 1) {
+						sql = "Select * from student where user_id = ?";
+						smt = conn.prepareStatement(sql);
+						smt.setInt(1, userId);
+						rs = smt.executeQuery();
+
+						if (rs.next()) {
+							String name = rs.getString("name");
+							String avatar = rs.getString("avatar");
+							writerDetail = new WriterDetail(name, userId, avatar);
+						}
+
+					} else {
+
+						sql = "Select * from teacher where user_id = ?";
+						smt = conn.prepareStatement(sql);
+						smt.setInt(1, userId);
+						rs = smt.executeQuery();
+
+						if (rs.next()) {
+							String name = rs.getString("name");
+							String avatar = rs.getString("avatar");
+							writerDetail = new WriterDetail(name, userId, avatar);
+						}
+
+					}
+					commentDetail.setWriterDetail(writerDetail);
+				}
+			}
+			
+			return commentDetails;
+
+		} catch (Exception e) {
+			logger.error("queryPost", e);
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
 		return null;
 	}
 

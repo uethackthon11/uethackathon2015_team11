@@ -49,7 +49,7 @@ public class StatusServiceImpl implements StatusService {
 	public List<StatusDetail> getListStatusByGroupId(int groupId) {
 		List<StatusDetail> statusDetails = statusDao.getListStatusByGroupId(groupId);
 		statusDetails = commentService.setListCommentForStatus(statusDetails);
-		statusDetails = userService.setWriterForListStatus(statusDetails);
+//		statusDetails = userService.setWriterForListStatus(statusDetails);
 		return statusDetails;
 	}
 
