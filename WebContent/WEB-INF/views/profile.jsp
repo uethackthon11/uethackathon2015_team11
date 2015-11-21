@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<input class="hidden" value="${student_name}" id="student" />
 <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -19,7 +20,7 @@
         <section class="content" ng-controller="profileCtrl">
 
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
 
               <!-- Profile Image -->
               <div class="box box-primary">
@@ -50,27 +51,31 @@
               </div><!-- /.box -->
 
             </div><!-- /.col -->
-            <div class="col-md-9">
+            <div class="col-md-8">
+            	<div id="container" class="box box-primary" style="width: 700px; margin: 0 auto"></div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#activity" data-toggle="tab">Nhận Xét Của Giáo Viên</a></li>
                   <li><a href="#timeline" data-toggle="tab">Bảng Điểm</a></li>
-                  <li><a href="#statistic" data-toggle="tab">Thống Kê</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
                     <!-- Post -->
                     <div class="post" ng-repeat="comment in comments">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{comment.user.avatar}}" />" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{comment.avatar}}" />" alt="user image">
                         <span class='username'>
-                          <a href="#">{{comment.user.name}}</a>
+                          <a href="#">{{comment.writer}}</a>
                           <a href='#' class='pull-right btn-box-tool'><i class='fa fa-times'></i></a>
                         </span>
                         <span class='description'>{{comment.time | date : 'dd-M-yyyy HH:ss'}}</span>
                       </div><!-- /.user-block -->
                       <p>
-                        {{comment.message}}
+                        {{comment.content}}
                       </p>
                       
                     </div><!-- /.post -->
@@ -116,7 +121,7 @@
                       <th colspan="9" style="text-align: center"> Điểm </th>
                       <th rowspan="3" style="text-align: center; vertical-align: middle"> Cuối kỳ </th>
                       <th rowspan="3" style="text-align: center; vertical-align: middle"> TB môn </th>
-                      <th rowspan="3" style="text-align: center; vertical-align: middle" class="col-xs-2"> Hoạt động </th>
+                      <th rowspan="3" style="text-align: center; vertical-align: middle" class="col-xs-2"> Report </th>
                     </tr>
 
                     <tr>
@@ -162,57 +167,7 @@
                       <td style="text-align: center"> 8</td>
                       <td style="text-align: center"> 8.5</td>
                       <td style="text-align: center"> 7.5</td>
-                      <td style="text-align: center"> </td>
-                    </tr>
-                    <tr>
-                      <td style="text-align: center">2</td>
-                      <td style="text-align: center">Vật Lý</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 6</td>
-                      <td style="text-align: center"> 4.5</td>
-                      <td style="text-align: center"> 6.5</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 9</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> </td>
-                    </tr>
-
-                    <tr>
-                      <td style="text-align: center">3</td>
-                      <td style="text-align: center">Hóa học</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 7.5</td>
-                      <td style="text-align: center"> 9</td>
-                      <td style="text-align: center"> 9</td>
-                      <td style="text-align: center"> 9.5</td>
-                      <td style="text-align: center"> 4</td>
-                      <td style="text-align: center"> 4.5</td>
-                      <td style="text-align: center"> 6.5</td>
-                      <td style="text-align: center"> 6</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> </td>
-                    </tr>
-
-                    <tr>
-                      <td style="text-align: center">4</td>
-                      <td style="text-align: center">Tin học</td>
-                      <td style="text-align: center"> 6</td>
-                      <td style="text-align: center"> 7.5</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 7.5</td>
-                      <td style="text-align: center"> 6.5</td>
-                      <td style="text-align: center"> 9.5</td>
-                      <td style="text-align: center"> 9</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 7</td>
-                      <td style="text-align: center"> </td>
+                      <td style="text-align: center"><button class="btn btn-warning"><i class="fa fa-mail-forward"></i></button></td>
                     </tr>
 
                   </table>
@@ -222,12 +177,12 @@
           </div>
         </section><!-- /.content -->
                   	
-                  </div><!-- /.tab-pane -->
+                  <!-- </div>/.tab-pane
                   <div class="tab-pane" id="statistic">
                   		Thống Kê ở Đây
                   		<div id="container" style="width: 100%; height: 600px; margin: 0 auto"></div>
                   		
-                  </div>
+                  </div> -->
 
                 </div><!-- /.tab-content -->
               </div><!-- /.nav-tabs-custom -->

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
@@ -11,8 +12,11 @@ import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.StudentDao;
+import team.hidro.highschoolsupport.entities.ClassScoreStudent;
 import team.hidro.highschoolsupport.entities.CommentProfile;
+import team.hidro.highschoolsupport.entities.ScoreDetail;
 import team.hidro.highschoolsupport.entities.StudentDetail;
+import team.hidro.highschoolsupport.entities.SubjectScore;
 
 
 @Repository
@@ -194,6 +198,46 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 				commentProfiles.add(commentProfile);
 			}
 			return commentProfiles;
+		} catch (Exception e) {
+			// logger.error("queryPost", e);
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+		
+	}
+
+	@Override
+	public List<SubjectScore> getListSubjectScore(String username) {
+		
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "select score.*, subject.name from score inner join user on score.user_id = user.id inner join class_student on score.user_id = class_student.student_user_id inner join subject_year_class on class_student.class_id = subject_year_class.class_id inner join subject on subject_year_class.subject_year_id = subject.id  where class_student.year = ? and user.username = ?";
+			smt = conn.prepareStatement(sql);
+			smt.setInt(1, (new Date()).getYear());
+			smt.setString(2, username);
+
+			rs = smt.executeQuery();
+			ArrayList<ClassScoreStudent> subjectScores = new ArrayList<ClassScoreStudent>();
+			while (rs.next()) {
+				
+				String name = rs.getString("subject.name");
+				int type = rs.getInt("score.type");
+				float score = rs.getFloat("score.score");
+				int ky = rs.getInt("ky");
+				int id = rs.getInt("score.id");
+				int userId = rs.getInt("score.user_id");
+				int subjectYearId = rs.getInt("subject_uear_id");
+				ScoreDetail scoreDetail = new ScoreDetail(id, score, type, userId, subjectYearId, ky);
+				subjectScores.add(new ClassScoreStudent(scoreDetail, name));
+			}
+			return new SubjectScore(name, subjectScores);
 		} catch (Exception e) {
 			// logger.error("queryPost", e);
 			e.printStackTrace();

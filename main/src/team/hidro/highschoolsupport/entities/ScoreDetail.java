@@ -31,7 +31,7 @@ public class ScoreDetail {
 		this.subjectYearId = subjectYearId;
 		this.ky = ky;
 	}
-	public ScoreDetail(int id, int score, int type, int userId, int subjectYearId, int ky) {
+	public ScoreDetail(int id, float score, int type, int userId, int subjectYearId, int ky) {
 		super();
 		this.id = id;
 		this.setScore(score);

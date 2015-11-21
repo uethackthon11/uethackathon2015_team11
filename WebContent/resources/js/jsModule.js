@@ -76,43 +76,24 @@ app.controller("profileCtrl" , function($scope, $http){
 	});*/
 	$scope.user = {};
 	
-	$http.get($('#rootPath').val() + "/hopnv/user_detail")
+	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/user_detail")
 	.success(function(data){
 		$scope.user = data;
 	});
 	
-	$scope.comments = [
-	                   {
-	                	   message : "Học giỏi, ngoan ngoãn",
-		                   time : 1447219609527,
-		                   user : {
-		                	   name : "Vương Thị Hồng",
-		                	   avatar : "1.jpg"
-		                   }
-	                   },
-	                   {
-	                	   message : "Học giỏi, ngoan ngoãn",
-		                   time : 1447219609527,
-		                   user : {
-		                	   name : "Nguyễn Văn Kim",
-		                	   avatar : "2.jpg"
-		                   }
-	                   },
-	                   {
-	                	   message : "Học giỏi, ngoan ngoãn",
-		                   time : 1447219609527,
-		                   user : {
-		                	   name : "Đậu Mạnh Quang",
-		                	   avatar : "3.jpg"
-		                   }
-	                   }
-	                   ];
+	$scope.comments = [];
+	
+	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/comments")
+	.success(function(data){
+		$scope.comments = data;
+		console.log(data);
+	});
 });
-app.controller("commentCtrl" , function($scope, $http){
+/*app.controller("commentCtrl" , function($scope, $http){
 	
 	$http.get("http://localhost:8080/SpringProject/" + $('#id').val() + "/comment")
 	.success(function(data){
 		$scope.comments = data;
 	});
 	
-});
+});*/

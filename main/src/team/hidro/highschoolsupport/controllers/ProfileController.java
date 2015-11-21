@@ -19,10 +19,11 @@ public class ProfileController {
 	@Autowired
 	private StudentService studentService;
 
-	@RequestMapping("/{id}/profile")
-	public ModelAndView profileView() {
-
-		return new ModelAndView("profile");
+	@RequestMapping("/{username}/profile")
+	public ModelAndView profileView(@PathVariable("username") String username) {
+		ModelAndView model = new ModelAndView("profile");
+		model.addObject("student_name", username);
+		return model;
 
 	}
 
