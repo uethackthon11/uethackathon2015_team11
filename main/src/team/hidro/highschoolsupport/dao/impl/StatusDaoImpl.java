@@ -60,7 +60,7 @@ public class StatusDaoImpl extends AutoWireJdbcDaoSupport implements StatusDao {
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "insert into stt VALUES (NULL,?,?,?,?)";
+			String sql = "insert into stt VALUES (NULL,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, item.getUserId());
 			ps.setInt(2, item.getGroupId());

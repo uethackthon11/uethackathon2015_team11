@@ -14,4 +14,9 @@ public class HomeController {
 		return new ModelAndView("home");
 	}
 	
+	@RequestMapping(value="/groups", method=RequestMethod.GET)
+	public ModelAndView group(){
+		return new ModelAndView("group");
+	}
+	
 }
