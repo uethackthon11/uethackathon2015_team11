@@ -36,6 +36,10 @@
 	<dependencies defaultconf="default" defaultconfmapping="default->default">
 		<dependency org="commons-io" name="commons-io" rev="2.4"/>
 		<dependency org="org.apache.commons" name="commons-lang3" rev="3.3.2"/>
+		<dependency org="org.json" name="json" rev="20140107"/>
+
+
+		
 		<dependency org="log4j" name="log4j" rev="1.2.17" transitive="false"/>
 		<dependency org="com.jolbox" name="bonecp" rev="0.8.0.RELEASE"/>
 		<dependency org="mysql" name="mysql-connector-java" rev="5.1.34"/>

@@ -2,7 +2,7 @@ package team.hidro.highschoolsupport.entities;
 
 public class ScoreDetail {
 	private int id;
-	private int score;
+	private float score;
 	private int type;
 	private int userId;
 	private int subjectYearId;
@@ -15,17 +15,17 @@ public class ScoreDetail {
 	public ScoreDetail(int id, int score, int type) {
 		super();
 		this.id = id;
-		this.score = score;
+		this.setScore(score);
 		this.type = type;
 	}
 	public ScoreDetail(int score, int type) {
 		super();
-		this.score = score;
+		this.setScore(score);
 		this.type = type;
 	}
 	public ScoreDetail(int score, int type, int userId, int subjectYearId, int ky) {
 		super();
-		this.score = score;
+		this.setScore(score);
 		this.type = type;
 		this.userId = userId;
 		this.subjectYearId = subjectYearId;
@@ -34,7 +34,7 @@ public class ScoreDetail {
 	public ScoreDetail(int id, int score, int type, int userId, int subjectYearId, int ky) {
 		super();
 		this.id = id;
-		this.score = score;
+		this.setScore(score);
 		this.type = type;
 		this.userId = userId;
 		this.subjectYearId = subjectYearId;
@@ -60,12 +60,6 @@ public class ScoreDetail {
 	public void setKy(int ky) {
 		this.ky = ky;
 	}
-	public int getScore() {
-		return score;
-	}
-	public void setScore(int score) {
-		this.score = score;
-	}
 	public int getType() {
 		return type;
 	}
@@ -80,6 +74,12 @@ public class ScoreDetail {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	public float getScore() {
+		return score;
+	}
+	public void setScore(float score) {
+		this.score = score;
 	}
 
 }

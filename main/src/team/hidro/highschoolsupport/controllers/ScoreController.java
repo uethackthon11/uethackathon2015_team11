@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.restfb.json.JsonArray;
-import com.restfb.json.JsonObject;
 
 import team.hidro.highschoolsupport.entities.ListClassDetail;
 import team.hidro.highschoolsupport.entities.ScoreDetail;
@@ -58,23 +57,32 @@ public class ScoreController {
 	
 	@RequestMapping(value = "class/update_score", method = RequestMethod.POST)
 	public  @ResponseBody void updateScore(@RequestParam Map<String,String> params){
-		JsonObject obj = new JsonObject(params.toString());
+		System.out.println(params.toString());
+		String content =params.toString();
+		System.out.println(content.substring(1,content.length()-2));
+		JSONObject obj = new JSONObject(content.substring(1,content.length()-2));
 		
 		List<ScoreDetail> scoreDetails = new ArrayList<ScoreDetail>();
-		JsonArray array = obj.getJsonArray("scores");
+		JSONArray array = obj.getJSONArray("scores");
 		for(int i = 0 ; i < array.length() ; i++){
-		    int id =array.getJsonObject(i).getInt("id");
-		    int score =array.getJsonObject(i).getInt("score");
-		    int type =array.getJsonObject(i).getInt("type");
-		    int userId =array.getJsonObject(i).getInt("userId");
-		    int subjectYearId =array.getJsonObject(i).getInt("subjectYearId");
-		    int ky =array.getJsonObject(i).getInt("ky");
+		    int id =array.getJSONObject(i).getInt("id");
+		    String scoreString =array.getJSONObject(i).get("score")+"";
+		    int type =array.getJSONObject(i).getInt("type");
+		    int userId =array.getJSONObject(i).getInt("userId");
+		    int subjectYearId =array.getJSONObject(i).getInt("subjectYearId");
+		    int ky =array.getJSONObject(i).getInt("ky");
+		    int score= scoreString.equals("") ? -1: Integer.parseInt(scoreString);
 		    ScoreDetail scoreDetail = new ScoreDetail(id,score, type, userId, subjectYearId, ky);
 		    scoreDetails.add(scoreDetail);
 		}
 		
 		for (ScoreDetail scoreDetail : scoreDetails) {
-			System.out.println(scoreDetail.toString());
+			if(scoreDetail.getScore()==-1&&scoreDetail.getId()!=0)
+				scoreService.remove(scoreDetail.getId());
+			if(scoreDetail.getScore()!=-1&&scoreDetail.getId()!=0)
+				scoreService.update(scoreDetail);
+			if(scoreDetail.getScore()!=-1&&scoreDetail.getId()==0)
+				scoreService.save(scoreDetail);
 		}
 		
 	}

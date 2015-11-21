@@ -44,12 +44,13 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 			smt.setInt(2, item.getSubjectYearId());
 			smt.setInt(3, item.getUserId());
 			smt.setInt(4, item.getType());
-			smt.setInt(5, item.getScore());
+			smt.setFloat(5, item.getScore());
 			smt.setInt(6, item.getKy());
 			
 			return (smt.executeUpdate(sql) > 0) ? true : false;
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("addPost",e);
 		} finally {
 			DbUtils.closeQuietly(rs);
@@ -78,13 +79,14 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 			smt.setInt(1, item.getSubjectYearId());
 			smt.setInt(2, item.getUserId());
 			smt.setInt(3, item.getType());
-			smt.setInt(4, item.getScore());
+			smt.setFloat(4, item.getScore());
 			smt.setInt(5, item.getKy());
 			smt.setInt(5, item.getId());
 			
 			return (smt.executeUpdate(sql) > 0) ? true : false;
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("addPost",e);
 		} finally {
 			DbUtils.closeQuietly(rs);
