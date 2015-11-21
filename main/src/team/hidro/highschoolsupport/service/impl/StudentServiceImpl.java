@@ -1,5 +1,9 @@
 package team.hidro.highschoolsupport.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Service;
 import team.hidro.highschoolsupport.dao.StudentDao;
 import team.hidro.highschoolsupport.entities.CommentProfile;
 import team.hidro.highschoolsupport.entities.StudentDetail;
+import team.hidro.highschoolsupport.entities.SubjectScore;
 import team.hidro.highschoolsupport.service.StudentService;
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -67,6 +72,13 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public List<CommentProfile> getListCommentProfile(String id) {
 		return studentDao.getListCommentProfile(id);
+	}
+
+	@Override
+	public List<SubjectScore> getListSubjectScore(String username) {
+		List<SubjectScore> subjectScores = studentDao.getListSubjectScore(username);
+		
+		return subjectScores;
 	}
 
 }

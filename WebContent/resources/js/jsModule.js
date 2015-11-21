@@ -86,6 +86,13 @@ app.controller("profileCtrl" , function($scope, $http){
 	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/comments")
 	.success(function(data){
 		$scope.comments = data;
+	});
+	
+	$scope.subjects = [];
+	
+	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/scores")
+	.success(function(data){
+		$scope.subjects = data;
 		console.log(data);
 	});
 });

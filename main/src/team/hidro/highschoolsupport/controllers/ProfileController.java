@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import team.hidro.highschoolsupport.entities.CommentProfile;
 import team.hidro.highschoolsupport.entities.StudentDetail;
+import team.hidro.highschoolsupport.entities.SubjectScore;
 import team.hidro.highschoolsupport.service.StudentService;
 
 @Controller
@@ -37,6 +38,12 @@ public class ProfileController {
 	@RequestMapping("/{username}/comments")
 	public @ResponseBody List<CommentProfile> getComments(@PathVariable("username") String username) {
 		return studentService.getListCommentProfile(username);
+	}
+	@RequestMapping("/{username}/scores")
+	public @ResponseBody List<SubjectScore> getSubjectScore(@PathVariable("username") String username){
+		
+		return studentService.getListSubjectScore(username);
+		
 	}
 
 }

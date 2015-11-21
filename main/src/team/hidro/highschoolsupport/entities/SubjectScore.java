@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class SubjectScore {
 
 	private String name;
-	private ArrayList<ClassScoreStudent> scores;
+	private ArrayList<ScoreDetail> scores;
 
-	public SubjectScore(String name, ArrayList<ClassScoreStudent> scores) {
+	public SubjectScore(String name, ArrayList<ScoreDetail> scores) {
 		super();
 		this.name = name;
 		this.scores = scores;
@@ -21,11 +21,11 @@ public class SubjectScore {
 		this.name = name;
 	}
 
-	public ArrayList<ClassScoreStudent> getScores() {
+	public ArrayList<ScoreDetail> getScores() {
 		return scores;
 	}
 
-	public void setScores(ArrayList<ClassScoreStudent> scores) {
+	public void setScores(ArrayList<ScoreDetail> scores) {
 		this.scores = scores;
 	}
 

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +15,6 @@ import org.springframework.stereotype.Repository;
 
 import team.hidro.highschoolsupport.dao.AutoWireJdbcDaoSupport;
 import team.hidro.highschoolsupport.dao.StudentDao;
-import team.hidro.highschoolsupport.entities.ClassScoreStudent;
 import team.hidro.highschoolsupport.entities.CommentProfile;
 import team.hidro.highschoolsupport.entities.ScoreDetail;
 import team.hidro.highschoolsupport.entities.StudentDetail;
@@ -218,26 +220,59 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "select score.*, subject.name from score inner join user on score.user_id = user.id inner join class_student on score.user_id = class_student.student_user_id inner join subject_year_class on class_student.class_id = subject_year_class.class_id inner join subject on subject_year_class.subject_year_id = subject.id  where class_student.year = ? and user.username = ?";
+			String sql = "select subject_year_class.* from class_student inner join user on class_student.student_user_id = user.id inner join subject_year_class on class_student.class_id = subject_year_class.class_id where user.username = ? and class_student.year = ?";
 			smt = conn.prepareStatement(sql);
-			smt.setInt(1, (new Date()).getYear());
-			smt.setString(2, username);
-
+			smt.setString(1, username);
+			smt.setInt(2, (Calendar.getInstance().get(Calendar.YEAR)));
 			rs = smt.executeQuery();
-			ArrayList<ClassScoreStudent> subjectScores = new ArrayList<ClassScoreStudent>();
+			ArrayList<SubjectScore> subjectScores = new ArrayList<SubjectScore>();
 			while (rs.next()) {
 				
-				String name = rs.getString("subject.name");
-				int type = rs.getInt("score.type");
-				float score = rs.getFloat("score.score");
-				int ky = rs.getInt("ky");
-				int id = rs.getInt("score.id");
-				int userId = rs.getInt("score.user_id");
-				int subjectYearId = rs.getInt("subject_uear_id");
-				ScoreDetail scoreDetail = new ScoreDetail(id, score, type, userId, subjectYearId, ky);
-				subjectScores.add(new ClassScoreStudent(scoreDetail, name));
+				int idSubject = rs.getInt("subject_year_class.subject_year_id");
+				System.out.println(idSubject);
+				
+				String sql2 = "select score.*,subject.name from score inner join user on score.user_id = user.id inner join subject on score.subject_year_id = subject.id where user.username = ? and score.subject_year_id = ?";
+				smt = conn.prepareStatement(sql2);
+				smt.setString(1, username);
+				smt.setInt(2, idSubject);
+				ResultSet rs1 = smt.executeQuery();
+				ArrayList<ScoreDetail> listScoreDetail = new ArrayList<ScoreDetail>();
+				String name = "";
+				while(rs1.next()){
+					int id = rs1.getInt("score.id");
+					int subject_year_id = rs1.getInt("score.subject_year_id");
+					int user_id = rs1.getInt("score.user_id");
+					int type = rs1.getInt("score.type");
+					float score = rs1.getFloat("score.score");
+					int ky = rs1.getInt("score.ky");
+					name = rs1.getString("subject.name");
+					
+					ScoreDetail scoreDetail = new ScoreDetail(id, score, type, user_id, subject_year_id, ky);
+					listScoreDetail.add(scoreDetail);
+				}
+				
+				Collections.sort(listScoreDetail, new Comparator<ScoreDetail>() {
+
+					@Override
+					public int compare(ScoreDetail o1, ScoreDetail o2) {
+						if (o1.getKy() < o2.getKy()) {
+							return 1;
+						} else {
+							if (o1.getKy() == o2.getKy()) {
+								return 0;
+							} else {
+								return -1;
+							}
+						}
+					}
+					
+				});
+				
+				SubjectScore subjectScore = new SubjectScore(name, listScoreDetail);
+				subjectScores.add(subjectScore);
+				
 			}
-			return new SubjectScore(name, subjectScores);
+			return subjectScores;
 		} catch (Exception e) {
 			// logger.error("queryPost", e);
 			e.printStackTrace();

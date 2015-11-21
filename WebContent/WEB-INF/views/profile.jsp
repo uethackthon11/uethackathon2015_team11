@@ -153,19 +153,19 @@
                       <th style="text-align: center"> (1) </th>
                     </tr> -->
 
-                    <tr>
-                      <td style="text-align: center">1</td>
-                      <td style="text-align: center">Toán</td>
-                      <td style="text-align: center"> 6.5</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 7</td>
-                      <td style="text-align: center"> 7</td>
-                      <td style="text-align: center"> 7.5</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 6.5</td>
-                      <td style="text-align: center"> 8.5</td>
-                      <td style="text-align: center"> 8</td>
-                      <td style="text-align: center"> 8.5</td>
+                    <tr ng-repeat="subject in subjects">
+                      <td style="text-align: center">{{$index + 1}}</td>
+                      <td style="text-align: center">{{subject.name}}</td>
+                      <td style="text-align: center">subject.score[0].score</td>
+                      <td style="text-align: center">subject.score[1].score</td>
+                      <td style="text-align: center">subject.score[2].score</td>
+                      <td style="text-align: center">subject.score[3].score</td>
+                      <td style="text-align: center">subject.score[4].score</td>
+                      <td style="text-align: center">subject.score[5].score</td>
+                      <td style="text-align: center">subject.score[6].score</td>
+                      <td style="text-align: center">subject.score[7].score</td>
+                      <td style="text-align: center">subject.score[8].score</td>
+                      <td style="text-align: center">subject.score[9].score</td>
                       <td style="text-align: center"> 7.5</td>
                       <td style="text-align: center"><button class="btn btn-warning"><i class="fa fa-mail-forward"></i></button></td>
                     </tr>
