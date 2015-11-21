@@ -44,7 +44,7 @@ public class ClassServiceImpl implements ClassService {
 	public List<StudentScoreDetail> getListStudentScoreByClassAndSubject(int classId, int subjectId,int ky) {
 		
 		List<StudentDetail> students = studentService.getListStudentByClassId(classId);
-		return scoreService.getListStudentScoreByListStudent(students, ky);
+		return scoreService.getListStudentScoreByListStudent(subjectId, students, ky);
 	}
 
 	@Override

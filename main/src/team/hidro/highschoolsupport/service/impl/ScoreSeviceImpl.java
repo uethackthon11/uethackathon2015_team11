@@ -38,8 +38,8 @@ public class ScoreSeviceImpl implements ScoreService {
 	}
 
 	@Override
-	public List<StudentScoreDetail> getListStudentScoreByListStudent(List<StudentDetail> students,int ky) {
-		return scoreDao.getListStudentScoreByListStudent(students, ky);
+	public List<StudentScoreDetail> getListStudentScoreByListStudent(int subjectId, List<StudentDetail> students,int ky) {
+		return scoreDao.getListStudentScoreByListStudent(subjectId, students, ky);
 	}
 
 	@Override

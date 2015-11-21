@@ -32,26 +32,25 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 
 	@Override
 	public boolean save(ScoreDetail item) {
-		
+
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "insert into score value(NULL,?, ?, ?, ?,?)";
+			String sql = "insert into score value(NULL,?,?,?,?,?)";
 			smt = conn.prepareStatement(sql);
-			
 			smt.setInt(1, item.getSubjectYearId());
 			smt.setInt(2, item.getUserId());
 			smt.setInt(3, item.getType());
 			smt.setFloat(4, item.getScore());
 			smt.setInt(5, item.getKy());
-			
-			return (smt.executeUpdate(sql) > 0) ? true : false;
+
+			return (smt.executeUpdate() > 0) ? true : false;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("addPost",e);
+			logger.error("addPost", e);
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);
@@ -73,21 +72,21 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "update score set subject_year_id= ?, user_id = ?,  type = ?, score = ?, ky= ? where id = ?";
+			String sql = "update score set subject_year_id = ?, user_id = ?,  type = ?, score = ?, ky= ? where id = ?";
 			smt = conn.prepareStatement(sql);
-			
+
 			smt.setInt(1, item.getSubjectYearId());
 			smt.setInt(2, item.getUserId());
 			smt.setInt(3, item.getType());
 			smt.setFloat(4, item.getScore());
 			smt.setInt(5, item.getKy());
-			smt.setInt(5, item.getId());
-			
-			return (smt.executeUpdate(sql) > 0) ? true : false;
+			smt.setInt(6, item.getId());
+
+			return (smt.executeUpdate() > 0) ? true : false;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("addPost",e);
+			logger.error("addPost", e);
 		} finally {
 			DbUtils.closeQuietly(rs);
 			DbUtils.closeQuietly(smt);
@@ -97,10 +96,11 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 	}
 
 	@Override
-	public List<StudentScoreDetail> getListStudentScoreByListStudent(List<StudentDetail> students, int ky) {
+	public List<StudentScoreDetail> getListStudentScoreByListStudent(int subjectId, List<StudentDetail> students,
+			int ky) {
 		List<StudentScoreDetail> studentScoreDetails = new ArrayList<StudentScoreDetail>();
 		for (StudentDetail studentDetail : students) {
-			StudentScoreDetail studentScoreDetail = getStudentStoreDetailByStudent(studentDetail, ky);
+			StudentScoreDetail studentScoreDetail = getStudentStoreDetailByStudent(subjectId, studentDetail, ky);
 			if (studentScoreDetail != null) {
 				studentScoreDetails.add(studentScoreDetail);
 			}
@@ -110,16 +110,17 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 
 	}
 
-	private StudentScoreDetail getStudentStoreDetailByStudent(StudentDetail studentDetail, int ky) {
+	private StudentScoreDetail getStudentStoreDetailByStudent(int subjectId, StudentDetail studentDetail, int ky) {
 		Connection conn = null;
 		PreparedStatement smt = null;
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "Select * from score where user_id = ? and ky= ?";
+			String sql = "Select * from score where user_id = ? and ky= ? and subject_year_id= ?";
 			smt = conn.prepareStatement(sql);
 			smt.setInt(1, studentDetail.getUserId());
 			smt.setInt(2, ky);
+			smt.setInt(3, subjectId);
 
 			rs = smt.executeQuery();
 			List<ScoreDetail> scoreDetails = new ArrayList<ScoreDetail>();
@@ -127,10 +128,11 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 				int id1 = rs.getInt("id");
 				int score = rs.getInt("score");
 				int type = rs.getInt("type");
-				ScoreDetail scoreDetail = new ScoreDetail(id1,score, type);
+				int userId = rs.getInt("user_id");
+				ScoreDetail scoreDetail = new ScoreDetail(id1, score, type, userId, subjectId, ky);
 				scoreDetails.add(scoreDetail);
 			}
-			scoreDetails = fixScore(scoreDetails);
+			scoreDetails = fixScore(scoreDetails,studentDetail.getUserId(),subjectId,ky);
 			return new StudentScoreDetail(scoreDetails, studentDetail);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,44 +144,45 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 		return null;
 	}
 
-	private List<ScoreDetail> fixScore(List<ScoreDetail> scoreDetails) {
+	private List<ScoreDetail> fixScore(List<ScoreDetail> scoreDetails, int userId, int subjectId,int ky) {
 
 		List<ScoreDetail> scoreDetails2 = new ArrayList<ScoreDetail>();
-		int i=0;
+		int i = 0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
-			if(scoreDetail.getType()==1) {
+			if (scoreDetail.getType() == 1) {
 				scoreDetails2.add(scoreDetail);
 				i++;
 			}
 		}
-		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(-1,1));
-		i=0;
+		while (i++ != 3)
+			scoreDetails2.add(new ScoreDetail(0, -1, 1, userId, subjectId, ky));
+		i = 0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
-			if(scoreDetail.getType()==2) {
+			if (scoreDetail.getType() == 2) {
 				scoreDetails2.add(scoreDetail);
 				i++;
 			}
 		}
-		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(-1,2));
-		i=0;
+		while (i++ != 3)
+			scoreDetails2.add(new ScoreDetail(0, -1, 2, userId, subjectId, ky));
+		i = 0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
-			if(scoreDetail.getType()==3) {
+			if (scoreDetail.getType() == 3) {
 				scoreDetails2.add(scoreDetail);
 				i++;
 			}
 		}
-		while(i++!=3)
-			scoreDetails2.add(new ScoreDetail(-1,3));
-		i=0;
+		while (i++ != 3)
+			scoreDetails2.add(new ScoreDetail(0, -1, 3, userId, subjectId, ky));
+		i = 0;
 		for (ScoreDetail scoreDetail : scoreDetails) {
-			if(scoreDetail.getType()==4) {
+			if (scoreDetail.getType() == 4) {
 				scoreDetails2.add(scoreDetail);
 				i++;
 			}
 		}
-		if(i!=1) scoreDetails2.add(new ScoreDetail(-1,4));
+		if (i != 1)
+			scoreDetails2.add(new ScoreDetail(-1, 4));
 		return scoreDetails2;
 	}
 

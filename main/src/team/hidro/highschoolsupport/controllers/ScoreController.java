@@ -43,7 +43,6 @@ public class ScoreController {
 	
 	@RequestMapping("/class/{idClass}/student/{subjectId}")
 	public @ResponseBody List<StudentScoreDetail> _getClass(@PathVariable("idClass") int idClass, @PathVariable("subjectId") int idSubject){
-		
 		return classService.getListStudentScoreByClassAndSubject(idClass, idSubject, 1);
 	}
 	
@@ -57,9 +56,7 @@ public class ScoreController {
 	
 	@RequestMapping(value = "class/update_score", method = RequestMethod.POST)
 	public  @ResponseBody void updateScore(@RequestParam Map<String,String> params){
-		System.out.println(params.toString());
 		String content =params.toString();
-		System.out.println(content.substring(1,content.length()-2));
 		JSONObject obj = new JSONObject(content.substring(1,content.length()-2));
 		
 		List<ScoreDetail> scoreDetails = new ArrayList<ScoreDetail>();
