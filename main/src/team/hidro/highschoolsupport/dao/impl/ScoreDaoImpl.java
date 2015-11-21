@@ -38,14 +38,14 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "insert into score value(`id`, `subject_year_id`, `user_id`, `type`, `score`, `ky`)";
+			String sql = "insert into score value(NULL,?, ?, ?, ?,?)";
 			smt = conn.prepareStatement(sql);
 			
-			smt.setInt(2, item.getSubjectYearId());
-			smt.setInt(3, item.getUserId());
-			smt.setInt(4, item.getType());
-			smt.setFloat(5, item.getScore());
-			smt.setInt(6, item.getKy());
+			smt.setInt(1, item.getSubjectYearId());
+			smt.setInt(2, item.getUserId());
+			smt.setInt(3, item.getType());
+			smt.setFloat(4, item.getScore());
+			smt.setInt(5, item.getKy());
 			
 			return (smt.executeUpdate(sql) > 0) ? true : false;
 
@@ -73,7 +73,7 @@ public class ScoreDaoImpl extends AutoWireJdbcDaoSupport implements ScoreDao {
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "update score set subject_year_id= ? value user_id = ?  type = ? score = ? ky= ? where id = ?";
+			String sql = "update score set subject_year_id= ?, user_id = ?,  type = ?, score = ?, ky= ? where id = ?";
 			smt = conn.prepareStatement(sql);
 			
 			smt.setInt(1, item.getSubjectYearId());
