@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <input class="hidden" value="${student_name}" id="student" />
+<input class="hidden" value="${studentId}" id="studentId" />
 <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -18,7 +19,52 @@
 
         <!-- Main content -->
         <section class="content" ng-controller="profileCtrl">
-
+			
+			
+			<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Chọn loại điểm cần kiểm tra lại</h4>
+                  </div>
+                  <div class="modal-body" style="heigth:300px">
+                  		<div class="row" style="margin: 5px">
+                  			<div class="col-sm-4">
+                  				Xem lại
+                  			</div>
+                  			<div class="col-sm-8">
+                  				<select ng-model="reportScore.scoreType" style="padding: 5px">
+							      <option value="">---Chọn loại điểm---</option> <!-- not selected / blank option -->
+							      <option value="điểm miệng">Điểm miệng</option> <!-- interpolation -->
+							      <option value="điểm 15ph">Điểm 15ph</option>
+							      <option value="điểm giữa kì">Điểm giữa kì</option>
+							      <option value="điểm cuối kì">Điểm cuối kì</option>
+							    </select>
+                  			</div>
+                  		</div>
+                    	<div class="row" style="margin: 5px">
+                  			<div class="col-sm-4">
+                  				Ở
+                  			</div>
+                  			<div class="col-sm-8">
+							    <select ng-model="reportScore.col" style="padding:5px">
+							      <option value="">---Chọn cột---</option> <!-- not selected / blank option -->
+							      <option value="1">Cột số 1</option> <!-- interpolation -->
+							      <option value="2">Cột số 2</option>
+							      <option value="3">Cột số 3</option>
+							    </select>
+						    </div>
+					    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-success" ng-click="report()" data-dismiss="modal">Gửi</button>
+                  </div>
+                </div>
+  </div>
+</div>
+			
           <div class="row">
             <div class="col-md-4">
 
@@ -167,7 +213,7 @@
                       <td style="text-align: center">{{subject.scores[8].score}}</td>
                       <td style="text-align: center">{{subject.scores[9].score}}</td>
                       <td style="text-align: center"> 7.5</td>
-                      <td style="text-align: center"><button class="btn btn-warning"><i class="fa fa-mail-forward"></i></button></td>
+                      <td style="text-align: center"><button data-toggle="modal" data-target=".bs-example-modal-sm" ng-click="reportScore.teacherId = subject.teacherId" class="btn btn-warning"><i class="fa fa-mail-forward"></i></button></td>
                     </tr>
 
                   </table>

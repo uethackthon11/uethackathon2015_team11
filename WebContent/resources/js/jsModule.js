@@ -74,6 +74,17 @@ app.controller('scoreCtrl', function($scope, $http) {
 
 	        });
 			
+			$http({
+				url : $('#rootPath').val() + "/add_notification",
+				params : {
+					type : 1,
+					recieverId : $student.studentDetail.userId
+				},
+				method  : 'POST',
+		       contentType: "application/json",
+		       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+			})
+			
 		});
 		
 	};
@@ -103,26 +114,37 @@ app.controller('scoreCtrl', function($scope, $http) {
 		})
 		.success(function(){
 			$scope.comment.comment = "";
-				$(function () {
-			            new PNotify({
-			                title: "Thành công",
-			                type: "warning",
-			                text: "Đã thêm 1 nhận xét mới.",
-			                nonblock: {
-			                    nonblock: true
-			                },
-			                before_close: function (PNotify) {
-			                    PNotify.update({
-			                        title: PNotify.options.title + " - Enjoy your Stay",
-			                        before_close: null
-			                    });
-			                    PNotify.queueRemove();
-			                    return false;
-			                }
-			            });
+			$(function () {
+	            new PNotify({
+	                title: "Thành công",
+	                type: "warning",
+	                text: "Đã thêm 1 nhận xét mới.",
+	                nonblock: {
+	                    nonblock: true
+	                },
+	                before_close: function (PNotify) {
+	                    PNotify.update({
+	                        title: PNotify.options.title + " - Enjoy your Stay",
+	                        before_close: null
+	                    });
+	                    PNotify.queueRemove();
+	                    return false;
+	                }
+	            });
 
-			        });
-			});
+	        });
+			
+			$http({
+				url : $('#rootPath').val() + "/add_notification",
+				params : {
+					type : 2,
+					recieverId : $comment.studentId
+				},
+				method  : 'POST',
+		       contentType: "application/json",
+		       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+			})
+		});
 		
 	};
 	
@@ -147,6 +169,11 @@ app.controller("profileCtrl" , function($scope, $http){
 	$scope.currentPage = 1;
 	$scope.pageSize = 5;
 	$scope.user = {};
+	$scope.reportScore = {
+			teacherId : 1,
+			scoreType : '',
+			col : 1
+	};
 	
 	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/user_detail")
 	.success(function(data){
@@ -165,6 +192,7 @@ app.controller("profileCtrl" , function($scope, $http){
 	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/scores")
 	.success(function(data){
 		$scope.subjects = data;
+		console.log(data);
 	});
 	
 	$scope.addComment = function(){
@@ -204,11 +232,71 @@ app.controller("profileCtrl" , function($scope, $http){
 
 			        });
 			});
+			$http({
+				url : $('#rootPath').val() + "/add_notification",
+				params : {
+					type : 2,
+					recieverId : $('#studentId').val()
+				},
+				method  : 'POST',
+		       contentType: "application/json",
+		       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+			})
 		});
 		
+	};
+	
+	$scope.report = function(){
 		
+		console.log($scope.reportScore);
+		
+		$http({
+			url : $('#rootPath').val() + "/add_notification",
+			params : {
+				type : 3,
+				recieverId : $scope.reportScore.teacherId,
+				message : $scope.reportScore.scoreType,
+				col : $scope.reportScore.col
+			},
+			method  : 'POST',
+	       contentType: "application/json",
+	       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+		})
+		.success(function(){
+			$(function () {
+	            new PNotify({
+	                title: "Thành công",
+	                type: "warning",
+	                text: "Đã gửi 1 yêu cầu xem lại điểm.",
+	                nonblock: {
+	                    nonblock: true
+	                },
+	                before_close: function (PNotify) {
+	                    PNotify.update({
+	                        title: PNotify.options.title + " - Enjoy your Stay",
+	                        before_close: null
+	                    });
+	                    PNotify.queueRemove();
+	                    return false;
+	                }
+	            });
+
+	        });
+		});
 		
 	};
+});
+
+app.controller("notificationCtrl", function($scope,$http){
+	
+	$scope.notifications = [];
+	
+	$http.get($('#rootPath').val() + "/" + $('#id_user').val() + "/notification")
+	.success(function(data){
+		$scope.notifications = data;
+		console.log(data);
+	});
+	
 });
 /*app.controller("commentCtrl" , function($scope, $http){
 	

@@ -24,18 +24,21 @@ $(function () {
             spline: {
                 marker: {
                     radius: 4,
-                    lineColor: '#666666',
+                    lineColor: '#FF9900',
                     lineWidth: 1
                 }
             }
         },
         series: [{
         	name: 'Toán',
-            data: [8, 9, 8.5, 10, 6, 9, 9, 9]
+            data: [8, 9, 8.5, 10, 6, 9, 8, 9]
 
         }, {
         	name: 'Vật lý',
             data: [6, 8, 6, 4, 5, 3, 9, 6]
+        }, {
+        	name: 'Hóa',
+            data: [7, 9, 8, 8, 7, 7, 9, 6]
         }]
     });
 });

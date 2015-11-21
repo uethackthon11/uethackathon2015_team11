@@ -5,12 +5,22 @@ import java.util.ArrayList;
 public class SubjectScore {
 
 	private String name;
+	private int teacherId;
 	private ArrayList<ScoreDetail> scores;
 
-	public SubjectScore(String name, ArrayList<ScoreDetail> scores) {
+	public SubjectScore(String name, int teacherId, ArrayList<ScoreDetail> scores) {
 		super();
 		this.name = name;
+		this.teacherId = teacherId;
 		this.scores = scores;
+	}
+
+	public int getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
 	}
 
 	public String getName() {

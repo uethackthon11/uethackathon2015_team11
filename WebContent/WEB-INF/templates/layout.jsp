@@ -51,6 +51,7 @@
   </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="myApp">
 	<input class="hidden" value="${pageContext.request.contextPath}" id="rootPath" />
+	<input class="hidden" value="${id}" id="id_user" />
     <div class="wrapper">
 			<tiles:insertAttribute name="header" ignore="true"/>
 			<tiles:insertAttribute name="menu" ignore="true"/>

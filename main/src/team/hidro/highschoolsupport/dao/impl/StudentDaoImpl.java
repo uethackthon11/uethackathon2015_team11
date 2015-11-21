@@ -218,7 +218,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "select subject_year_class.* from class_student inner join user on class_student.student_user_id = user.id inner join subject_year_class on class_student.class_id = subject_year_class.class_id where user.username = ? and class_student.year = ?";
+			String sql = "select subject_year_class.*,subject_year.teacher_user_id from class_student inner join user on class_student.student_user_id = user.id inner join subject_year_class on class_student.class_id = subject_year_class.class_id inner join subject_year on subject_year_class.subject_year_id = subject_year.subject_id where user.username = ? and class_student.year = ?";
 			smt = conn.prepareStatement(sql);
 			smt.setString(1, username);
 			smt.setInt(2, (Calendar.getInstance().get(Calendar.YEAR)));
@@ -227,8 +227,7 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 			while (rs.next()) {
 
 				int idSubject = rs.getInt("subject_year_class.subject_year_id");
-				System.out.println(idSubject);
-
+				int teacherId = rs.getInt("subject_year.teacher_user_id");
 				String sql2 = "select score.*,subject.name from score inner join user on score.user_id = user.id inner join subject on score.subject_year_id = subject.id where user.username = ? and score.subject_year_id = ?";
 				smt = conn.prepareStatement(sql2);
 				smt.setString(1, username);
@@ -266,13 +265,12 @@ public class StudentDaoImpl extends AutoWireJdbcDaoSupport implements StudentDao
 
 				});
 
-				SubjectScore subjectScore = new SubjectScore(name, listScoreDetail);
+				SubjectScore subjectScore = new SubjectScore(name, teacherId, listScoreDetail);
 				subjectScores.add(subjectScore);
 
 			}
 			return subjectScores;
 		} catch (Exception e) {
-			// logger.error("queryPost", e);
 			e.printStackTrace();
 		} finally {
 			DbUtils.closeQuietly(rs);

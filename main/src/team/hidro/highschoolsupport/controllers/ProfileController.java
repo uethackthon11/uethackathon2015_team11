@@ -33,6 +33,8 @@ public class ProfileController {
 	public ModelAndView profileView(@PathVariable("username") String username) {
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("student_name", username);
+		StudentDetail student = studentService.getByName(username);
+		model.addObject("studentId", student.getUserId());
 		return model;
 
 	}

@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.entities.TeacherDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
+import team.hidro.highschoolsupport.service.StudentService;
 import team.hidro.highschoolsupport.service.TeacherService;
 import team.hidro.highschoolsupport.service.UserService;
 
@@ -21,6 +23,8 @@ public class LoginController {
 	private UserService userSevice;
 	@Autowired
 	private TeacherService teacherService;
+	@Autowired
+	private StudentService studentService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView login(){
@@ -33,22 +37,24 @@ public class LoginController {
 		UserDetail user = userSevice.checkUser(id, password);
 		ModelAndView model = new ModelAndView();
 		if(user == null){
-			System.out.println("ko");
 			model.addObject("error", "Sai ID hoặc Password");
 			model.setViewName("login");
 		} else {
 			
 			session.setAttribute("role", user.getRole());
 			session.setAttribute("username", user.getUsername());
+			session.setAttribute("id", user.getId());
 			//session.setAttribute("user", user);
 			switch(user.getRole()){
 			
 				case 0 :
 				case 1 :
+					StudentDetail student = studentService.getById(user.getId());
+					model.addObject("user", student);
+					model.setViewName("redirect:home");
+					
 				case 2 :
-					/*TeacherDetail teacher = teachDao.getTeacher(user.getId());
-					model.addObject("user", teacher);
-					model.setViewName("redirect:home");*/
+					
 				case 3 :
 					TeacherDetail teacher = teacherService.getById(user.getId());
 					session.setAttribute("user", teacher);
