@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import team.hidro.highschoolsupport.dao.StudentDao;
 import team.hidro.highschoolsupport.entities.CommentProfile;
+import team.hidro.highschoolsupport.entities.ScoreDetail;
 import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.entities.SubjectScore;
 import team.hidro.highschoolsupport.service.StudentService;
@@ -71,7 +72,26 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public List<CommentProfile> getListCommentProfile(String id) {
-		return studentDao.getListCommentProfile(id);
+		
+		List<CommentProfile> commentProfiles = studentDao.getListCommentProfile(id);
+		
+		Collections.sort(commentProfiles, new Comparator<CommentProfile>() {
+
+			@Override
+			public int compare(CommentProfile o1, CommentProfile o2) {
+				if (o1.getTime() < o2.getTime()) {
+					return 1;
+				} else {
+					if (o1.getTime() == o2.getTime()) {
+						return 0;
+					} else {
+						return -1;
+					}
+				}
+			}
+		});
+		
+		return commentProfiles;
 	}
 
 	@Override

@@ -18,7 +18,7 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<spring:url value="/resources/dist/css/AdminLTE.min.css" />">
+    <link rel="stylesheet" href="<spring:url value="/resources/dist/css/AdminLTE.css" />">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<spring:url value="/resources/dist/css/skins/_all-skins.min.css" />">
@@ -44,6 +44,10 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery 2.1.4 -->
+    <script src="<spring:url value="/resources/plugins/jQuery/jQuery-2.1.4.min.js" />"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="myApp">
 	<input class="hidden" value="${pageContext.request.contextPath}" id="rootPath" />
@@ -54,10 +58,6 @@
 			<tiles:insertAttribute name="body" />
 			<tiles:insertAttribute name="footer" ignore="true"/>
    	</div>
-	<!-- jQuery 2.1.4 -->
-    <script src="<spring:url value="/resources/plugins/jQuery/jQuery-2.1.4.min.js" />"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
@@ -75,23 +75,23 @@
     --%> <!-- jQuery Knob Chart -->
     <%-- <script src="<spring:url value="/resources/plugins/knob/jquery.knob.js" />"></script> --%>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <%-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="<spring:url value="/resources/plugins/daterangepicker/daterangepicker.js" />"></script>
     <!-- datepicker -->
-    <script src="<spring:url value="/resources/plugins/datepicker/bootstrap-datepicker.js" />"></script>
+    <script src="<spring:url value="/resources/plugins/datepicker/bootstrap-datepicker.js" />"></script> --%>
     <!-- Bootstrap WYSIHTML5 -->
-    <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script>
+    <%-- <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script> --%>
     <!-- Slimscroll -->
 <%--     <script src="<spring:url value="/resources/plugins/slimScroll/jquery.slimscroll.min.js" />"></script>
     <!-- FastClick -->
     <script src="<spring:url value="/resources/plugins/fastclick/fastclick.min.js" />"></script> --%>
     <!-- AdminLTE App -->
-    <script src="<spring:url value="/resources/dist/js/app.min.js" />"></script>
+    <%-- <script src="<spring:url value="/resources/dist/js/app.min.js" />"></script> --%>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <%-- <script src="<spring:url value="/resources/dist/js/pages/dashboard.js" />"></script> --%>
     <!-- AdminLTE for demo purposes -->
-    <script src="<spring:url value="/resources/dist/js/demo.js" />"></script>
-    <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script>
+    <%-- <script src="<spring:url value="/resources/dist/js/demo.js" />"></script> --%>
+    <%-- <script src="<spring:url value="/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"></script> --%>
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script type="text/javascript" src="<spring:url value="/resources/js/dirPagination.js" />"></script>
     <script type="text/javascript" src="<spring:url value="/resources/js/jsModule.js" />"></script>

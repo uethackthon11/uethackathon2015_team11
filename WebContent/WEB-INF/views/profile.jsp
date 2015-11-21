@@ -65,7 +65,7 @@
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
                     <!-- Post -->
-                    <div class="post" ng-repeat="comment in comments">
+                    <div class="post" dir-paginate="comment in comments | filter:search | itemsPerPage: pageSize" current-page="currentPage" id="listComment">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{comment.avatar}}" />" alt="user image">
                         <span class='username'>
@@ -79,18 +79,20 @@
                       </p>
                       
                     </div><!-- /.post -->
-
+					<div class="text-right" style="margin-top: -10px">
+			          	<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="http://localhost:8080/SpringProject/resources/dirPagination.tpl.html"></script>"></dir-pagination-controls>
+			        </div>
                     
-                      <form class='form-horizontal'>
+                      <div class='form-horizontal'>
                         <div class='form-group margin-bottom-none'>
                           <div class='col-sm-9'>
-                            <input class="form-control input-sm" placeholder="Response">
+                            <input class="form-control input-sm" placeholder="Nội dung..." id="comment">
                           </div>                          
                           <div class='col-sm-3'>
-                            <button class='btn btn-danger pull-right btn-block btn-sm'>Send</button>
+                            <button class='btn btn-danger pull-right btn-block btn-sm' ng-click="addComment()">Send</button>
                           </div>                          
                         </div>                        
-                      </form>
+                      </div>
                    
 
                     
@@ -102,19 +104,19 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Bảng điểm học kỳ 1</h3>
+                <div class="box-header" style="padding: 5px;margin: 5px">
+                  <h3 class="box-title">Bảng điểm</h3>
                   <div class="box-tools">
-                    <div class="input-group" style="width: 150px;">
+                    <div class="input-group" style="width: 250px">
                       <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
                       <div class="input-group-btn">
-                        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-sm btn-default">Tìm kiếm</button>
                       </div>
                     </div>
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
-                  <table class="table table-bordered table-hover" style=" border: 2px solid #cccccc">
+                  <table class="table table-bordered table-hover">
                     <tr>
                       <th rowspan="3" style="text-align: center; vertical-align: middle">STT</th>
                       <th rowspan="3" style="text-align: center; vertical-align: middle" class="col-xs-2">Môn học</th>
@@ -156,16 +158,16 @@
                     <tr ng-repeat="subject in subjects">
                       <td style="text-align: center">{{$index + 1}}</td>
                       <td style="text-align: center">{{subject.name}}</td>
-                      <td style="text-align: center">subject.score[0].score</td>
-                      <td style="text-align: center">subject.score[1].score</td>
-                      <td style="text-align: center">subject.score[2].score</td>
-                      <td style="text-align: center">subject.score[3].score</td>
-                      <td style="text-align: center">subject.score[4].score</td>
-                      <td style="text-align: center">subject.score[5].score</td>
-                      <td style="text-align: center">subject.score[6].score</td>
-                      <td style="text-align: center">subject.score[7].score</td>
-                      <td style="text-align: center">subject.score[8].score</td>
-                      <td style="text-align: center">subject.score[9].score</td>
+                      <td style="text-align: center">{{subject.scores[0].score}}</td>
+                      <td style="text-align: center">{{subject.scores[1].score}}</td>
+                      <td style="text-align: center">{{subject.scores[2].score}}</td>
+                      <td style="text-align: center">{{subject.scores[3].score}}</td>
+                      <td style="text-align: center">{{subject.scores[4].score}}</td>
+                      <td style="text-align: center">{{subject.scores[5].score}}</td>
+                      <td style="text-align: center">{{subject.scores[6].score}}</td>
+                      <td style="text-align: center">{{subject.scores[7].score}}</td>
+                      <td style="text-align: center">{{subject.scores[8].score}}</td>
+                      <td style="text-align: center">{{subject.scores[9].score}}</td>
                       <td style="text-align: center"> 7.5</td>
                       <td style="text-align: center"><button class="btn btn-warning"><i class="fa fa-mail-forward"></i></button></td>
                     </tr>

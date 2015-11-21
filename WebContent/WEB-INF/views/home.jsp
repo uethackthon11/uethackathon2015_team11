@@ -81,27 +81,27 @@
                       <td style="text-align: center">{{student.studentDetail.name}}</td>
                       <td style="text-align: center">{{student.studentDetail.birthday | date:'dd-M-yyyy'}}</td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[0].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[0].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[0].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[1].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[1].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[1].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[2].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[2].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[2].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[3].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[3].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[3].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[4].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[4].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[4].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[5].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[5].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[5].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[6].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[6].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[6].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[7].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[7].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[7].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[8].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[8].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[8].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[9].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[9].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[9].score"/></td>
                       <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[10].score}}</td>
-                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input style="width: 50px" ng-model="student.scores[10].score"/></td>
+                      <td style="text-align: center; width: 50px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 50px" ng-model="student.scores[10].score"/></td>
                       <td style="text-align: center; width: 50px">
                       		<button class="btn btn-primary" ng-if="editable[student.studentDetail.userId] == 0" ng-click="editable[student.studentDetail.userId] = 1"><i class="fa fa-edit"></i></button>
                       		<button class="btn btn-success" ng-if="editable[student.studentDetail.userId] == 1" ng-click="update(student)"><i class="fa fa-check"></i></button>

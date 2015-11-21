@@ -74,6 +74,8 @@ app.controller("profileCtrl" , function($scope, $http){
 	.success(function(data){
 		$scope.user = data;
 	});*/
+	$scope.currentPage = 1;
+	$scope.pageSize = 5;
 	$scope.user = {};
 	
 	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/user_detail")
@@ -93,8 +95,52 @@ app.controller("profileCtrl" , function($scope, $http){
 	$http.get($('#rootPath').val() + "/" + $('#student').val() + "/scores")
 	.success(function(data){
 		$scope.subjects = data;
-		console.log(data);
 	});
+	
+	$scope.addComment = function(){
+		console.log("fdff");
+		$http({
+			
+			url : $('#rootPath').val() + "/" + $('#student').val() + "/profile/add_comment",
+			method : 'POST',
+			data : {
+				'message' : $('#comment').val(),
+			},
+			contentType: "application/json",
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+			
+		})
+		.success(function(){
+			$http.get($('#rootPath').val() + "/" + $('#student').val() + "/comments")
+			.success(function(data){
+				$('#comment').val("");
+				$scope.comments = data;
+				 $(function () {
+					 	console.log("haha");
+			            new PNotify({
+			                title: "Thành công",
+			                type: "success",
+			                text: "Đã thêm 1 nhận xét mới.",
+			                nonblock: {
+			                    nonblock: true
+			                },
+			                before_close: function (PNotify) {
+			                    PNotify.update({
+			                        title: PNotify.options.title + " - Enjoy your Stay",
+			                        before_close: null
+			                    });
+			                    PNotify.queueRemove();
+			                    return false;
+			                }
+			            });
+
+			        });
+			});
+		});
+		
+		
+		
+	};
 });
 /*app.controller("commentCtrl" , function($scope, $http){
 	
