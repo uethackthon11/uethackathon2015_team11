@@ -24,7 +24,7 @@
                 <i class="fa fa-user"></i> <span>Thông Tin Cá Nhân</span>
               </a>
             </li>
-            <li ng-i="${role} == 3 || ${role} == 0">
+            <li ng-i="${role} == 3">
               <a href="${pageContext.request.contextPath}/home">
                 <i class="fa fa-th"></i> <span>Danh sách lớp học</span>
               </a>
@@ -69,11 +69,16 @@
             </li>
             
             
-            <li>
-              <a href="${pageContext.request.contextPath}/calendar" ng-if="${role} != 3">
-                <i class="fa fa-calendar"></i> <span>Lịch học</span>
-                <small class="label pull-right bg-red">3</small>
+            <li class="treeview" ng-if="${role} ==1">
+              <a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>Lịch Học</span>
               </a>
+              <ul class="treeview-menu" >
+                <li><a href="${pageContext.request.contextPath}/calendar"><i class="fa fa-circle-o"></i> Thời Khóa Biểu</a></li>
+                <li><a href="${pageContext.request.contextPath}/lifeCalendar"><i class="fa fa-circle-o"></i> Lịch Sinh Hoạt</a></li>
+                
+              </ul>
             </li>
             
             </li>

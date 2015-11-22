@@ -55,6 +55,8 @@ public class LoginController {
 					session.setAttribute("id", user.getId());
 					StudentDetail student = studentService.getById(user.getId());
 					session.setAttribute("user", student);
+					session.setAttribute("avatar", student.getAvatar());
+					session.setAttribute("name", student.getName());
 					model.setViewName("redirect:" + user.getUsername() +"/profile");
 					break;
 				case 2 :
