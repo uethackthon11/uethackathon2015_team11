@@ -7,15 +7,6 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <!-- Sidebar user panel -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <img src="<spring:url value="/resources/dist/img/user2-160x160.jpg" />" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-              <p>Alexander Pierce</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-          </div>
           <!-- search form -->
           <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -49,7 +40,7 @@
             </li> -->
             <li class="treeview" ng-if="${role} == 1">
               <a href="#">
-                <i class="fa fa-circle-o text-red"></i>
+                <i class="fa fa-group"></i>
                 <span>Group môn học</span>
               </a>
               <ul class="treeview-menu" >
@@ -61,7 +52,7 @@
             
             <li class="treeview" ng-if="${role} == 3">
               <a href="#">
-                <i class="fa fa-circle-o text-red"></i>
+                <i class="fa fa-group"></i>
                 <span>Group môn học</span>
               </a>
               <ul class="treeview-menu" >
