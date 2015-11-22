@@ -213,7 +213,7 @@ public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
 
 					if (rs.next()) {
 						String name = rs.getString("name");
-						String avatar = rs.getString("avartar");
+						String avatar = rs.getString("avatar");
 						writerDetail = new WriterDetail(name, userId, avatar);
 					}
 
