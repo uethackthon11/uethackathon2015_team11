@@ -96,7 +96,7 @@
                     </tr> -->	
                     <tr ng-repeat="student in students | filter:name" style="padding:5px">
                       <td style="text-align: center; width: 15px">{{$index + 1}}</td>
-                      <td style="text-align: center">{{student.studentDetail.name}}</td>
+                      <td style="text-align: center"><a href="${pageContext.request.contextPath}/profile/{{student.studentDetail.userId}}">{{student.studentDetail.name}}</a></td>
                       <td style="text-align: center">{{student.studentDetail.birthday | date:'dd-M-yyyy'}}</td>
                       <td style="text-align: center; width: 40px" ng-if="editable[student.studentDetail.userId] == 0">{{student.scores[0].score}}</td>
                       <td style="text-align: center; width: 40px" ng-if="editable[student.studentDetail.userId] == 1" ><input type="number" style="width: 40px" ng-model="student.scores[0].score"/></td>

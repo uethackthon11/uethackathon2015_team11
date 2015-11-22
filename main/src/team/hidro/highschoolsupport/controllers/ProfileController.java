@@ -39,6 +39,18 @@ public class ProfileController {
 		return model;
 
 	}
+	
+	@RequestMapping("/profile/{id}")
+	public ModelAndView profileView2(@PathVariable("id") int id, HttpSession session) {
+		ModelAndView model = new ModelAndView("profile");
+		
+		StudentDetail student = studentService.getById(id);
+		model.addObject("student_name", "anhnl");
+		model.addObject("studentId", student.getUserId());
+		model.addObject("viewerId", Integer.parseInt(session.getAttribute("id").toString()));
+		return model;
+
+	}
 
 	@RequestMapping("/{username}/user_detail")
 	public @ResponseBody StudentDetail getStudent(@PathVariable("username") String username) {

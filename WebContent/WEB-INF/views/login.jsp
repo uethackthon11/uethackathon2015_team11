@@ -20,7 +20,7 @@
 						<div class="form-group">
 		    				<div class="input-group">
 			      				<div class="input-group-addon"><span class="text-primary fa fa-lock"></span></div>
-								<input type="text" class="form-control has-feedback-left" name="password" placeholder="Password" required>
+								<input type="password" class="form-control has-feedback-left" name="password" placeholder="Password" required>
 							</div>
 						</div>
 						
