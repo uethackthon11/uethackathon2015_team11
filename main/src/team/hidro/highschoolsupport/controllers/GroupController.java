@@ -43,8 +43,8 @@ public class GroupController {
 	}
 	
 	@RequestMapping(value = "/groupdata/{idGroup}/status/{statusId}", method = RequestMethod.GET)
-	public @ResponseBody StatusDetail getComments(@PathVariable("idGroup") int groupId) {
-		return statusService.getById(groupId);
+	public @ResponseBody StatusDetail getComments(@PathVariable("statusId") int statusId) {
+		return statusService.getById(statusId);
 	}
 
 	@RequestMapping(value = "/groupdata/{idGroup}/{userId}/newStatus", method = RequestMethod.POST)
