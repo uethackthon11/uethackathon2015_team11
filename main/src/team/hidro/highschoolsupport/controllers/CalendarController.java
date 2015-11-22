@@ -21,7 +21,7 @@ public class CalendarController {
 	@Autowired
 	private ClassDao classDao;
 	
-	@RequestMapping(value="calendar", method =RequestMethod.GET)
+	@RequestMapping(value="/calendar", method =RequestMethod.GET)
 	public ModelAndView show(HttpSession session) {
 		int userId = Integer.parseInt(session.getAttribute("id").toString());
 		StudentDetail studentDetail = studentService.getById(userId);
