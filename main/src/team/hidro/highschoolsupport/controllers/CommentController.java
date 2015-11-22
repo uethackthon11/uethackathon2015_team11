@@ -1,5 +1,7 @@
 package team.hidro.highschoolsupport.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,26 +17,21 @@ import team.hidro.highschoolsupport.service.CommentService;
 public class CommentController {
 	@Autowired
 	private CommentService commentService;
-	
 
 	@RequestMapping(value = "/{idStatus}/newComment", method = RequestMethod.POST)
-	public @ResponseBody boolean createComment(@PathVariable("userId") int userId,
-			@PathVariable("idStatus") int statusId, @RequestParam("content") String content) {
+	public @ResponseBody boolean createComment(@PathVariable("idStatus") int statusId,
+			@RequestParam("content") String content, HttpSession session) {
 		long dateTime = System.currentTimeMillis();
+		int userId = Integer.parseInt(session.getAttribute("id").toString());
 		CommentDetail commentDetail = new CommentDetail(content, dateTime, userId, statusId, null);
 		return commentService.save(commentDetail);
 	}
-	
+
 	@RequestMapping(value = "/{userId}/{idComment}/vote", method = RequestMethod.GET)
-	public @ResponseBody boolean vote(@PathVariable("userId") int userId,@RequestParam("content") String content) {
+	public @ResponseBody boolean vote(@PathVariable("userId") int userId, @RequestParam("content") String content) {
 		long dateTime = System.currentTimeMillis();
 		CommentDetail commentDetail = new CommentDetail(content, dateTime, userId, 0, null);
 		return commentService.save(commentDetail);
 	}
-	
-	
-	
-	
-	
 
 }
