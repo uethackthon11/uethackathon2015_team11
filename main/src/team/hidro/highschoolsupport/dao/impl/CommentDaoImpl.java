@@ -104,7 +104,7 @@ public class CommentDaoImpl extends AutoWireJdbcDaoSupport implements CommentDao
 		ResultSet rs = null;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "Select * from comment_stt where stt_id = ?";
+			String sql = "Select * from comment_stt where stt_id = ? order by time desc";
 			smt = conn.prepareStatement(sql);
 			smt.setInt(1, statusId);
 			rs = smt.executeQuery();
