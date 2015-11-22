@@ -1,6 +1,6 @@
 $(function () {
       Highcharts.setOptions({
- colors: ['#333', '#CB2326', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#CB2326',      '#6AF9C4']
+ colors: ['#00C853', '#F57C00', '#EEFF41', '#24CBE5', '#64E572', '#FF9655', '#CB2326','#6AF9C4']
 });
     $('#container2').highcharts({
         
@@ -11,7 +11,7 @@ $(function () {
             type: 'pie'
         },
         title: {
-            text: 'Xếp loại học sinh'
+            text: 'Xếp loại học lực'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -34,21 +34,17 @@ $(function () {
             colorByPoint: true,
             data: [{
                 name: 'Giỏi',
-                y: 56.33
+                y: 41.67
             }, {
                 name: 'Khá',
-                y: 24.03,
-                sliced: true,
+                y: 33.33,
                 selected: true
             }, {
                 name: 'Trung bình',
-                y: 10.38
+                y: 16.67
             }, {
                 name: 'Yếu',
-                y: 4.77
-            }, {
-                name: 'Kém',
-                y: 0.91
+                y: 8.33
             }]
         }]
     });

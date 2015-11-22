@@ -69,6 +69,10 @@
             			<div id="container2" class="box box-primary" style="width: 700px; margin: 0 auto"></div>
             		</div>
 					
+					 <div >
+            			<div id="container3" class="box box-primary" style="width: 700px; margin: 0 auto"></div>
+            		</div>
+            		
 					<div class="box-body table-responsive no-padding">
 						<table class="table table-bordered table-hover">
 							<tr>
@@ -105,7 +109,7 @@
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">1</td>
 								<td style="text-align: center">Nguyễn Chí Hoàng</td>
-								<td style="text-align: center">1-2-2010</td>
+								<td style="text-align: center">1-2-2000</td>
 								<td style="text-align: center">8.5</td>
 								<td style="text-align: center">9.0</td>
 								<td style="text-align: center">9.1</td>
@@ -125,7 +129,7 @@
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">2</td>
 								<td style="text-align: center">Vương Thị Hồng</td>
-								<td style="text-align: center">14-2-2010</td>
+								<td style="text-align: center">14-2-2000</td>
 								<td style="text-align: center">6.9</td>
 								<td style="text-align: center">7.1</td>
 								<td style="text-align: center">6.2</td>
@@ -144,7 +148,7 @@
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">3</td>
 								<td style="text-align: center">Nguyễn Văn Hợp</td>
-								<td style="text-align: center">15-2-2010</td>
+								<td style="text-align: center">15-2-2000</td>
 								<td style="text-align: center">9.4</td>
 								<td style="text-align: center">8.0</td>
 								<td style="text-align: center">8.6</td>
@@ -163,7 +167,7 @@
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">4</td>
 								<td style="text-align: center">Đậu Mạnh Quang</td>
-								<td style="text-align: center">14-4-2010</td>
+								<td style="text-align: center">14-4-2000</td>
 								<td style="text-align: center">8.4</td>
 								<td style="text-align: center">8.2</td>
 								<td style="text-align: center">9.3</td>
@@ -182,7 +186,7 @@
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">5</td>
 								<td style="text-align: center">Lê Vũ Huy</td>
-								<td style="text-align: center">6-2-2010</td>
+								<td style="text-align: center">6-2-2000</td>
 								<td style="text-align: center">8.3</td>
 								<td style="text-align: center">6.1</td>
 								<td style="text-align: center">7.2</td>
@@ -201,7 +205,7 @@
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">6</td>
 								<td style="text-align: center">Nguyễn Thành Nam</td>
-								<td style="text-align: center">1-1-2010</td>
+								<td style="text-align: center">1-1-2000</td>
 								<td style="text-align: center">8.3</td>
 								<td style="text-align: center">8.0</td>
 								<td style="text-align: center">6.1</td>
@@ -220,7 +224,7 @@
 								<tr style="font-weight: normal;">
 								<td style="text-align: center">7</td>
 								<td style="text-align: center">Đặng Tiến Hoàng</td>
-								<td style="text-align: center">2-6-2010</td>
+								<td style="text-align: center">2-6-2000</td>
 								<td style="text-align: center">6.5</td>
 								<td style="text-align: center">8.0</td>
 								<td style="text-align: center">8.5</td>
@@ -240,7 +244,7 @@
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">8</td>
 								<td style="text-align: center">Nguyễn Ngọc Anh </td>
-								<td style="text-align: center">14-2-2010</td>
+								<td style="text-align: center">6-3-2000</td>
 								<td style="text-align: center">6.9</td>
 								<td style="text-align: center">4.1</td>
 								<td style="text-align: center">6.2</td>
@@ -258,78 +262,78 @@
 
 							<tr style="font-weight: normal;">
 								<td style="text-align: center">9</td>
-								<td style="text-align: center">Nguyễn Văn Hợp</td>
-								<td style="text-align: center">15-2-2010</td>
+								<td style="text-align: center">Phan Xuân Anh</td>
+								<td style="text-align: center">4-2-1999</td>
+								<td style="text-align: center">5.4</td>
+								<td style="text-align: center">8.0</td>
+								<td style="text-align: center">5.7</td>
+								<td style="text-align: center">4.2</td>
+								<td style="text-align: center">4.5</td>
+								<td style="text-align: center">4.1</td>
+								<td style="text-align: center">4.4</td>
+								<td style="text-align: center">5.3</td>
+								<td style="text-align: center">6.4</td>
+								<td style="text-align: center">8.1</td>
+								<td style="text-align: center">5.6</td>
+								<td style="text-align: center">TB</td>
+								<td style="text-align: center">TB</td>
+							</tr>
+
+							<tr style="font-weight: normal;">
+								<td style="text-align: center">10</td>
+								<td style="text-align: center">Văn Thành Cương</td>
+								<td style="text-align: center">14-5-2000</td>
 								<td style="text-align: center">9.4</td>
-								<td style="text-align: center">8.0</td>
-								<td style="text-align: center">8.6</td>
-								<td style="text-align: center">9.2</td>
-								<td style="text-align: center">8.5</td>
-								<td style="text-align: center">8.1</td>
-								<td style="text-align: center">7.4</td>
-								<td style="text-align: center">8.3</td>
-								<td style="text-align: center">8.3</td>
-								<td style="text-align: center">8.8</td>
-								<td style="text-align: center">8.6</td>
-								<td style="text-align: center">Giỏi</td>
-								<td style="text-align: center">Khá</td>
-							</tr>
-
-							<tr style="font-weight: normal;">
-								<td style="text-align: center">4</td>
-								<td style="text-align: center">Đậu Mạnh Quang</td>
-								<td style="text-align: center">14-4-2010</td>
-								<td style="text-align: center">8.4</td>
 								<td style="text-align: center">8.2</td>
-								<td style="text-align: center">9.3</td>
+								<td style="text-align: center">9.9</td>
 								<td style="text-align: center">6.2</td>
-								<td style="text-align: center">7.6</td>
-								<td style="text-align: center">8.1</td>
-								<td style="text-align: center">7.6</td>
-								<td style="text-align: center">8.2</td>
-								<td style="text-align: center">8.3</td>
-								<td style="text-align: center">8.1</td>
-								<td style="text-align: center">8.2</td>
-								<td style="text-align: center">Giỏi</td>
-								<td style="text-align: center">Tốt</td>
-							</tr>
-
-							<tr style="font-weight: normal;">
-								<td style="text-align: center">5</td>
-								<td style="text-align: center">Lê Vũ Huy</td>
-								<td style="text-align: center">6-2-2010</td>
-								<td style="text-align: center">8.3</td>
-								<td style="text-align: center">6.1</td>
-								<td style="text-align: center">7.2</td>
-								<td style="text-align: center">6.2</td>
-								<td style="text-align: center">8.6</td>
-								<td style="text-align: center">7.2</td>
-								<td style="text-align: center">6.8</td>
-								<td style="text-align: center">9.2</td>
-								<td style="text-align: center">8.6</td>
-								<td style="text-align: center">8.3</td>
-								<td style="text-align: center">7.8</td>
-								<td style="text-align: center">Khá</td>
-								<td style="text-align: center">Khá</td>
-							</tr>
-
-							<tr style="font-weight: normal;">
-								<td style="text-align: center">6</td>
-								<td style="text-align: center">Nguyễn Thành Nam</td>
-								<td style="text-align: center">1-1-2010</td>
-								<td style="text-align: center">8.3</td>
-								<td style="text-align: center">8.0</td>
-								<td style="text-align: center">6.1</td>
-								<td style="text-align: center">6.2</td>
-								<td style="text-align: center">7.4</td>
+								<td style="text-align: center">9.6</td>
 								<td style="text-align: center">8.1</td>
 								<td style="text-align: center">7.9</td>
 								<td style="text-align: center">8.2</td>
-								<td style="text-align: center">7.6</td>
-								<td style="text-align: center">8.2</td>
-								<td style="text-align: center">7.4</td>
-								<td style="text-align: center">Khá</td>
+								<td style="text-align: center">8.9</td>
+								<td style="text-align: center">8.1</td>
+								<td style="text-align: center">8.8</td>
+								<td style="text-align: center">Giỏi</td>
 								<td style="text-align: center">Tốt</td>
+							</tr>
+
+							<tr style="font-weight: normal;">
+								<td style="text-align: center">11</td>
+								<td style="text-align: center">Lê Thị Phương Anh</td>
+								<td style="text-align: center">3-8-2000</td>
+								<td style="text-align: center">4.3</td>
+								<td style="text-align: center">3.1</td>
+								<td style="text-align: center">3.2</td>
+								<td style="text-align: center">3.2</td>
+								<td style="text-align: center">6.6</td>
+								<td style="text-align: center">3.5</td>
+								<td style="text-align: center">6.9</td>
+								<td style="text-align: center">4.3</td>
+								<td style="text-align: center">4.6</td>
+								<td style="text-align: center">4.3</td>
+								<td style="text-align: center">4.8</td>
+								<td style="text-align: center">Yếu</td>
+								<td style="text-align: center">TB</td>
+							</tr>
+
+							<tr style="font-weight: normal;">
+								<td style="text-align: center">12</td>
+								<td style="text-align: center">Phan Thành Tiến</td>
+								<td style="text-align: center">1-1-2000</td>
+								<td style="text-align: center">8.4</td>
+								<td style="text-align: center">8.0</td>
+								<td style="text-align: center">6.1</td>
+								<td style="text-align: center">6.2</td>
+								<td style="text-align: center">7.2</td>
+								<td style="text-align: center">8.5</td>
+								<td style="text-align: center">7.9</td>
+								<td style="text-align: center">8.2</td>
+								<td style="text-align: center">7.3</td>
+								<td style="text-align: center">8.4</td>
+								<td style="text-align: center">7.5</td>
+								<td style="text-align: center">Khá</td>
+								<td style="text-align: center">TB</td>
 							</tr>
 							
 							<!-- <tr ng-repeat="student in students | filter:name" style="padding:5px">
