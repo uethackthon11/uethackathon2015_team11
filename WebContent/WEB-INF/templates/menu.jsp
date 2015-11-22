@@ -28,13 +28,17 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">Dashboard</li>
-            <li>
+            <li ng-i="${role} == 1">
               <a href="${pageContext.request.contextPath}/${username}/profile">
                 <i class="fa fa-th"></i> <span>Thông Tin Cá Nhân</span>
               </a>
             </li>
-            <li class="active treeview">
+            <li ng-i="${role} == 3 || ${role} == 0">
+              <a href="${pageContext.request.contextPath}/home">
+                <i class="fa fa-th"></i> <span>Danh sách lớp học</span>
+              </a>
+            </li>
+            <!-- <li class="active treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -42,7 +46,7 @@
                 <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
-            </li>
+            </li> -->
             <li class="treeview" ng-if="${role} == 1">
               <a href="#">
                 <i class="fa fa-circle-o text-red"></i>
@@ -75,7 +79,7 @@
             
             
             <li>
-              <a href="pages/calendar.html" ng-if="${role} != 3">
+              <a href="${pageContext.request.contextPath}/calendar" ng-if="${role} != 3">
                 <i class="fa fa-calendar"></i> <span>Lịch học</span>
                 <small class="label pull-right bg-red">3</small>
               </a>
