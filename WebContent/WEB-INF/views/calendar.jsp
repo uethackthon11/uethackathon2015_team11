@@ -8,8 +8,7 @@
 	<section class="content-header">
 
 		<h1>
-			Calendar <small><i class="fa fa-calendar"></i> Thoi Khoa Bieu
-				Hoc Tap</small>
+			Lịch Học <small><i class="fa fa-calendar"></i> Thời Khóa Biểu Học Tập</small>
 		</h1>
 	</section>
 
