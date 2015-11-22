@@ -7,13 +7,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Simple Tables
-            <small>preview of simple tables</small>
+           Bảng điểm
+            <small> Quản lý điểm </small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Simple</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ </a></li>
+            <li class="active">Bảng điểm</li>
           </ol>
         </section>
         
