@@ -44,33 +44,27 @@
 		</div>
 		<div class="row"></div>
 		<!-- /.row -->
+		
+		<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Tab 1</a></li>
+                  <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Tab 2</a></li>
+			 </ul>
+	                <div class="tab-content">
+	                  <div class="tab-pane active" id="tab_1">
 		<div class="row">
 			
 			<div class="col-xs-12">
 				<div class="box">
-					<div class="box-header" style="margin-top: 10px">
-						<select style="padding: 5px" ng-model="myClass"
-							ng-change='class_selected(myClass)'
-							ng-options="class.subjectName + ' - ' + class.classDetail.name for class in classes">
-							<option value="">---Please select---</option>
-						</select>
-						<div class="box-tools">
-							<div class="input-group" style="width: 240px;">
-								<input type="text" name="table_search" ng-model="name"
-									class="form-control input-sm pull-right" placeholder="Search">
-								<div class="input-group-btn">
-									<!-- <button class="btn btn-sm btn-primary">Tìm kiếm</button> -->
-								</div>
-							</div>
-						</div>
-					</div>
 					<!-- /.box-header -->
-					 <div >
-            			<div id="container2" class="box box-primary" style="width: 700px; margin: 0 auto"></div>
+					<div class="row">
+					 <div class="col-sm-5">
+            			<div id="container2" class="box box-primary"></div>
             		</div>
 					
-					 <div >
-            			<div id="container3" class="box box-primary" style="width: 700px; margin: 0 auto"></div>
+					 <div class="col-sm-7">
+            			<div id="container3" class="box box-primary"></div>
+            		</div>
             		</div>
             		
 					<div class="box-body table-responsive no-padding">
@@ -379,6 +373,53 @@
 				</div>
 				<!-- /.box -->
 			</div>
+		</div>
+		
+		</div>
+		<div class="tab-pane" id="tab_2">
+			<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+			<div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Gửi thông báo đến toàn thể phụ huynh</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Tiêu đề</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Tiêu đề">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Remember me
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                  </div><!-- /.box-footer -->
+                </form>
+              </div>
+			</div>
+			</div>
+			
+		</div>
+		</div>
+		
 		</div>
 	</section>
 	<!-- /.content -->

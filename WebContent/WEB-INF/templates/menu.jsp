@@ -1,5 +1,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -28,8 +30,8 @@
           <ul class="sidebar-menu">
             <li class="header">Dashboard</li>
             <li>
-              <a href="/profile">
-                <i class="fa fa-th"></i> <span>Th�ng Tin C� Nh�n</span>
+              <a href="${pageContext.request.contextPath}/${username}/profile">
+                <i class="fa fa-th"></i> <span>Thông Tin Cá Nhân</span>
               </a>
             </li>
             <li class="active treeview">
@@ -41,48 +43,35 @@
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview" ng-if="${role} != 0">
               <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
-                <span class="label label-primary pull-right">4</span>
+                <i class="fa fa-circle-o text-red"></i>
+                <span>Group môn học</span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+              <ul class="treeview-menu" >
+                <li><a href="${pageContext.request.contextPath}/group/1"><i class="fa fa-circle-o"></i> Group môn toán</a></li>
+                <li><a href="${pageContext.request.contextPath}/group/2"><i class="fa fa-circle-o"></i> Group môn hóa</a></li>
+                <li><a href="${pageContext.request.contextPath}/group/3"><i class="fa fa-circle-o"></i> Group môn lí</a></li>
               </ul>
             </li>
             
-            <li class="treeview">
-              <a href="#">
+            <li class="treeview" ng-if="${role} == 0">
+              <a href="${pageContext.request.contextPath}/avg_grade">
                 <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
+                <span>Thống Kê Cuối Năm</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-              </ul>
             </li>
             
             
             <li>
-              <a href="pages/calendar.html">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
+              <a href="pages/calendar.html" ng-if="${role} != 3">
+                <i class="fa fa-calendar"></i> <span>Lịch học</span>
                 <small class="label pull-right bg-red">3</small>
               </a>
             </li>
             
             </li>
-            <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-            <li class="header">LABELS</li>
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->

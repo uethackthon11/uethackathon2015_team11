@@ -36,7 +36,7 @@
                       {{post.content}}
                     </div>
                     <div class="timeline-footer">
-                      <a href="http://localhost:8080/SpringProject/group/${groupId}/status/{{post.id}}" class="btn btn-warning btn-flat btn-xs">Xem chủ đề</a>
+                      <a href="http://localhost:8080/SpringProject/group/${groupId}/status/{{post.id}}" class="btn btn-warning btn-flat btn-xs">Xem bài đăng</a>
                     </div>
                   </div>
                 </li>
@@ -54,11 +54,11 @@
                   <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{post.dateTime | date: 'dd-M-yyyy HH:ss'}}</span>
                     <h3 class="timeline-header"><a href="#">{{post.title}}</h3>
-                    <div class="timeline-body">
+                    <div class="timeline-body" style="padding-left: 20px; margin-bottom: 10px; margin-top: 10px">
                       {{post.content}}
                     </div>
                     <div class="timeline-footer">
-                      <a href="http://localhost:8080/SpringProject/group/${groupId}/status/{{post.id}}" class="btn btn-primary btn-flat btn-xs">Xem chủ đề</a>
+                      <a href="http://localhost:8080/SpringProject/group/${groupId}/status/{{post.id}}" class="btn btn-primary btn-flat btn-xs">Xem bài đăng</a>
                     </div>
                   </div>
                 </li>
@@ -72,11 +72,11 @@
                   <div class="timeline-item">
                     <span class="time"><i class="fa fa-clock-o"></i> {{post.dateTime | date: 'dd-M-yyyy HH:ss'}}</span>
                     <h3 class="timeline-header"><a href="#">{{post.title}}</h3>
-                    <div class="timeline-body">
+                    <div class="timeline-body" style="padding-left: 20px; margin-bottom: 10px; margin-top: 10px">
                       {{post.content}}
                     </div>
                     <div class="timeline-footer">
-                      <a href="http://localhost:8080/SpringProject/group/${groupId}/status/{{post.id}}" class="btn btn-warning btn-flat btn-xs">Xem chủ đề</a>
+                      <a href="http://localhost:8080/SpringProject/group/${groupId}/status/{{post.id}}" class="btn btn-warning btn-flat btn-xs">Xem bài đăng</a>
                     </div>
                   </div>
                 </li>
