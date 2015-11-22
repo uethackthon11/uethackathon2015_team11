@@ -71,7 +71,7 @@
               <!-- Profile Image -->
               <div class="box box-primary">
                 <div class="box-body box-profile">
-                  <img class="profile-user-img img-responsive img-circle" style = "heigh: 10px; weight: 10px " src="<spring:url value="/resources/avatar/{{user.avatar}}" />" alt="User profile picture">
+                  <img class="profile-user-img img-responsive img-circle" src="<spring:url value="/resources/avatar/{{user.avatar}}" />" alt="User profile picture">
                   <h3 class="profile-username text-center">{{user.name}}</h3>
                   <p class="text-muted text-center">Học Sinh</p>
 

@@ -1,6 +1,6 @@
 $(function () {
       Highcharts.setOptions({
- colors: ['#00C853', '#F57C00', '#EEFF41', '#24CBE5', '#64E572', '#FF9655', '#CB2326','#6AF9C4']
+ colors: ['#B0BEC5', '#F57C00', '#EEFF41', '#24CBE5', '#64E572', '#FF9655', '#CB2326','#6AF9C4']
 });
     $('#container2').highcharts({
         
