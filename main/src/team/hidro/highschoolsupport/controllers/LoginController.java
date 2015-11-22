@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import team.hidro.highschoolsupport.entities.ParentDetail;
 import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.entities.TeacherDetail;
 import team.hidro.highschoolsupport.entities.UserDetail;
+import team.hidro.highschoolsupport.service.ParentService;
 import team.hidro.highschoolsupport.service.StudentService;
 import team.hidro.highschoolsupport.service.TeacherService;
 import team.hidro.highschoolsupport.service.UserService;
@@ -25,6 +27,8 @@ public class LoginController {
 	private TeacherService teacherService;
 	@Autowired
 	private StudentService studentService;
+	@Autowired
+	private ParentService parentService;
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView login(){
@@ -43,18 +47,27 @@ public class LoginController {
 			
 			session.setAttribute("role", user.getRole());
 			session.setAttribute("username", user.getUsername());
-			session.setAttribute("id", user.getId());
+			
 			//session.setAttribute("user", user);
 			switch(user.getRole()){
 				case 0 :
 				case 1 :
+					session.setAttribute("id", user.getId());
 					StudentDetail student = studentService.getById(user.getId());
 					session.setAttribute("user", student);
 					model.setViewName("redirect:" + user.getUsername() +"/profile");
 					break;
 				case 2 :
 					
+					ParentDetail parent = parentService.getById(user.getId());
+					session.setAttribute("id", parent.getChildId());
+					session.setAttribute("user", parent);
+					session.setAttribute("avatar", "3.jpg");
+					session.setAttribute("name", parent.getName());
+					model.setViewName("redirect:" + parent.getChildName() +"/profile");
+					break;
 				case 3 :
+					session.setAttribute("id", user.getId());
 					TeacherDetail teacher = teacherService.getById(user.getId());
 					session.setAttribute("user", teacher);
 					session.setAttribute("avatar", teacher.getAvatar());
