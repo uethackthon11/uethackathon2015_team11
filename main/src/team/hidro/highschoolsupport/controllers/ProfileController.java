@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import team.hidro.highschoolsupport.dao.UserDao;
+import team.hidro.highschoolsupport.dao.impl.UserDaoImpl;
 import team.hidro.highschoolsupport.entities.CommentProfile;
 import team.hidro.highschoolsupport.entities.StudentDetail;
 import team.hidro.highschoolsupport.entities.SubjectScore;
@@ -23,6 +25,8 @@ import team.hidro.highschoolsupport.service.StudentService;
 
 @Controller
 public class ProfileController {
+	@Autowired
+	private UserDaoImpl userDao;
 
 	@Autowired
 	private StudentService studentService;
@@ -34,6 +38,7 @@ public class ProfileController {
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("student_name", username);
 		StudentDetail student = studentService.getByName(username);
+		
 		model.addObject("studentId", student.getUserId());
 		model.addObject("viewerId", Integer.parseInt(session.getAttribute("id").toString()));
 		return model;
@@ -45,7 +50,7 @@ public class ProfileController {
 		ModelAndView model = new ModelAndView("profile");
 		
 		StudentDetail student = studentService.getById(id);
-		model.addObject("student_name", "anhnl");
+		model.addObject("student_name", userDao.getById(id).getUsername());
 		model.addObject("studentId", student.getUserId());
 		model.addObject("viewerId", Integer.parseInt(session.getAttribute("id").toString()));
 		return model;

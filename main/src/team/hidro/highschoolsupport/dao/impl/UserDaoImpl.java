@@ -19,6 +19,33 @@ import team.hidro.highschoolsupport.entities.WriterDetail;
 
 @Repository
 public class UserDaoImpl extends AutoWireJdbcDaoSupport implements UserDao {
+	
+	public UserDetail getById(Integer id) {
+		Connection conn = null;
+		PreparedStatement smt = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "Select * from user where id = ?";
+			smt = conn.prepareStatement(sql);
+
+			smt.setInt(1, id);
+			rs = smt.executeQuery();
+			if (rs.next()) {
+				int id1 = rs.getInt("id");
+				String username = rs.getString("username");
+				UserDetail userDetail = new UserDetail(id1, username, "", 1);
+				return userDetail;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+			DbUtils.closeQuietly(smt);
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+	}
 
 	@Override
 	public UserDetail checkUser(String username, String password) {
