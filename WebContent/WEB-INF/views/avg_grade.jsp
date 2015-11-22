@@ -64,7 +64,8 @@
                       <th colspan="11" style="text-align: center"> Điểm </th>
                     </tr>
 
-                    <tr>
+                    <tr style="font-weight: lighter !important">
+                      
                       <th style="text-align: center"> Toán </th>
                       <th style="text-align: center"> Vật lý </th>
                       <th style="text-align: center"> Hóa học </th>
@@ -78,7 +79,10 @@
                       <th style="text-align: center"> TB môn </th>
                     </tr>
 
-                    <tr>
+                    <tr style="font-weight: normal;">
+                      <th style="text-align: center"> 1 </th>
+                      <th style="text-align: center"> Nguyễn Chí Hoàng </th>
+                      <th style="text-align: center"> 1-2-2010 </th>
                       <th style="text-align: center"> 8.5 </th>
                       <th style="text-align: center"> 9.0 </th>
                       <th style="text-align: center"> 9.1 </th>
@@ -92,7 +96,10 @@
                       <th style="text-align: center"> 8.5 </th>
                     </tr>
                     
-                    <tr>
+                    <tr style="font-weight: normal;">
+                      <th style="text-align: center"> 2 </th>
+                      <th style="text-align: center"> Vương Thị Hồng </th>
+                      <th style="text-align: center"> 14-2-2010 </th>
                       <th style="text-align: center"> 6.9 </th>
                       <th style="text-align: center"> 7.1 </th>
                       <th style="text-align: center"> 6.2 </th>
@@ -106,7 +113,10 @@
                       <th style="text-align: center"> 6.8 </th>
                     </tr>
                     
-                    <tr>
+                    <tr style="font-weight: normal;">
+                      <th style="text-align: center"> 3 </th>
+                      <th style="text-align: center"> Nguyễn Văn Hợp </th>
+                      <th style="text-align: center"> 15-2-2010 </th>
                       <th style="text-align: center"> 9.4 </th>
                       <th style="text-align: center"> 8.0 </th>
                       <th style="text-align: center"> 8.6 </th>
@@ -120,7 +130,10 @@
                       <th style="text-align: center"> 8.6 </th>
                     </tr>
                     
-                    <tr>
+                    <tr style="font-weight: normal;">
+                      <th style="text-align: center"> 4 </th>
+                      <th style="text-align: center"> Đậu Mạnh Quang </th>
+                      <th style="text-align: center"> 14-4-2010 </th>
                       <th style="text-align: center"> 8.4 </th>
                       <th style="text-align: center"> 8.2 </th>
                       <th style="text-align: center"> 9.3 </th>
@@ -134,7 +147,10 @@
                       <th style="text-align: center"> 8.2 </th>
                     </tr>
                     
-                    <tr>
+                    <tr style="font-weight: normal;">
+                      <th style="text-align: center"> 5 </th>
+                      <th style="text-align: center"> Lê Vũ Huy </th>
+                      <th style="text-align: center"> 6-2-2010 </th>
                       <th style="text-align: center"> 8.3 </th>
                       <th style="text-align: center"> 6.1 </th>
                       <th style="text-align: center"> 7.2 </th>
@@ -148,7 +164,10 @@
                       <th style="text-align: center"> 7.8 </th>
                     </tr>
                     
-                    <tr>
+                    <tr style="font-weight: normal;">
+                      <th style="text-align: center"> 6 </th>
+                      <th style="text-align: center"> Nguyễn Thành Nam </th>
+                      <th style="text-align: center"> 1-1-2010 </th>
                       <th style="text-align: center"> 8.3 </th>
                       <th style="text-align: center"> 8.0 </th>
                       <th style="text-align: center"> 6.1 </th>
