@@ -17,7 +17,7 @@ public class CommentController {
 	private CommentService commentService;
 	
 
-	@RequestMapping(value = "/{userId}/{idStatus}/newComment", method = RequestMethod.POST)
+	@RequestMapping(value = "/{idStatus}/newComment", method = RequestMethod.POST)
 	public @ResponseBody boolean createComment(@PathVariable("userId") int userId,
 			@PathVariable("idStatus") int statusId, @RequestParam("content") String content) {
 		long dateTime = System.currentTimeMillis();
