@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
@@ -24,6 +25,7 @@ import team.hidro.highschoolsupport.entities.TeacherDetail;
 import team.hidro.highschoolsupport.service.ClassService;
 import team.hidro.highschoolsupport.service.ScoreService;
 import team.hidro.highschoolsupport.service.TeacherService;
+import team.hidro.highschoolsupport.utils.SendMailUser;
 
 @Controller
 public class ScoreController {
@@ -87,6 +89,19 @@ public class ScoreController {
 			if(scoreDetail.getScore()!=-1&&scoreDetail.getId()==0)
 				scoreService.save(scoreDetail);
 		}
+		
+	}
+	
+	@RequestMapping("/sendMail")
+	public @ResponseBody void sendMail(HttpServletRequest request){
+		
+
+			String mailTo ="hongvt2309@gmail.com";
+			String mailFrom = "hvthong57@gmail.com";
+			String content = request.getParameter("tieude");
+			String sms = request.getParameter("noidung");
+			SendMailUser.SendMail(mailTo, mailFrom, content, sms);
+
 		
 	}
 }

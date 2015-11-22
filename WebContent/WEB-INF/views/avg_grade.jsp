@@ -389,28 +389,18 @@
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">Tiêu đề</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Tiêu đề">
+                        <input type="email" class="form-control" id="tieude" placeholder="Tiêu đề...">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <label for="inputPassword3" class="col-sm-2 control-label">Nội dung</label>
                       <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Remember me
-                          </label>
-                        </div>
+                        <textare style="height: 200px" class="form-control" id="noidung" placeholder="Nội dung..."></textare>
                       </div>
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                    <button type="submit" class="btn btn-info pull-right">Gửi</button>
                   </div><!-- /.box-footer -->
                 </form>
               </div>
