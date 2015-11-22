@@ -11,11 +11,6 @@
           <h1>
             User Profile
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Examples</a></li>
-            <li class="active">User profile</li>
-          </ol>
         </section>
 
         <!-- Main content -->
@@ -49,9 +44,9 @@
                     </div><!-- /.post -->
 				
                 </div><!-- /.tab-content -->
-								<input class="form-control input-sm" id="" type="text" placeholder="Type a comment">
+								<input class="form-control input-sm" id="new_comment" type="text" placeholder="Type a comment">
 								<br/>
-								<button class="btn btn-primary" ng-click="">Bình luận</button>
+								<button class="btn btn-primary" ng-click="addComment()">Bình luận</button>
               </div><!-- /.nav-tabs-custom -->
               
             </div><!-- /.col -->
@@ -68,7 +63,7 @@
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
                     <!-- Post -->
-                    <div class="post" ng-repeat="comment in status.commentDetails">
+                    <div class="post" dir-paginate="comment in status.commentDetails | itemsPerPage: pageSize" current-page="currentPage">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="<spring:url value="/resources/avatar/{{comment.writerDetail.avatar}}" />" alt="user image">
                         <span class='username'>
@@ -85,6 +80,9 @@
                       </ul>
 
                     </div><!-- /.post -->
+					<div class="text-right" style="margin-top: -10px">
+			          	<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="http://localhost:8080/SpringProject/resources/dirPagination.tpl.html"></script>"></dir-pagination-controls>
+			        </div>
 				
                 </div><!-- /.tab-content -->
               </div><!-- /.nav-tabs-custom -->

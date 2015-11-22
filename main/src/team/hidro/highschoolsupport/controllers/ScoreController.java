@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import team.hidro.highschoolsupport.entities.ListClassDetail;
 import team.hidro.highschoolsupport.entities.ScoreDetail;
@@ -52,6 +53,11 @@ public class ScoreController {
 		TeacherDetail teacher = (TeacherDetail) session.getAttribute("user");
 		return teacherService.getListClassByTeacherId(teacher.getUserId());
 		
+	}
+	
+	@RequestMapping("/avg_grade")
+	public ModelAndView getAVGGrade(){
+		return new ModelAndView("avg_grade");
 	}
 	
 	@RequestMapping(value = "class/update_score", method = RequestMethod.POST)
