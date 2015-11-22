@@ -30,5 +30,14 @@ public class CalendarController {
 		model.addObject("className", className);
 		return model;
 	}
+	
+	@RequestMapping(value="/lifeCalendar", method =RequestMethod.GET)
+	public ModelAndView showlifeCalendar(HttpSession session) {
+		int userId = Integer.parseInt(session.getAttribute("id").toString());
+		StudentDetail studentDetail = studentService.getById(userId);
+		ModelAndView model = new ModelAndView("lifecalendar");
+		model.addObject("studentName", studentDetail.getName());
+		return model;
+	}
 
 }

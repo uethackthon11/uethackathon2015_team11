@@ -94,6 +94,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		addDefinition("avg_grade", "Avarage Grade", "/WEB-INF/views/avg_grade.jsp");
 
 		addDefinition("calendar", "Calendar", "/WEB-INF/views/calendar.jsp");
+		addDefinition("lifecalendar", "Schedule", "/WEB-INF/views/lifecalendar.jsp");
 		//addDefinition("signin/facebook", "Sign in", "/WEB-INF/views/signin.jsp");
 		
 		return tilesConfigurer;
