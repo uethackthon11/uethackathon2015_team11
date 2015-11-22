@@ -9,12 +9,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            User Profile
+            Thông tin người dùng
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Examples</a></li>
-            <li class="active">User profile</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang Chủ </a></li>
+            <li class="active">Thông tin người dùng </li>
           </ol>
         </section>
 

@@ -104,5 +104,6 @@
 	<script type="text/javascript" src="<spring:url value="/resources/plugins/HighChart/highcharts.js" />"></script>
 	<script type="text/javascript" src="<spring:url value="/resources/plugins/HighChart/exporting.js" />"></script>
 	<script type="text/javascript" src="<spring:url value="/resources/plugins/HighChart/DrawLineChart.js" />"></script>
+	<script type="text/javascript" src="<spring:url value="/resources/plugins/HighChart/PieChart.js" />"></script>
 </body>
 </html>
