@@ -47,8 +47,8 @@
 		
 		<div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Tab 1</a></li>
-                  <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Tab 2</a></li>
+                  <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Thống kê</a></li>
+                  <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Gửi thông báo</a></li>
 			 </ul>
 	                <div class="tab-content">
 	                  <div class="tab-pane active" id="tab_1">
@@ -376,7 +376,7 @@
 		</div>
 		
 		</div>
-		<div class="tab-pane" id="tab_2">
+		<div class="tab-pane" id="tab_2" ng-controller="sendMailCtrl">
 			<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
 			<div class="box box-info">
@@ -384,25 +384,23 @@
                   <h3 class="box-title">Gửi thông báo đến toàn thể phụ huynh</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">Tiêu đề</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control" id="tieude" placeholder="Tiêu đề...">
+                        <input type="text" class="form-control" ng-model="mail.tieude" placeholder="Tiêu đề...">
                       </div>
-                    </div>
+                    </div><br/>
                     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">Nội dung</label>
                       <div class="col-sm-10">
-                        <textare style="height: 200px" class="form-control" id="noidung" placeholder="Nội dung..."></textare>
+                        <textarea style="height: 200px" class="form-control" ng-model="mail.noidung" placeholder="Nội dung..."></textarea>
                       </div>
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-info pull-right">Gửi</button>
+                    <button class="btn btn-info pull-right" ng-click="send_mail()">Gửi</button>
                   </div><!-- /.box-footer -->
-                </form>
               </div>
 			</div>
 			</div>

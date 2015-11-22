@@ -331,6 +331,18 @@ app.controller("groupCtrl" , function($scope, $http){
 	
 });
 
+app.controller("sendMailCtrl" , function($scope, $http){
+	
+	$scope.mail = {
+			tieude : '',
+			noidung : ''
+	}
+	send_mail = function(){
+		console.log(mail);
+	}
+	
+});
+
 app.controller("statusCtrl" , function($scope, $http, $interval){
 	
 	$scope.status = [];

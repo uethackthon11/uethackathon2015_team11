@@ -43,7 +43,7 @@
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
             </li>
-            <li class="treeview" ng-if="${role} != 0">
+            <li class="treeview" ng-if="${role} == 1">
               <a href="#">
                 <i class="fa fa-circle-o text-red"></i>
                 <span>Group môn học</span>
@@ -52,6 +52,16 @@
                 <li><a href="${pageContext.request.contextPath}/group/1"><i class="fa fa-circle-o"></i> Group môn toán</a></li>
                 <li><a href="${pageContext.request.contextPath}/group/2"><i class="fa fa-circle-o"></i> Group môn hóa</a></li>
                 <li><a href="${pageContext.request.contextPath}/group/3"><i class="fa fa-circle-o"></i> Group môn lí</a></li>
+              </ul>
+            </li>
+            
+            <li class="treeview" ng-if="${role} == 3">
+              <a href="#">
+                <i class="fa fa-circle-o text-red"></i>
+                <span>Group môn học</span>
+              </a>
+              <ul class="treeview-menu" >
+                <li><a href="${pageContext.request.contextPath}/group/1"><i class="fa fa-circle-o"></i> Group môn toán</a></li>
               </ul>
             </li>
             
