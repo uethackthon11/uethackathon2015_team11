@@ -109,7 +109,7 @@ public class CommentDaoImpl extends AutoWireJdbcDaoSupport implements CommentDao
 			smt.setInt(1, statusId);
 			rs = smt.executeQuery();
 			List<CommentDetail> commentDetails = new ArrayList<CommentDetail>();
-			if (rs.next()) {
+			while (rs.next()) {
 				String content = rs.getString("content");
 				int userId = rs.getInt("user_id");
 				long dateTime = rs.getLong("time");
