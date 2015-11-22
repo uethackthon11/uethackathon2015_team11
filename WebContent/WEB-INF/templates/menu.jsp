@@ -21,7 +21,7 @@
           <ul class="sidebar-menu">
             <li ng-i="${role} == 1">
               <a href="${pageContext.request.contextPath}/${username}/profile">
-                <i class="fa fa-th"></i> <span>Thông Tin Cá Nhân</span>
+                <i class="fa fa-user"></i> <span>Thông Tin Cá Nhân</span>
               </a>
             </li>
             <li ng-i="${role} == 3 || ${role} == 0">
